@@ -4,7 +4,7 @@ using System.Text;
 
 namespace BalancedNutritionLibrary
 {
-    class Meal_Dish
+    public class Meal_Dish
     {
 
     }

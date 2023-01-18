@@ -1,24 +1,30 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Text;
 
 namespace BalancedNutritionLibrary
 {
-    class Dish : BaseClass
+    public class Dish : BaseClass
     {
-        public Dish(int Id, string Name, string CookingMethod, float DishWeight, string CookingTechnology, string DishCharacteristic)
+        public Dish()
         {
-            this.Id = Id;
-            this.Name = Name;
-            this.DishWeight = DishWeight;
-            this.CookingMethod = CookingMethod;
-            this.CookingTechnology = CookingTechnology;
-            this.DishCharacteristic = DishCharacteristic;
+
         }
+
+        [Required]
+        [MaxLength(30)]
         public string Name;
+        [Required]
         public string CookingMethod { get; set; }
+        [Required]
         public float DishWeight { get; set; }
+        [Required]
         public string CookingTechnology { get; set; }
+        [Required]
         public string DishCharacteristic { get; set; }
+        public ICollection <Meal> Meals { get; set; }
+        public ICollection <Ingridient> Ingridients { get; set; }
+        public ICollection <DishNutrients> DishNutrients { get; set; }
     }
 }

@@ -1,18 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Text;
 
 namespace BalancedNutritionLibrary
 {
-    class Group : BaseClass
+    public class Group : BaseClass
     {
-        public Group(int Id, string Name, int NumberOfServings)
+        public Group()
         {
-            this.Id = Id;
-            this.Name = Name;
-            this.NumberOfServings = NumberOfServings;
+
         }
+
+        [Required]
+        [MaxLength(30)]
         public string Name { get; set; }
+        [Required]
         public int NumberOfServings { get; set; }
+        public ICollection <PlannedMenu> PlannedMenus { get; set;}
     }
 }

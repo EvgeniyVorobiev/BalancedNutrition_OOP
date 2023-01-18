@@ -1,19 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Text;
 
 namespace BalancedNutritionLibrary
 {
-    class User : BaseClass
+    public class User : BaseClass
     {
-        public User(int Id, string Login, int Password)
+        public User()
         {
-            this.Id = Id;
-            this.Login = Login;
-            this.Password = Password;
-        }
-        public string Login { get; set; }
-        public int Password { get; set; }
 
+        }
+
+        [Required]
+        [MaxLength(30)]
+        public string Login { get; set; }
+        [Required]
+        [MaxLength(32)]
+        public string Password { get; set; }
+        public Role Role { get; set; }
+        public ICollection <PlannedMenu> PlannedMenus { get; set; }
     }
 }

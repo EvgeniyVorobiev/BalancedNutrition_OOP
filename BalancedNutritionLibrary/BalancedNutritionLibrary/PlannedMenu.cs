@@ -1,19 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Text;
 
 namespace BalancedNutritionLibrary
 {
-    class PlannedMenu : BaseClass
+    public class PlannedMenu : BaseClass
     {
-        public PlannedMenu(int Id, DateTime BeginingDate, DateTime EndDate)
+        public PlannedMenu()
         {
-            this.Id = Id;
-            this.BeginingDate = BeginingDate;
-            this.EndDate = EndDate;
+
         }
 
+        [Required]
         public DateTime BeginingDate { get; set; }
+        [Required]
         public DateTime EndDate { get; set; }
+        public User User { get; set; }
+        public ICollection <Day> Days { get; set; }
+        public ICollection <Group> Groups { get; set; }
     }
 }

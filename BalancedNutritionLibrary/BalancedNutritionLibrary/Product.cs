@@ -1,18 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Text;
 
 namespace BalancedNutritionLibrary
 {
-    class Product : BaseClass
+    public class Product : BaseClass
     {
-        public Product(int Id, string Name, float ProductWeight)
+        public Product()
         {
-            this.Id = Id;
-            this.Name = Name;
-            this.ProductWeight = ProductWeight;
+
         }
+
+        [Required]
+        [MaxLength(30)]
         public string Name { get; set; }
+        [Required]
         public float ProductWeight { get; set; }
+        [Required]
+        public Ingridient Ingridient { get; set; }
+        public ICollection <ProductNutrients> ProductNutrients { get; set; }
     }
 }

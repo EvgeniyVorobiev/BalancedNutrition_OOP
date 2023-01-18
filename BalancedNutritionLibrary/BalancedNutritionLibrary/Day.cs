@@ -1,16 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Runtime.CompilerServices;
 using System.Text;
 
 namespace BalancedNutritionLibrary
 {
-    class Day : BaseClass
+    public class Day : BaseClass
     {
-        public Day( int Id, DateTime Date)
+        public Day()
         {
-            this.Id = Id;
-            this.Date = Date;
+
         }
+
+        [Required]
         public DateTime Date { get; set; }
+        public PlannedMenu PlannedMenu { get; set;}
+        public ICollection <Meal> Meals { get; set; }
     }
 }

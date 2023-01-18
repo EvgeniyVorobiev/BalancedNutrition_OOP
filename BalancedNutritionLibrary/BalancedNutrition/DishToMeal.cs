@@ -10,16 +10,11 @@ using System.Windows.Forms;
 
 namespace BalancedNutrition
 {
-    public partial class FormMain : Form
+    public partial class DishToMeal : Form
     {
-        public FormMain()
+        public DishToMeal()
         {
             InitializeComponent();
-        }
-
-        private void FormMain_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }
