@@ -53,7 +53,7 @@ namespace BalancedNutrition
                     }
                     if (addMeal == true)
                     {
-                        Meal meal = new Meal { Name = mealName, Day = day };
+                        Meal meal = new Meal { Name = mealName, Day = day, Dishes = new List<Dish>() };
                         db.Meals.Add(meal);
                         db.SaveChanges();
                         warningLabel.ForeColor = Color.Green;

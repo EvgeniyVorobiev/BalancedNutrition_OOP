@@ -1,23 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace BalancedNutritionLibrary
 {
-    public class NutrientsDirectory
+    public class ProductDishBaseClass
     {
-        public NutrientsDirectory()
-        {
+        public virtual void Add() { }
 
-        }
         [Key]
         public int Id { get; set; }
 
         [Required]
         [MaxLength(30)]
         public string Name { get; set; }
-        public ICollection <DishNutrients> DishNutrients { get; set; }
-        public ICollection <ProductNutrients> ProductNutrients { get; set; }
+        [Required]
+        public float Weight { get; set; }
     }
 }

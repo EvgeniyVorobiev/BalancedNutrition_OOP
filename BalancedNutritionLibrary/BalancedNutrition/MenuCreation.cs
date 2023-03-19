@@ -72,7 +72,11 @@ namespace BalancedNutrition
                     {
                         DateTime date = beginDate.AddDays(i);
                         BalancedNutritionLibrary.Day day = new BalancedNutritionLibrary.Day
-                        { Date = date, PlannedMenu = plannedMenu };
+                        { Date = date, PlannedMenu = plannedMenu, Meals = new List<Meal>() };
+                        if (mealCheckBox1.Checked == true) day.Meals.Add(new Meal { Name = "Завтрак" });
+                        if (mealCheckBox1.Checked == true) day.Meals.Add(new Meal { Name = "Обед" });
+                        if (mealCheckBox1.Checked == true) day.Meals.Add(new Meal { Name = "Полдник" });
+                        if (mealCheckBox1.Checked == true) day.Meals.Add(new Meal { Name = "Ужин" });
                         db.Days.Add(day);
                     }
                     db.SaveChanges();
@@ -99,7 +103,11 @@ namespace BalancedNutrition
                         {
                             DateTime date = beginDate.AddDays(i);
                             BalancedNutritionLibrary.Day day = new BalancedNutritionLibrary.Day
-                            { Date = date, PlannedMenu = plannedMenu };
+                            { Date = date, PlannedMenu = plannedMenu, Meals = new List<Meal>() };
+                            if (mealCheckBox1.Checked == true) day.Meals.Add(new Meal { Name = "Завтрак" });
+                            if (mealCheckBox1.Checked == true) day.Meals.Add(new Meal { Name = "Обед" });
+                            if (mealCheckBox1.Checked == true) day.Meals.Add(new Meal { Name = "Полдник" });
+                            if (mealCheckBox1.Checked == true) day.Meals.Add(new Meal { Name = "Ужин" });
                             db.Days.Add(day);
                         }
                         db.SaveChanges();
@@ -119,6 +127,11 @@ namespace BalancedNutrition
                     
                 }
             }
+        }
+
+        private void mealCheckBox1_CheckedChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

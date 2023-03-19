@@ -5,18 +5,21 @@ using System.Text;
 
 namespace BalancedNutritionLibrary
 {
-    public class Ingridient : BaseClass
+    public class Ingredient 
     {
-        public Ingridient()
+        public Ingredient()
         {
 
         }
+
+        [Key]
+        public int Id { get; set; }
 
         [Required]
         [MaxLength(30)]
         public string Name { get; set; }
         [Required]
-        public float IngridientWaste { get; set; }
+        public float IngredientWaste { get; set; }
         [Required]
         public float WastePercent { get; set; }
         [Required]

@@ -1,20 +1,17 @@
 using BalancedNutritionLibrary;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 
 namespace BalancedNutrition
 {
     public partial class BalancedNutritionForm : Form
     {
-        //BalancedNutritionLibrary.AppContext context;
-        //IServiceProvider serviceProvider;
         public static string username = "";
-        public static PlannedMenu menu= new PlannedMenu();
+        public static PlannedMenu menu = new PlannedMenu();
 
         public BalancedNutritionForm()
         {
             InitializeComponent();
-            //serviceProvider = provider;
-            //context = new BalancedNutritionLibrary.AppContext();
         }
 
 
@@ -104,6 +101,9 @@ namespace BalancedNutrition
                     nutrientsDirectory4, nutrientsDirectory5, nutrientsDirectory6, nutrientsDirectory7);
                 *//*db.ProductNutrients.AddRange(productNutrients1, productNutrients2, productNutrients3, productNutrients4);
                 db.DishNutrients.AddRange(dishNutrients1, dishNutrients2, dishNutrients3, dishNutrients4);*/
+
+                //Product product = new Product { Name = "fff", Weight = 100, ProductNutrients = new List<ProductNutrients>()};
+                //product.Add();
 
 
                 //db.Roles.AddRange(role1, role2, role3);
@@ -198,6 +198,11 @@ namespace BalancedNutrition
                 }
                 menuDataGridView.Rows.Add(days);
                 menu = menuCreation.menu;
+                idLabel.Text = "ID " + menu.Id;
+                menuDateLabel.Text = menu.BeginingDate.Day.ToString() +"." + menu.BeginingDate.Month +
+                    "." + menu.BeginingDate.Year + "-" + menu.EndDate.Day + "." +
+                    menu.EndDate.Month + "." + menu.EndDate.Year;
+                groupNameLabel.Text = "√ÛÔÔ‡ " + menu.Groups.ToList().Last().Name;
             }
             else
             {
@@ -260,6 +265,18 @@ namespace BalancedNutrition
         private void ‰Ó·‡‚ËÚ¸ToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void ·Î˛‰Ó¬œË∏ÏœË˘ËToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DishToMeal dishToMeal = new DishToMeal();
+            dishToMeal.ShowDialog();
+        }
+
+        private void ÒÔËÒÓÍ¡Î˛‰ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DishList dishList = new DishList();
+            dishList.ShowDialog();
         }
     }
 }

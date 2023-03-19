@@ -70,12 +70,12 @@ namespace BalancedNutrition
                             else
                             {
                                 WarningLabel.Text = "Пароль указан не верно";
-                                break;
+                                
                             }
                         else
                         {
                             WarningLabel.Text = "пользователь не найден";
-                            break;
+                            
                         }
                     }
                 }

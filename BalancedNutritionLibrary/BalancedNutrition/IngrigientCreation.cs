@@ -48,12 +48,12 @@ namespace BalancedNutrition
                 float CWeight = (float)Convert.ToDecimal(CTextBox.Text);
 
                 
-                Ingridient ingridient = new Ingridient { Dish = db.Dishes.Where(d => d.Name == dishName).ToList()[0] ,
-                    Name = ingridientName, CookingMethod = cookingMethod,IngridientWaste = weightWaste,
+                Ingredient ingridient = new Ingredient { Dish = db.Dishes.Where(d => d.Name == dishName).ToList()[0] ,
+                    Name = ingridientName, CookingMethod = cookingMethod,IngredientWaste = weightWaste,
                     WastePercent = (((productWeight - weightWaste) * 100)/productWeight)};
 
                 List <NutrientsDirectory> nutrients = db.NutrientsDirectories.ToList();
-                Product product = new Product { Ingridient = ingridient, Name = productName, ProductWeight = productWeight,
+                Product product = new Product { Name = productName, Weight = productWeight,
                     ProductNutrients = new List <ProductNutrients>() };
 
                 ProductNutrients proteins = new ProductNutrients { ProductNutrientWeight = proteinWeight,

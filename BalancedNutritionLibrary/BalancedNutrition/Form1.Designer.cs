@@ -56,13 +56,20 @@
             this.блюдоToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.добавитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.приёмПищиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.блюдоВПриёмПищиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ингридиентВБлюдоToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.открытьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.плановоеМенюToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.списокБлюдToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.WarningLabel = new System.Windows.Forms.Label();
             this.nutrientListBox = new System.Windows.Forms.ListBox();
-            this.блюдоВПриёмПищиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuLabel = new System.Windows.Forms.Label();
+            this.npgsqlCommandBuilder1 = new Npgsql.NpgsqlCommandBuilder();
+            this.idLabel = new System.Windows.Forms.Label();
+            this.menuDateLabel = new System.Windows.Forms.Label();
+            this.groupNameLabel = new System.Windows.Forms.Label();
+            this.списокПродуктовToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.продуктToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.LoginPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.menuDataGridView)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -225,7 +232,7 @@
             this.button1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.button1.Location = new System.Drawing.Point(12, 108);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(303, 50);
+            this.button1.Size = new System.Drawing.Size(428, 50);
             this.button1.TabIndex = 14;
             this.button1.Text = "Обновить данные в таблице";
             this.button1.UseVisualStyleBackColor = true;
@@ -290,7 +297,8 @@
             // 
             this.создатьToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.менюToolStripMenuItem,
-            this.блюдоToolStripMenuItem});
+            this.блюдоToolStripMenuItem,
+            this.продуктToolStripMenuItem});
             this.создатьToolStripMenuItem.Name = "создатьToolStripMenuItem";
             this.создатьToolStripMenuItem.Size = new System.Drawing.Size(101, 27);
             this.создатьToolStripMenuItem.Text = "Создать";
@@ -324,14 +332,21 @@
             // приёмПищиToolStripMenuItem
             // 
             this.приёмПищиToolStripMenuItem.Name = "приёмПищиToolStripMenuItem";
-            this.приёмПищиToolStripMenuItem.Size = new System.Drawing.Size(276, 28);
-            this.приёмПищиToolStripMenuItem.Text = "приём пищи";
+            this.приёмПищиToolStripMenuItem.Size = new System.Drawing.Size(356, 28);
+            this.приёмПищиToolStripMenuItem.Text = "приём пищи в текущее меню";
             this.приёмПищиToolStripMenuItem.Click += new System.EventHandler(this.приёмПищиToolStripMenuItem_Click);
+            // 
+            // блюдоВПриёмПищиToolStripMenuItem
+            // 
+            this.блюдоВПриёмПищиToolStripMenuItem.Name = "блюдоВПриёмПищиToolStripMenuItem";
+            this.блюдоВПриёмПищиToolStripMenuItem.Size = new System.Drawing.Size(356, 28);
+            this.блюдоВПриёмПищиToolStripMenuItem.Text = "блюдо в приём пищи";
+            this.блюдоВПриёмПищиToolStripMenuItem.Click += new System.EventHandler(this.блюдоВПриёмПищиToolStripMenuItem_Click);
             // 
             // ингридиентВБлюдоToolStripMenuItem
             // 
             this.ингридиентВБлюдоToolStripMenuItem.Name = "ингридиентВБлюдоToolStripMenuItem";
-            this.ингридиентВБлюдоToolStripMenuItem.Size = new System.Drawing.Size(276, 28);
+            this.ингридиентВБлюдоToolStripMenuItem.Size = new System.Drawing.Size(356, 28);
             this.ингридиентВБлюдоToolStripMenuItem.Text = "ингридиент в блюдо";
             this.ингридиентВБлюдоToolStripMenuItem.Click += new System.EventHandler(this.ингридиентВБлюдоToolStripMenuItem_Click);
             // 
@@ -339,7 +354,8 @@
             // 
             this.открытьToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.плановоеМенюToolStripMenuItem,
-            this.списокБлюдToolStripMenuItem});
+            this.списокБлюдToolStripMenuItem,
+            this.списокПродуктовToolStripMenuItem});
             this.открытьToolStripMenuItem.Name = "открытьToolStripMenuItem";
             this.открытьToolStripMenuItem.Size = new System.Drawing.Size(103, 27);
             this.открытьToolStripMenuItem.Text = "Открыть";
@@ -348,21 +364,22 @@
             // плановоеМенюToolStripMenuItem
             // 
             this.плановоеМенюToolStripMenuItem.Name = "плановоеМенюToolStripMenuItem";
-            this.плановоеМенюToolStripMenuItem.Size = new System.Drawing.Size(235, 28);
+            this.плановоеМенюToolStripMenuItem.Size = new System.Drawing.Size(254, 28);
             this.плановоеМенюToolStripMenuItem.Text = "плановое меню";
             // 
             // списокБлюдToolStripMenuItem
             // 
             this.списокБлюдToolStripMenuItem.Name = "списокБлюдToolStripMenuItem";
-            this.списокБлюдToolStripMenuItem.Size = new System.Drawing.Size(235, 28);
+            this.списокБлюдToolStripMenuItem.Size = new System.Drawing.Size(254, 28);
             this.списокБлюдToolStripMenuItem.Text = "список блюд";
+            this.списокБлюдToolStripMenuItem.Click += new System.EventHandler(this.списокБлюдToolStripMenuItem_Click);
             // 
             // WarningLabel
             // 
             this.WarningLabel.AutoSize = true;
             this.WarningLabel.Font = new System.Drawing.Font("Arial", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.WarningLabel.ForeColor = System.Drawing.Color.Red;
-            this.WarningLabel.Location = new System.Drawing.Point(12, 59);
+            this.WarningLabel.Location = new System.Drawing.Point(460, 120);
             this.WarningLabel.Name = "WarningLabel";
             this.WarningLabel.Size = new System.Drawing.Size(144, 26);
             this.WarningLabel.TabIndex = 20;
@@ -381,17 +398,72 @@
             this.nutrientListBox.TabIndex = 21;
             this.nutrientListBox.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
-            // блюдоВПриёмПищиToolStripMenuItem
+            // menuLabel
             // 
-            this.блюдоВПриёмПищиToolStripMenuItem.Name = "блюдоВПриёмПищиToolStripMenuItem";
-            this.блюдоВПриёмПищиToolStripMenuItem.Size = new System.Drawing.Size(283, 28);
-            this.блюдоВПриёмПищиToolStripMenuItem.Text = "блюдо в приём пищи";
+            this.menuLabel.AutoSize = true;
+            this.menuLabel.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.menuLabel.Location = new System.Drawing.Point(12, 37);
+            this.menuLabel.Name = "menuLabel";
+            this.menuLabel.Size = new System.Drawing.Size(150, 23);
+            this.menuLabel.TabIndex = 22;
+            this.menuLabel.Text = "Текущее меню:";
+            // 
+            // npgsqlCommandBuilder1
+            // 
+            this.npgsqlCommandBuilder1.QuotePrefix = "\"";
+            this.npgsqlCommandBuilder1.QuoteSuffix = "\"";
+            // 
+            // idLabel
+            // 
+            this.idLabel.AutoSize = true;
+            this.idLabel.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.idLabel.Location = new System.Drawing.Point(165, 37);
+            this.idLabel.Name = "idLabel";
+            this.idLabel.Size = new System.Drawing.Size(30, 23);
+            this.idLabel.TabIndex = 23;
+            this.idLabel.Text = "ID";
+            // 
+            // menuDateLabel
+            // 
+            this.menuDateLabel.AutoSize = true;
+            this.menuDateLabel.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.menuDateLabel.Location = new System.Drawing.Point(12, 72);
+            this.menuDateLabel.Name = "menuDateLabel";
+            this.menuDateLabel.Size = new System.Drawing.Size(197, 23);
+            this.menuDateLabel.TabIndex = 24;
+            this.menuDateLabel.Text = "xx.xx.xxxx - xx.xx.xxxx";
+            // 
+            // groupNameLabel
+            // 
+            this.groupNameLabel.AutoSize = true;
+            this.groupNameLabel.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.groupNameLabel.Location = new System.Drawing.Point(215, 72);
+            this.groupNameLabel.Name = "groupNameLabel";
+            this.groupNameLabel.Size = new System.Drawing.Size(72, 23);
+            this.groupNameLabel.TabIndex = 25;
+            this.groupNameLabel.Text = "Группа";
+            // 
+            // списокПродуктовToolStripMenuItem
+            // 
+            this.списокПродуктовToolStripMenuItem.Name = "списокПродуктовToolStripMenuItem";
+            this.списокПродуктовToolStripMenuItem.Size = new System.Drawing.Size(254, 28);
+            this.списокПродуктовToolStripMenuItem.Text = "список продуктов";
+            // 
+            // продуктToolStripMenuItem
+            // 
+            this.продуктToolStripMenuItem.Name = "продуктToolStripMenuItem";
+            this.продуктToolStripMenuItem.Size = new System.Drawing.Size(235, 28);
+            this.продуктToolStripMenuItem.Text = "продукт";
             // 
             // BalancedNutritionForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1447, 684);
+            this.Controls.Add(this.groupNameLabel);
+            this.Controls.Add(this.menuDateLabel);
+            this.Controls.Add(this.idLabel);
+            this.Controls.Add(this.menuLabel);
             this.Controls.Add(this.nutrientListBox);
             this.Controls.Add(this.WarningLabel);
             this.Controls.Add(this.RoleLabel);
@@ -450,5 +522,12 @@
         private ListBox nutrientListBox;
         private ToolStripMenuItem ингридиентВБлюдоToolStripMenuItem;
         private ToolStripMenuItem блюдоВПриёмПищиToolStripMenuItem;
+        private Label menuLabel;
+        private Npgsql.NpgsqlCommandBuilder npgsqlCommandBuilder1;
+        private Label idLabel;
+        private Label menuDateLabel;
+        private Label groupNameLabel;
+        private ToolStripMenuItem продуктToolStripMenuItem;
+        private ToolStripMenuItem списокПродуктовToolStripMenuItem;
     }
 }

@@ -15,7 +15,7 @@ namespace BalancedNutritionLibrary
         public DbSet<Meal> Meals { get; set; }
         public DbSet<Group> Groups { get; set; }
         public DbSet<Dish> Dishes { get; set; }
-        public DbSet<Ingridient> Ingridients { get; set; }
+        public DbSet<Ingredient> Ingridients { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<DishNutrients> DishNutrients { get; set; }
         public DbSet<ProductNutrients> ProductNutrients { get; set; }
@@ -116,7 +116,7 @@ namespace BalancedNutritionLibrary
                 .IsRequired()
                 .HasMaxLength(30);
             modelBuilder.Entity<Dish>()
-                .Property(dish => dish.DishWeight)
+                .Property(dish => dish.Weight)
                 .IsRequired();
             modelBuilder.Entity<Dish>()
                 .Property (dish => dish.DishCharacteristic)
@@ -128,27 +128,30 @@ namespace BalancedNutritionLibrary
                 .Property (dish => dish.CookingTechnology)
                 .IsRequired();
 
-            modelBuilder.Entity<Ingridient>()
+            modelBuilder.Entity<Ingredient>()
                 .HasOne(i => i.Dish)
                 .WithMany(dish => dish.Ingridients);
-            modelBuilder.Entity<Ingridient>()
+/*            modelBuilder.Entity<Ingredient>()
+                .HasMany(i => i.Products)
+                .WithMany(p => p.Ingridients);*/
+            modelBuilder.Entity<Ingredient>()
                 .HasKey(i => i.Id);
-            modelBuilder.Entity<Ingridient>()
+            modelBuilder.Entity<Ingredient>()
                 .Property (i => i.Name)
                 .IsRequired()
                 .HasMaxLength(30);
-            modelBuilder.Entity<Ingridient>()
+            modelBuilder.Entity<Ingredient>()
                 .Property (i => i.WastePercent)
                 .IsRequired();
-            modelBuilder.Entity<Ingridient>()
-                .Property(i => i.IngridientWaste)
+            modelBuilder.Entity<Ingredient>()
+                .Property(i => i.IngredientWaste)
                 .IsRequired();
-            modelBuilder.Entity<Ingridient>()
+            modelBuilder.Entity<Ingredient>()
                 .Property(i => i.CookingMethod)
                 .IsRequired();
 
             modelBuilder.Entity<Product>()
-                .HasOne(product => product.Ingridient)
+                .HasMany(product => product.Ingredients)
                 .WithMany(i => i.Products);
             modelBuilder.Entity<Product>()
                 .HasKey(product => product.Id);
@@ -157,7 +160,7 @@ namespace BalancedNutritionLibrary
                 .IsRequired()
                 .HasMaxLength(30);
             modelBuilder.Entity<Product>()
-                .Property(product => product.ProductWeight)
+                .Property(product => product.Weight)
                 .IsRequired();
 
             modelBuilder.Entity<ProductNutrients>()

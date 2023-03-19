@@ -66,7 +66,7 @@ namespace BalancedNutrition
                 string cookingTechnology = technologyTextBox.Text;
                 string dishCharacteristic = characteristicTextBox.Text;
 
-                Dish dish = new Dish { Name = name, CookingMethod = cookingMethod, DishWeight = weight,
+                Dish dish = new Dish { Name = name, CookingMethod = cookingMethod, Weight = weight,
                 CookingTechnology = cookingTechnology, DishCharacteristic = dishCharacteristic, Meals = new List <Meal> ()};
                 
                 DishNutrients proteins = new DishNutrients { DishNutrientWeight = proteinWeight,

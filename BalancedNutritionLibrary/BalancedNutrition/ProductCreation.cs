@@ -32,7 +32,7 @@ namespace BalancedNutrition
                 float B2Weight = (float)Convert.ToDecimal(B2TextBox.Text);
                 float CWeight = (float)Convert.ToDecimal(CTextBox.Text);
                 List <NutrientsDirectory> nutrients = db.NutrientsDirectories.ToList();
-                Product product = new Product { Name = productName, ProductWeight = productWeight,
+                Product product = new Product { Name = productName, Weight = productWeight,
                     ProductNutrients = new List <ProductNutrients>() };
 
                 ProductNutrients proteins = new ProductNutrients { ProductNutrientWeight = proteinWeight,

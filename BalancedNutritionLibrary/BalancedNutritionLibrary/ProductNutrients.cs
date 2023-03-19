@@ -5,12 +5,14 @@ using System.Text;
 
 namespace BalancedNutritionLibrary
 {
-    public class ProductNutrients : BaseClass
+    public class ProductNutrients 
     {
         public ProductNutrients()
         {
 
         }
+        [Key]
+        public int Id { get; set; }
 
         [Required]
         public float ProductNutrientWeight { get; set; }

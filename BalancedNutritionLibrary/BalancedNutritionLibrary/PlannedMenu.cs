@@ -5,12 +5,14 @@ using System.Text;
 
 namespace BalancedNutritionLibrary
 {
-    public class PlannedMenu : BaseClass
+    public class PlannedMenu
     {
         public PlannedMenu()
         {
 
         }
+        [Key]
+        public int Id { get; set; }
 
         [Required]
         public DateTime BeginingDate { get; set; }

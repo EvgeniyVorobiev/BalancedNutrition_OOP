@@ -40,12 +40,16 @@
             this.groupCheckBox = new System.Windows.Forms.CheckBox();
             this.menuCreationLabel = new System.Windows.Forms.Label();
             this.warningLabel = new System.Windows.Forms.Label();
+            this.mealCheckBox1 = new System.Windows.Forms.CheckBox();
+            this.mealCheckBox2 = new System.Windows.Forms.CheckBox();
+            this.mealCheckBox3 = new System.Windows.Forms.CheckBox();
+            this.mealCheckBox4 = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // createButton
             // 
             this.createButton.Font = new System.Drawing.Font("Arial", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.createButton.Location = new System.Drawing.Point(106, 412);
+            this.createButton.Location = new System.Drawing.Point(106, 501);
             this.createButton.Name = "createButton";
             this.createButton.Size = new System.Drawing.Size(236, 51);
             this.createButton.TabIndex = 0;
@@ -87,7 +91,7 @@
             // 
             // groupTextBox
             // 
-            this.groupTextBox.Location = new System.Drawing.Point(294, 206);
+            this.groupTextBox.Location = new System.Drawing.Point(294, 298);
             this.groupTextBox.Name = "groupTextBox";
             this.groupTextBox.Size = new System.Drawing.Size(139, 30);
             this.groupTextBox.TabIndex = 5;
@@ -95,7 +99,7 @@
             // groupLabel
             // 
             this.groupLabel.AutoSize = true;
-            this.groupLabel.Location = new System.Drawing.Point(23, 206);
+            this.groupLabel.Location = new System.Drawing.Point(23, 298);
             this.groupLabel.Name = "groupLabel";
             this.groupLabel.Size = new System.Drawing.Size(257, 23);
             this.groupLabel.TabIndex = 6;
@@ -104,7 +108,7 @@
             // servingsNumberLabel
             // 
             this.servingsNumberLabel.AutoSize = true;
-            this.servingsNumberLabel.Location = new System.Drawing.Point(23, 310);
+            this.servingsNumberLabel.Location = new System.Drawing.Point(23, 402);
             this.servingsNumberLabel.Name = "servingsNumberLabel";
             this.servingsNumberLabel.Size = new System.Drawing.Size(265, 23);
             this.servingsNumberLabel.TabIndex = 7;
@@ -113,7 +117,7 @@
             // 
             // servingsNumberTextBox
             // 
-            this.servingsNumberTextBox.Location = new System.Drawing.Point(294, 307);
+            this.servingsNumberTextBox.Location = new System.Drawing.Point(294, 399);
             this.servingsNumberTextBox.Name = "servingsNumberTextBox";
             this.servingsNumberTextBox.Size = new System.Drawing.Size(139, 30);
             this.servingsNumberTextBox.TabIndex = 8;
@@ -123,7 +127,7 @@
             // groupCheckBox
             // 
             this.groupCheckBox.AutoSize = true;
-            this.groupCheckBox.Location = new System.Drawing.Point(23, 259);
+            this.groupCheckBox.Location = new System.Drawing.Point(23, 351);
             this.groupCheckBox.Name = "groupCheckBox";
             this.groupCheckBox.Size = new System.Drawing.Size(382, 27);
             this.groupCheckBox.TabIndex = 9;
@@ -146,18 +150,63 @@
             this.warningLabel.AutoSize = true;
             this.warningLabel.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.warningLabel.ForeColor = System.Drawing.Color.Red;
-            this.warningLabel.Location = new System.Drawing.Point(23, 367);
+            this.warningLabel.Location = new System.Drawing.Point(23, 459);
             this.warningLabel.Name = "warningLabel";
             this.warningLabel.Size = new System.Drawing.Size(62, 23);
             this.warningLabel.TabIndex = 11;
             this.warningLabel.Text = "label1";
             this.warningLabel.Visible = false;
             // 
+            // mealCheckBox1
+            // 
+            this.mealCheckBox1.AutoSize = true;
+            this.mealCheckBox1.Location = new System.Drawing.Point(23, 195);
+            this.mealCheckBox1.Name = "mealCheckBox1";
+            this.mealCheckBox1.Size = new System.Drawing.Size(106, 27);
+            this.mealCheckBox1.TabIndex = 12;
+            this.mealCheckBox1.Text = "Завтрак";
+            this.mealCheckBox1.UseVisualStyleBackColor = true;
+            this.mealCheckBox1.CheckedChanged += new System.EventHandler(this.mealCheckBox1_CheckedChanged);
+            // 
+            // mealCheckBox2
+            // 
+            this.mealCheckBox2.AutoSize = true;
+            this.mealCheckBox2.Location = new System.Drawing.Point(23, 245);
+            this.mealCheckBox2.Name = "mealCheckBox2";
+            this.mealCheckBox2.Size = new System.Drawing.Size(82, 27);
+            this.mealCheckBox2.TabIndex = 13;
+            this.mealCheckBox2.Text = "Обед";
+            this.mealCheckBox2.UseVisualStyleBackColor = true;
+            // 
+            // mealCheckBox3
+            // 
+            this.mealCheckBox3.AutoSize = true;
+            this.mealCheckBox3.Location = new System.Drawing.Point(183, 195);
+            this.mealCheckBox3.Name = "mealCheckBox3";
+            this.mealCheckBox3.Size = new System.Drawing.Size(108, 27);
+            this.mealCheckBox3.TabIndex = 14;
+            this.mealCheckBox3.Text = "Полдник";
+            this.mealCheckBox3.UseVisualStyleBackColor = true;
+            // 
+            // mealCheckBox4
+            // 
+            this.mealCheckBox4.AutoSize = true;
+            this.mealCheckBox4.Location = new System.Drawing.Point(183, 245);
+            this.mealCheckBox4.Name = "mealCheckBox4";
+            this.mealCheckBox4.Size = new System.Drawing.Size(77, 27);
+            this.mealCheckBox4.TabIndex = 15;
+            this.mealCheckBox4.Text = "Ужин";
+            this.mealCheckBox4.UseVisualStyleBackColor = true;
+            // 
             // MenuCreation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(448, 475);
+            this.ClientSize = new System.Drawing.Size(448, 564);
+            this.Controls.Add(this.mealCheckBox4);
+            this.Controls.Add(this.mealCheckBox3);
+            this.Controls.Add(this.mealCheckBox2);
+            this.Controls.Add(this.mealCheckBox1);
             this.Controls.Add(this.warningLabel);
             this.Controls.Add(this.menuCreationLabel);
             this.Controls.Add(this.groupCheckBox);
@@ -195,5 +244,9 @@
         private CheckBox groupCheckBox;
         private Label menuCreationLabel;
         private Label warningLabel;
+        private CheckBox mealCheckBox1;
+        private CheckBox mealCheckBox2;
+        private CheckBox mealCheckBox3;
+        private CheckBox mealCheckBox4;
     }
 }

@@ -5,12 +5,14 @@ using System.Text;
 
 namespace BalancedNutritionLibrary
 {
-    public class User : BaseClass
+    public class User
     {
         public User()
         {
 
         }
+        [Key]
+        public int Id { get; set; }
 
         [Required]
         [MaxLength(30)]
