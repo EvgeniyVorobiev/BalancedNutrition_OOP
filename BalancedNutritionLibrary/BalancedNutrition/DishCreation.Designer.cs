@@ -40,6 +40,30 @@
             this.weightTextBox = new System.Windows.Forms.TextBox();
             this.technologyTextBox = new System.Windows.Forms.TextBox();
             this.characteristicTextBox = new System.Windows.Forms.TextBox();
+            this.WarningLabel = new System.Windows.Forms.Label();
+            this.ingredientLabel = new System.Windows.Forms.Label();
+            this.ingredientListBox = new System.Windows.Forms.ListBox();
+            this.ingredientButton = new System.Windows.Forms.Button();
+            this.FTextBox = new System.Windows.Forms.TextBox();
+            this.FLabel = new System.Windows.Forms.Label();
+            this.MgTextBox = new System.Windows.Forms.TextBox();
+            this.MgLabel = new System.Windows.Forms.Label();
+            this.PTextBox = new System.Windows.Forms.TextBox();
+            this.PLabel = new System.Windows.Forms.Label();
+            this.SeTextBox = new System.Windows.Forms.TextBox();
+            this.SeLabel = new System.Windows.Forms.Label();
+            this.ITextBox = new System.Windows.Forms.TextBox();
+            this.ILabel = new System.Windows.Forms.Label();
+            this.KTextBox = new System.Windows.Forms.TextBox();
+            this.KLabel = new System.Windows.Forms.Label();
+            this.FeTextBox = new System.Windows.Forms.TextBox();
+            this.FeLabel = new System.Windows.Forms.Label();
+            this.CaTextBox = new System.Windows.Forms.TextBox();
+            this.CaLabel = new System.Windows.Forms.Label();
+            this.DTextBox = new System.Windows.Forms.TextBox();
+            this.Dlabel = new System.Windows.Forms.Label();
+            this.ATextBox = new System.Windows.Forms.TextBox();
+            this.ALabel = new System.Windows.Forms.Label();
             this.CTextBox = new System.Windows.Forms.TextBox();
             this.B2TextBox = new System.Windows.Forms.TextBox();
             this.B1TextBox = new System.Windows.Forms.TextBox();
@@ -54,17 +78,13 @@
             this.carbohydratesLabel = new System.Windows.Forms.Label();
             this.fatsLabel = new System.Windows.Forms.Label();
             this.proteinLabel = new System.Windows.Forms.Label();
-            this.WarningLabel = new System.Windows.Forms.Label();
-            this.ingridientLabel = new System.Windows.Forms.Label();
-            this.ingridientListBox = new System.Windows.Forms.ListBox();
-            this.ingridientButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // dishLabel
             // 
             this.dishLabel.AutoSize = true;
             this.dishLabel.Font = new System.Drawing.Font("Arial", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.dishLabel.Location = new System.Drawing.Point(296, 25);
+            this.dishLabel.Location = new System.Drawing.Point(21, 24);
             this.dishLabel.Name = "dishLabel";
             this.dishLabel.Size = new System.Drawing.Size(250, 33);
             this.dishLabel.TabIndex = 0;
@@ -173,118 +193,6 @@
             this.characteristicTextBox.Size = new System.Drawing.Size(382, 109);
             this.characteristicTextBox.TabIndex = 11;
             // 
-            // CTextBox
-            // 
-            this.CTextBox.Location = new System.Drawing.Point(1072, 215);
-            this.CTextBox.Name = "CTextBox";
-            this.CTextBox.Size = new System.Drawing.Size(75, 30);
-            this.CTextBox.TabIndex = 32;
-            // 
-            // B2TextBox
-            // 
-            this.B2TextBox.Location = new System.Drawing.Point(1072, 153);
-            this.B2TextBox.Name = "B2TextBox";
-            this.B2TextBox.Size = new System.Drawing.Size(75, 30);
-            this.B2TextBox.TabIndex = 31;
-            // 
-            // B1TextBox
-            // 
-            this.B1TextBox.Location = new System.Drawing.Point(1072, 93);
-            this.B1TextBox.Name = "B1TextBox";
-            this.B1TextBox.Size = new System.Drawing.Size(75, 30);
-            this.B1TextBox.TabIndex = 30;
-            // 
-            // caloriesTextBox
-            // 
-            this.caloriesTextBox.Location = new System.Drawing.Point(900, 274);
-            this.caloriesTextBox.Name = "caloriesTextBox";
-            this.caloriesTextBox.Size = new System.Drawing.Size(75, 30);
-            this.caloriesTextBox.TabIndex = 29;
-            // 
-            // carbsTextBox
-            // 
-            this.carbsTextBox.Location = new System.Drawing.Point(900, 210);
-            this.carbsTextBox.Name = "carbsTextBox";
-            this.carbsTextBox.Size = new System.Drawing.Size(75, 30);
-            this.carbsTextBox.TabIndex = 28;
-            // 
-            // fatsTextBox
-            // 
-            this.fatsTextBox.Location = new System.Drawing.Point(900, 148);
-            this.fatsTextBox.Name = "fatsTextBox";
-            this.fatsTextBox.Size = new System.Drawing.Size(75, 30);
-            this.fatsTextBox.TabIndex = 27;
-            // 
-            // proteinTextBox
-            // 
-            this.proteinTextBox.Location = new System.Drawing.Point(900, 92);
-            this.proteinTextBox.Name = "proteinTextBox";
-            this.proteinTextBox.Size = new System.Drawing.Size(75, 30);
-            this.proteinTextBox.TabIndex = 26;
-            // 
-            // CLabel
-            // 
-            this.CLabel.AutoSize = true;
-            this.CLabel.Location = new System.Drawing.Point(1002, 218);
-            this.CLabel.Name = "CLabel";
-            this.CLabel.Size = new System.Drawing.Size(43, 23);
-            this.CLabel.TabIndex = 25;
-            this.CLabel.Text = "C, г";
-            // 
-            // B2Label
-            // 
-            this.B2Label.AutoSize = true;
-            this.B2Label.Location = new System.Drawing.Point(1002, 156);
-            this.B2Label.Name = "B2Label";
-            this.B2Label.Size = new System.Drawing.Size(53, 23);
-            this.B2Label.TabIndex = 24;
-            this.B2Label.Text = "B2, г";
-            // 
-            // B1Label
-            // 
-            this.B1Label.AutoSize = true;
-            this.B1Label.Location = new System.Drawing.Point(1002, 93);
-            this.B1Label.Name = "B1Label";
-            this.B1Label.Size = new System.Drawing.Size(53, 23);
-            this.B1Label.TabIndex = 23;
-            this.B1Label.Text = "B1, г";
-            // 
-            // caloriesLabel
-            // 
-            this.caloriesLabel.AutoSize = true;
-            this.caloriesLabel.Location = new System.Drawing.Point(757, 276);
-            this.caloriesLabel.Name = "caloriesLabel";
-            this.caloriesLabel.Size = new System.Drawing.Size(137, 23);
-            this.caloriesLabel.TabIndex = 22;
-            this.caloriesLabel.Text = "Калорийность";
-            // 
-            // carbohydratesLabel
-            // 
-            this.carbohydratesLabel.AutoSize = true;
-            this.carbohydratesLabel.Location = new System.Drawing.Point(757, 217);
-            this.carbohydratesLabel.Name = "carbohydratesLabel";
-            this.carbohydratesLabel.Size = new System.Drawing.Size(118, 23);
-            this.carbohydratesLabel.TabIndex = 21;
-            this.carbohydratesLabel.Text = "Углероды, г";
-            // 
-            // fatsLabel
-            // 
-            this.fatsLabel.AutoSize = true;
-            this.fatsLabel.Location = new System.Drawing.Point(757, 155);
-            this.fatsLabel.Name = "fatsLabel";
-            this.fatsLabel.Size = new System.Drawing.Size(82, 23);
-            this.fatsLabel.TabIndex = 20;
-            this.fatsLabel.Text = "Жиры, г";
-            // 
-            // proteinLabel
-            // 
-            this.proteinLabel.AutoSize = true;
-            this.proteinLabel.Location = new System.Drawing.Point(757, 92);
-            this.proteinLabel.Name = "proteinLabel";
-            this.proteinLabel.Size = new System.Drawing.Size(82, 23);
-            this.proteinLabel.TabIndex = 19;
-            this.proteinLabel.Text = "Белки, г";
-            // 
             // WarningLabel
             // 
             this.WarningLabel.AutoSize = true;
@@ -297,42 +205,332 @@
             this.WarningLabel.Text = "warningLabel";
             this.WarningLabel.Visible = false;
             // 
-            // ingridientLabel
+            // ingredientLabel
             // 
-            this.ingridientLabel.AutoSize = true;
-            this.ingridientLabel.Location = new System.Drawing.Point(440, 92);
-            this.ingridientLabel.Name = "ingridientLabel";
-            this.ingridientLabel.Size = new System.Drawing.Size(202, 23);
-            this.ingridientLabel.TabIndex = 34;
-            this.ingridientLabel.Text = "Список ингридиентов";
+            this.ingredientLabel.AutoSize = true;
+            this.ingredientLabel.Location = new System.Drawing.Point(440, 92);
+            this.ingredientLabel.Name = "ingredientLabel";
+            this.ingredientLabel.Size = new System.Drawing.Size(203, 23);
+            this.ingredientLabel.TabIndex = 34;
+            this.ingredientLabel.Text = "Список ингредиентов";
             // 
-            // ingridientListBox
+            // ingredientListBox
             // 
-            this.ingridientListBox.FormattingEnabled = true;
-            this.ingridientListBox.ItemHeight = 23;
-            this.ingridientListBox.Location = new System.Drawing.Point(440, 130);
-            this.ingridientListBox.Name = "ingridientListBox";
-            this.ingridientListBox.Size = new System.Drawing.Size(227, 257);
-            this.ingridientListBox.TabIndex = 35;
+            this.ingredientListBox.FormattingEnabled = true;
+            this.ingredientListBox.ItemHeight = 23;
+            this.ingredientListBox.Location = new System.Drawing.Point(440, 130);
+            this.ingredientListBox.Name = "ingredientListBox";
+            this.ingredientListBox.Size = new System.Drawing.Size(227, 257);
+            this.ingredientListBox.TabIndex = 35;
+            this.ingredientListBox.SelectedIndexChanged += new System.EventHandler(this.ingridientListBox_SelectedIndexChanged);
             // 
-            // ingridientButton
+            // ingredientButton
             // 
-            this.ingridientButton.Location = new System.Drawing.Point(440, 399);
-            this.ingridientButton.Name = "ingridientButton";
-            this.ingridientButton.Size = new System.Drawing.Size(227, 34);
-            this.ingridientButton.TabIndex = 36;
-            this.ingridientButton.Text = "Добавить ингридиент";
-            this.ingridientButton.UseVisualStyleBackColor = true;
+            this.ingredientButton.Location = new System.Drawing.Point(440, 445);
+            this.ingredientButton.Name = "ingredientButton";
+            this.ingredientButton.Size = new System.Drawing.Size(227, 47);
+            this.ingredientButton.TabIndex = 36;
+            this.ingredientButton.Text = "Добавить ингредиент";
+            this.ingredientButton.UseVisualStyleBackColor = true;
+            this.ingredientButton.Click += new System.EventHandler(this.ingridientButton_Click);
+            // 
+            // FTextBox
+            // 
+            this.FTextBox.Location = new System.Drawing.Point(1063, 347);
+            this.FTextBox.Name = "FTextBox";
+            this.FTextBox.Size = new System.Drawing.Size(75, 30);
+            this.FTextBox.TabIndex = 77;
+            // 
+            // FLabel
+            // 
+            this.FLabel.AutoSize = true;
+            this.FLabel.Location = new System.Drawing.Point(990, 350);
+            this.FLabel.Name = "FLabel";
+            this.FLabel.Size = new System.Drawing.Size(52, 23);
+            this.FLabel.TabIndex = 76;
+            this.FLabel.Text = "F, мг";
+            // 
+            // MgTextBox
+            // 
+            this.MgTextBox.Location = new System.Drawing.Point(1063, 161);
+            this.MgTextBox.Name = "MgTextBox";
+            this.MgTextBox.Size = new System.Drawing.Size(75, 30);
+            this.MgTextBox.TabIndex = 75;
+            // 
+            // MgLabel
+            // 
+            this.MgLabel.AutoSize = true;
+            this.MgLabel.Location = new System.Drawing.Point(990, 164);
+            this.MgLabel.Name = "MgLabel";
+            this.MgLabel.Size = new System.Drawing.Size(70, 23);
+            this.MgLabel.TabIndex = 74;
+            this.MgLabel.Text = "Mg, мг";
+            // 
+            // PTextBox
+            // 
+            this.PTextBox.Location = new System.Drawing.Point(1063, 125);
+            this.PTextBox.Name = "PTextBox";
+            this.PTextBox.Size = new System.Drawing.Size(75, 30);
+            this.PTextBox.TabIndex = 73;
+            // 
+            // PLabel
+            // 
+            this.PLabel.AutoSize = true;
+            this.PLabel.Location = new System.Drawing.Point(990, 128);
+            this.PLabel.Name = "PLabel";
+            this.PLabel.Size = new System.Drawing.Size(52, 23);
+            this.PLabel.TabIndex = 72;
+            this.PLabel.Text = "P, мг";
+            // 
+            // SeTextBox
+            // 
+            this.SeTextBox.Location = new System.Drawing.Point(1063, 311);
+            this.SeTextBox.Name = "SeTextBox";
+            this.SeTextBox.Size = new System.Drawing.Size(75, 30);
+            this.SeTextBox.TabIndex = 71;
+            // 
+            // SeLabel
+            // 
+            this.SeLabel.AutoSize = true;
+            this.SeLabel.Location = new System.Drawing.Point(990, 314);
+            this.SeLabel.Name = "SeLabel";
+            this.SeLabel.Size = new System.Drawing.Size(66, 23);
+            this.SeLabel.TabIndex = 70;
+            this.SeLabel.Text = "Se, мг";
+            // 
+            // ITextBox
+            // 
+            this.ITextBox.Location = new System.Drawing.Point(1063, 275);
+            this.ITextBox.Name = "ITextBox";
+            this.ITextBox.Size = new System.Drawing.Size(75, 30);
+            this.ITextBox.TabIndex = 69;
+            // 
+            // ILabel
+            // 
+            this.ILabel.AutoSize = true;
+            this.ILabel.Location = new System.Drawing.Point(990, 278);
+            this.ILabel.Name = "ILabel";
+            this.ILabel.Size = new System.Drawing.Size(48, 23);
+            this.ILabel.TabIndex = 68;
+            this.ILabel.Text = "I, мг";
+            // 
+            // KTextBox
+            // 
+            this.KTextBox.Location = new System.Drawing.Point(1063, 239);
+            this.KTextBox.Name = "KTextBox";
+            this.KTextBox.Size = new System.Drawing.Size(75, 30);
+            this.KTextBox.TabIndex = 67;
+            // 
+            // KLabel
+            // 
+            this.KLabel.AutoSize = true;
+            this.KLabel.Location = new System.Drawing.Point(990, 242);
+            this.KLabel.Name = "KLabel";
+            this.KLabel.Size = new System.Drawing.Size(55, 23);
+            this.KLabel.TabIndex = 66;
+            this.KLabel.Text = "K, мг";
+            // 
+            // FeTextBox
+            // 
+            this.FeTextBox.Location = new System.Drawing.Point(1063, 200);
+            this.FeTextBox.Name = "FeTextBox";
+            this.FeTextBox.Size = new System.Drawing.Size(75, 30);
+            this.FeTextBox.TabIndex = 65;
+            // 
+            // FeLabel
+            // 
+            this.FeLabel.AutoSize = true;
+            this.FeLabel.Location = new System.Drawing.Point(990, 203);
+            this.FeLabel.Name = "FeLabel";
+            this.FeLabel.Size = new System.Drawing.Size(65, 23);
+            this.FeLabel.TabIndex = 64;
+            this.FeLabel.Text = "Fe, мг";
+            // 
+            // CaTextBox
+            // 
+            this.CaTextBox.Location = new System.Drawing.Point(1063, 89);
+            this.CaTextBox.Name = "CaTextBox";
+            this.CaTextBox.Size = new System.Drawing.Size(75, 30);
+            this.CaTextBox.TabIndex = 63;
+            // 
+            // CaLabel
+            // 
+            this.CaLabel.AutoSize = true;
+            this.CaLabel.Location = new System.Drawing.Point(988, 92);
+            this.CaLabel.Name = "CaLabel";
+            this.CaLabel.Size = new System.Drawing.Size(67, 23);
+            this.CaLabel.TabIndex = 62;
+            this.CaLabel.Text = "Ca, мг";
+            // 
+            // DTextBox
+            // 
+            this.DTextBox.Location = new System.Drawing.Point(889, 461);
+            this.DTextBox.Name = "DTextBox";
+            this.DTextBox.Size = new System.Drawing.Size(75, 30);
+            this.DTextBox.TabIndex = 61;
+            // 
+            // Dlabel
+            // 
+            this.Dlabel.AutoSize = true;
+            this.Dlabel.Location = new System.Drawing.Point(696, 461);
+            this.Dlabel.Name = "Dlabel";
+            this.Dlabel.Size = new System.Drawing.Size(65, 23);
+            this.Dlabel.TabIndex = 60;
+            this.Dlabel.Text = "D, мкг";
+            // 
+            // ATextBox
+            // 
+            this.ATextBox.Location = new System.Drawing.Point(889, 425);
+            this.ATextBox.Name = "ATextBox";
+            this.ATextBox.Size = new System.Drawing.Size(75, 30);
+            this.ATextBox.TabIndex = 59;
+            // 
+            // ALabel
+            // 
+            this.ALabel.AutoSize = true;
+            this.ALabel.Location = new System.Drawing.Point(695, 425);
+            this.ALabel.Name = "ALabel";
+            this.ALabel.Size = new System.Drawing.Size(105, 23);
+            this.ALabel.TabIndex = 58;
+            this.ALabel.Text = "A, рет. экв";
+            // 
+            // CTextBox
+            // 
+            this.CTextBox.Location = new System.Drawing.Point(889, 311);
+            this.CTextBox.Name = "CTextBox";
+            this.CTextBox.Size = new System.Drawing.Size(75, 30);
+            this.CTextBox.TabIndex = 57;
+            // 
+            // B2TextBox
+            // 
+            this.B2TextBox.Location = new System.Drawing.Point(889, 386);
+            this.B2TextBox.Name = "B2TextBox";
+            this.B2TextBox.Size = new System.Drawing.Size(75, 30);
+            this.B2TextBox.TabIndex = 56;
+            // 
+            // B1TextBox
+            // 
+            this.B1TextBox.Location = new System.Drawing.Point(889, 350);
+            this.B1TextBox.Name = "B1TextBox";
+            this.B1TextBox.Size = new System.Drawing.Size(75, 30);
+            this.B1TextBox.TabIndex = 55;
+            // 
+            // caloriesTextBox
+            // 
+            this.caloriesTextBox.Location = new System.Drawing.Point(889, 206);
+            this.caloriesTextBox.Name = "caloriesTextBox";
+            this.caloriesTextBox.Size = new System.Drawing.Size(75, 30);
+            this.caloriesTextBox.TabIndex = 54;
+            // 
+            // carbsTextBox
+            // 
+            this.carbsTextBox.Location = new System.Drawing.Point(889, 170);
+            this.carbsTextBox.Name = "carbsTextBox";
+            this.carbsTextBox.Size = new System.Drawing.Size(75, 30);
+            this.carbsTextBox.TabIndex = 53;
+            // 
+            // fatsTextBox
+            // 
+            this.fatsTextBox.Location = new System.Drawing.Point(889, 131);
+            this.fatsTextBox.Name = "fatsTextBox";
+            this.fatsTextBox.Size = new System.Drawing.Size(75, 30);
+            this.fatsTextBox.TabIndex = 52;
+            // 
+            // proteinTextBox
+            // 
+            this.proteinTextBox.Location = new System.Drawing.Point(889, 92);
+            this.proteinTextBox.Name = "proteinTextBox";
+            this.proteinTextBox.Size = new System.Drawing.Size(75, 30);
+            this.proteinTextBox.TabIndex = 51;
+            // 
+            // CLabel
+            // 
+            this.CLabel.AutoSize = true;
+            this.CLabel.Location = new System.Drawing.Point(695, 311);
+            this.CLabel.Name = "CLabel";
+            this.CLabel.Size = new System.Drawing.Size(56, 23);
+            this.CLabel.TabIndex = 50;
+            this.CLabel.Text = "C, мг";
+            // 
+            // B2Label
+            // 
+            this.B2Label.AutoSize = true;
+            this.B2Label.Location = new System.Drawing.Point(695, 389);
+            this.B2Label.Name = "B2Label";
+            this.B2Label.Size = new System.Drawing.Size(66, 23);
+            this.B2Label.TabIndex = 49;
+            this.B2Label.Text = "B2, мг";
+            // 
+            // B1Label
+            // 
+            this.B1Label.AutoSize = true;
+            this.B1Label.Location = new System.Drawing.Point(695, 350);
+            this.B1Label.Name = "B1Label";
+            this.B1Label.Size = new System.Drawing.Size(66, 23);
+            this.B1Label.TabIndex = 48;
+            this.B1Label.Text = "B1, мг";
+            // 
+            // caloriesLabel
+            // 
+            this.caloriesLabel.AutoSize = true;
+            this.caloriesLabel.Location = new System.Drawing.Point(695, 206);
+            this.caloriesLabel.Name = "caloriesLabel";
+            this.caloriesLabel.Size = new System.Drawing.Size(189, 23);
+            this.caloriesLabel.TabIndex = 47;
+            this.caloriesLabel.Text = "Калорийность, ккал";
+            // 
+            // carbohydratesLabel
+            // 
+            this.carbohydratesLabel.AutoSize = true;
+            this.carbohydratesLabel.Location = new System.Drawing.Point(695, 170);
+            this.carbohydratesLabel.Name = "carbohydratesLabel";
+            this.carbohydratesLabel.Size = new System.Drawing.Size(118, 23);
+            this.carbohydratesLabel.TabIndex = 46;
+            this.carbohydratesLabel.Text = "Углеводы, г";
+            // 
+            // fatsLabel
+            // 
+            this.fatsLabel.AutoSize = true;
+            this.fatsLabel.Location = new System.Drawing.Point(695, 131);
+            this.fatsLabel.Name = "fatsLabel";
+            this.fatsLabel.Size = new System.Drawing.Size(82, 23);
+            this.fatsLabel.TabIndex = 45;
+            this.fatsLabel.Text = "Жиры, г";
+            // 
+            // proteinLabel
+            // 
+            this.proteinLabel.AutoSize = true;
+            this.proteinLabel.Location = new System.Drawing.Point(695, 92);
+            this.proteinLabel.Name = "proteinLabel";
+            this.proteinLabel.Size = new System.Drawing.Size(82, 23);
+            this.proteinLabel.TabIndex = 44;
+            this.proteinLabel.Text = "Белки, г";
             // 
             // DishCreation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1171, 648);
-            this.Controls.Add(this.ingridientButton);
-            this.Controls.Add(this.ingridientListBox);
-            this.Controls.Add(this.ingridientLabel);
-            this.Controls.Add(this.WarningLabel);
+            this.ClientSize = new System.Drawing.Size(1153, 648);
+            this.Controls.Add(this.FTextBox);
+            this.Controls.Add(this.FLabel);
+            this.Controls.Add(this.MgTextBox);
+            this.Controls.Add(this.MgLabel);
+            this.Controls.Add(this.PTextBox);
+            this.Controls.Add(this.PLabel);
+            this.Controls.Add(this.SeTextBox);
+            this.Controls.Add(this.SeLabel);
+            this.Controls.Add(this.ITextBox);
+            this.Controls.Add(this.ILabel);
+            this.Controls.Add(this.KTextBox);
+            this.Controls.Add(this.KLabel);
+            this.Controls.Add(this.FeTextBox);
+            this.Controls.Add(this.FeLabel);
+            this.Controls.Add(this.CaTextBox);
+            this.Controls.Add(this.CaLabel);
+            this.Controls.Add(this.DTextBox);
+            this.Controls.Add(this.Dlabel);
+            this.Controls.Add(this.ATextBox);
+            this.Controls.Add(this.ALabel);
             this.Controls.Add(this.CTextBox);
             this.Controls.Add(this.B2TextBox);
             this.Controls.Add(this.B1TextBox);
@@ -347,6 +545,10 @@
             this.Controls.Add(this.carbohydratesLabel);
             this.Controls.Add(this.fatsLabel);
             this.Controls.Add(this.proteinLabel);
+            this.Controls.Add(this.ingredientButton);
+            this.Controls.Add(this.ingredientListBox);
+            this.Controls.Add(this.ingredientLabel);
+            this.Controls.Add(this.WarningLabel);
             this.Controls.Add(this.characteristicTextBox);
             this.Controls.Add(this.technologyTextBox);
             this.Controls.Add(this.weightTextBox);
@@ -384,6 +586,30 @@
         private TextBox weightTextBox;
         private TextBox technologyTextBox;
         private TextBox characteristicTextBox;
+        private Label WarningLabel;
+        private Label ingredientLabel;
+        private ListBox ingredientListBox;
+        private Button ingredientButton;
+        private TextBox FTextBox;
+        private Label FLabel;
+        private TextBox MgTextBox;
+        private Label MgLabel;
+        private TextBox PTextBox;
+        private Label PLabel;
+        private TextBox SeTextBox;
+        private Label SeLabel;
+        private TextBox ITextBox;
+        private Label ILabel;
+        private TextBox KTextBox;
+        private Label KLabel;
+        private TextBox FeTextBox;
+        private Label FeLabel;
+        private TextBox CaTextBox;
+        private Label CaLabel;
+        private TextBox DTextBox;
+        private Label Dlabel;
+        private TextBox ATextBox;
+        private Label ALabel;
         private TextBox CTextBox;
         private TextBox B2TextBox;
         private TextBox B1TextBox;
@@ -398,9 +624,5 @@
         private Label carbohydratesLabel;
         private Label fatsLabel;
         private Label proteinLabel;
-        private Label WarningLabel;
-        private Label ingridientLabel;
-        private ListBox ingridientListBox;
-        private Button ingridientButton;
     }
 }

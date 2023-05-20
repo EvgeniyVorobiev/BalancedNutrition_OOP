@@ -23,41 +23,86 @@ namespace BalancedNutrition
         {
             using (BalancedNutritionLibrary.AppContext db = new BalancedNutritionLibrary.AppContext())
             {
-                if (PasswordTextBox1.Text == PasswordTextBox2.Text && LoginTextBox.Text != ""
-                    && RoleComboBox.Text != "" && PasswordTextBox1.Text != "" && PasswordTextBox2.Text != "")
+                if (db.Users.Where(u => u.Login == LoginTextBox.Text).ToList().Count() > 0)
                 {
-                    MD5 mD5 = MD5.Create();
-                    var hash = mD5.ComputeHash(Encoding.UTF8.GetBytes(PasswordTextBox1.Text));
-
-                    string login = LoginTextBox.Text;
-                    string password = Convert.ToBase64String(hash);
-                    Role role = new Role();
-                    foreach (Role r in db.Roles)
+                    if (PasswordTextBox1.Text == PasswordTextBox2.Text && LoginTextBox.Text != ""
+                        && RoleComboBox.Text != "" && PasswordTextBox1.Text != "" && PasswordTextBox2.Text != ""
+                        && LoginTextBox.Text != db.Users.Where(u => u.Login == LoginTextBox.Text).ToList()[0].Login)
                     {
-                        if (r.Name == RoleComboBox.Text)
+                        MD5 mD5 = MD5.Create();
+                        var hash = mD5.ComputeHash(Encoding.UTF8.GetBytes(PasswordTextBox1.Text));
+
+                        string login = LoginTextBox.Text;
+                        string password = Convert.ToBase64String(hash);
+                        Role role = new Role();
+                        foreach (Role r in db.Roles)
                         {
-                            role = r;
-                            break;
+                            if (r.Name == RoleComboBox.Text)
+                            {
+                                role = r;
+                                break;
+                            }
                         }
+                        User user = new User { Login = login, Password = password, Role = role };
+                        db.Add(user);
+                        db.SaveChanges();
+                        WarningLabel.ForeColor = Color.Green;
+                        WarningLabel.Text = "Регистрация прошла успешно";
                     }
-                    User user = new User { Login = login, Password = password, Role = role };
-                    db.Add(user);
-                    db.SaveChanges();
-                    WarningLabel.ForeColor = Color.Green;
-                    WarningLabel.Text = "Регистрация прошла успешно";
+                    else
+                    {
+                        WarningLabel.ForeColor = Color.Red;
+                        WarningLabel.Text = "";
+                        if (PasswordTextBox1.Text == "" || PasswordTextBox2.Text == "")
+                            WarningLabel.Text += "В поле пароля ничего не указано.";
+                        if (PasswordTextBox1.Text != PasswordTextBox2.Text)
+                            WarningLabel.Text += "\nПароли не совпадают.";
+                        if (LoginTextBox.Text == "")
+                            WarningLabel.Text += "\nВ поле логин ничего не указано.";
+                        if (RoleComboBox.Text == "")
+                            WarningLabel.Text += "\nНе выбрана роль пользователя.";
+                        if (LoginTextBox.Text == db.Users.Where(u => u.Login == LoginTextBox.Text).ToList()[0].Login)
+                            WarningLabel.Text += "\nТакой пользователь уже зарегестрирован.";
+                    }
                 }
                 else
                 {
-                    WarningLabel.ForeColor = Color.Red;
-                    WarningLabel.Text = "";
-                    if (PasswordTextBox1.Text == "" || PasswordTextBox2.Text == "")
-                        WarningLabel.Text += "В поле пароля ничего не указано.";
-                    if (PasswordTextBox1.Text != PasswordTextBox2.Text)
-                        WarningLabel.Text += "\nПароли не совпадают.";
-                    if (LoginTextBox.Text == "")
-                        WarningLabel.Text += "\nВ поле логин ничего не указано.";
-                    if (RoleComboBox.Text == "")
-                        WarningLabel.Text += "\nНе выбрана роль пользователя.";
+                    if (PasswordTextBox1.Text == PasswordTextBox2.Text && LoginTextBox.Text != ""
+                        && RoleComboBox.Text != "" && PasswordTextBox1.Text != "" && PasswordTextBox2.Text != "")
+                    {
+                        MD5 mD5 = MD5.Create();
+                        var hash = mD5.ComputeHash(Encoding.UTF8.GetBytes(PasswordTextBox1.Text));
+
+                        string login = LoginTextBox.Text;
+                        string password = Convert.ToBase64String(hash);
+                        Role role = new Role();
+                        foreach (Role r in db.Roles)
+                        {
+                            if (r.Name == RoleComboBox.Text)
+                            {
+                                role = r;
+                                break;
+                            }
+                        }
+                        User user = new User { Login = login, Password = password, Role = role };
+                        db.Add(user);
+                        db.SaveChanges();
+                        WarningLabel.ForeColor = Color.Green;
+                        WarningLabel.Text = "Регистрация прошла успешно";
+                    }
+                    else
+                    {
+                        WarningLabel.ForeColor = Color.Red;
+                        WarningLabel.Text = "";
+                        if (PasswordTextBox1.Text == "" || PasswordTextBox2.Text == "")
+                            WarningLabel.Text += "В поле пароля ничего не указано.";
+                        if (PasswordTextBox1.Text != PasswordTextBox2.Text)
+                            WarningLabel.Text += "\nПароли не совпадают.";
+                        if (LoginTextBox.Text == "")
+                            WarningLabel.Text += "\nВ поле логин ничего не указано.";
+                        if (RoleComboBox.Text == "")
+                            WarningLabel.Text += "\nНе выбрана роль пользователя.";
+                    }
                 }
             }
         }

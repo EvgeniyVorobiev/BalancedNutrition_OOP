@@ -48,7 +48,7 @@
             // 
             this.RegistrationLabel.AutoSize = true;
             this.RegistrationLabel.Font = new System.Drawing.Font("Arial", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.RegistrationLabel.Location = new System.Drawing.Point(39, 9);
+            this.RegistrationLabel.Location = new System.Drawing.Point(58, 9);
             this.RegistrationLabel.Name = "RegistrationLabel";
             this.RegistrationLabel.Size = new System.Drawing.Size(271, 46);
             this.RegistrationLabel.TabIndex = 0;
@@ -57,7 +57,7 @@
             // LoginTextBox
             // 
             this.LoginTextBox.Font = new System.Drawing.Font("Arial", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.LoginTextBox.Location = new System.Drawing.Point(112, 81);
+            this.LoginTextBox.Location = new System.Drawing.Point(131, 85);
             this.LoginTextBox.Name = "LoginTextBox";
             this.LoginTextBox.Size = new System.Drawing.Size(198, 39);
             this.LoginTextBox.TabIndex = 1;
@@ -65,7 +65,7 @@
             // PasswordTextBox1
             // 
             this.PasswordTextBox1.Font = new System.Drawing.Font("Arial", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.PasswordTextBox1.Location = new System.Drawing.Point(112, 166);
+            this.PasswordTextBox1.Location = new System.Drawing.Point(131, 170);
             this.PasswordTextBox1.Name = "PasswordTextBox1";
             this.PasswordTextBox1.PasswordChar = '*';
             this.PasswordTextBox1.Size = new System.Drawing.Size(198, 39);
@@ -74,7 +74,7 @@
             // PasswordTextBox2
             // 
             this.PasswordTextBox2.Font = new System.Drawing.Font("Arial", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.PasswordTextBox2.Location = new System.Drawing.Point(112, 241);
+            this.PasswordTextBox2.Location = new System.Drawing.Point(131, 245);
             this.PasswordTextBox2.Name = "PasswordTextBox2";
             this.PasswordTextBox2.PasswordChar = '*';
             this.PasswordTextBox2.Size = new System.Drawing.Size(198, 39);
@@ -83,7 +83,7 @@
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Arial", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button1.Location = new System.Drawing.Point(39, 424);
+            this.button1.Location = new System.Drawing.Point(58, 424);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(271, 54);
             this.button1.TabIndex = 10;
@@ -94,7 +94,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(39, 72);
+            this.pictureBox1.Location = new System.Drawing.Point(58, 76);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(48, 48);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -104,7 +104,7 @@
             // pictureBox2
             // 
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(39, 157);
+            this.pictureBox2.Location = new System.Drawing.Point(58, 161);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(48, 48);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -114,7 +114,7 @@
             // pictureBox3
             // 
             this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
-            this.pictureBox3.Location = new System.Drawing.Point(39, 232);
+            this.pictureBox3.Location = new System.Drawing.Point(58, 236);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(48, 48);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -129,7 +129,7 @@
             "Администратор",
             "Составитель питания",
             "Родитель"});
-            this.RoleComboBox.Location = new System.Drawing.Point(39, 296);
+            this.RoleComboBox.Location = new System.Drawing.Point(58, 300);
             this.RoleComboBox.Name = "RoleComboBox";
             this.RoleComboBox.Size = new System.Drawing.Size(271, 34);
             this.RoleComboBox.TabIndex = 14;
@@ -140,7 +140,7 @@
             this.WarningLabel.AutoSize = true;
             this.WarningLabel.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.WarningLabel.ForeColor = System.Drawing.Color.Red;
-            this.WarningLabel.Location = new System.Drawing.Point(39, 342);
+            this.WarningLabel.Location = new System.Drawing.Point(36, 346);
             this.WarningLabel.Name = "WarningLabel";
             this.WarningLabel.Size = new System.Drawing.Size(0, 19);
             this.WarningLabel.TabIndex = 15;
@@ -149,7 +149,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(365, 490);
+            this.ClientSize = new System.Drawing.Size(388, 490);
             this.Controls.Add(this.WarningLabel);
             this.Controls.Add(this.RoleComboBox);
             this.Controls.Add(this.pictureBox3);

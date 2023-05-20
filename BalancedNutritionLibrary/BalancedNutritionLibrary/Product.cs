@@ -19,7 +19,7 @@ namespace BalancedNutritionLibrary
                 Product product = new Product { Id = this.Id, Ingredients = this.Ingredients, Name = this.Name,
                 ProductNutrients = this.ProductNutrients, Weight = this.Weight};
                 db.Products.Add(product);
-                db.SaveChanges();
+                //db.SaveChanges();
             }
         }
 

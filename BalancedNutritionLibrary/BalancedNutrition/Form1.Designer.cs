@@ -54,13 +54,13 @@
             this.создатьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.менюToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.блюдоToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.продуктToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.добавитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.приёмПищиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.блюдоВПриёмПищиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ингридиентВБлюдоToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.блюдоВМенюToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.открытьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.плановоеМенюToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.списокБлюдToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.списокПродуктовToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.WarningLabel = new System.Windows.Forms.Label();
             this.nutrientListBox = new System.Windows.Forms.ListBox();
             this.menuLabel = new System.Windows.Forms.Label();
@@ -68,8 +68,6 @@
             this.idLabel = new System.Windows.Forms.Label();
             this.menuDateLabel = new System.Windows.Forms.Label();
             this.groupNameLabel = new System.Windows.Forms.Label();
-            this.списокПродуктовToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.продуктToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.LoginPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.menuDataGridView)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -318,37 +316,28 @@
             this.блюдоToolStripMenuItem.Text = "блюдо";
             this.блюдоToolStripMenuItem.Click += new System.EventHandler(this.блюдоToolStripMenuItem_Click);
             // 
+            // продуктToolStripMenuItem
+            // 
+            this.продуктToolStripMenuItem.Name = "продуктToolStripMenuItem";
+            this.продуктToolStripMenuItem.Size = new System.Drawing.Size(235, 28);
+            this.продуктToolStripMenuItem.Text = "продукт";
+            this.продуктToolStripMenuItem.Click += new System.EventHandler(this.продуктToolStripMenuItem_Click_1);
+            // 
             // добавитьToolStripMenuItem
             // 
             this.добавитьToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.приёмПищиToolStripMenuItem,
-            this.блюдоВПриёмПищиToolStripMenuItem,
-            this.ингридиентВБлюдоToolStripMenuItem});
+            this.блюдоВМенюToolStripMenuItem});
             this.добавитьToolStripMenuItem.Name = "добавитьToolStripMenuItem";
             this.добавитьToolStripMenuItem.Size = new System.Drawing.Size(112, 27);
             this.добавитьToolStripMenuItem.Text = "Добавить";
             this.добавитьToolStripMenuItem.Click += new System.EventHandler(this.добавитьToolStripMenuItem_Click);
             // 
-            // приёмПищиToolStripMenuItem
+            // блюдоВМенюToolStripMenuItem
             // 
-            this.приёмПищиToolStripMenuItem.Name = "приёмПищиToolStripMenuItem";
-            this.приёмПищиToolStripMenuItem.Size = new System.Drawing.Size(356, 28);
-            this.приёмПищиToolStripMenuItem.Text = "приём пищи в текущее меню";
-            this.приёмПищиToolStripMenuItem.Click += new System.EventHandler(this.приёмПищиToolStripMenuItem_Click);
-            // 
-            // блюдоВПриёмПищиToolStripMenuItem
-            // 
-            this.блюдоВПриёмПищиToolStripMenuItem.Name = "блюдоВПриёмПищиToolStripMenuItem";
-            this.блюдоВПриёмПищиToolStripMenuItem.Size = new System.Drawing.Size(356, 28);
-            this.блюдоВПриёмПищиToolStripMenuItem.Text = "блюдо в приём пищи";
-            this.блюдоВПриёмПищиToolStripMenuItem.Click += new System.EventHandler(this.блюдоВПриёмПищиToolStripMenuItem_Click);
-            // 
-            // ингридиентВБлюдоToolStripMenuItem
-            // 
-            this.ингридиентВБлюдоToolStripMenuItem.Name = "ингридиентВБлюдоToolStripMenuItem";
-            this.ингридиентВБлюдоToolStripMenuItem.Size = new System.Drawing.Size(356, 28);
-            this.ингридиентВБлюдоToolStripMenuItem.Text = "ингридиент в блюдо";
-            this.ингридиентВБлюдоToolStripMenuItem.Click += new System.EventHandler(this.ингридиентВБлюдоToolStripMenuItem_Click);
+            this.блюдоВМенюToolStripMenuItem.Name = "блюдоВМенюToolStripMenuItem";
+            this.блюдоВМенюToolStripMenuItem.Size = new System.Drawing.Size(225, 28);
+            this.блюдоВМенюToolStripMenuItem.Text = "блюдо в меню";
+            this.блюдоВМенюToolStripMenuItem.Click += new System.EventHandler(this.блюдоВПриёмПищиToolStripMenuItem_Click);
             // 
             // открытьToolStripMenuItem
             // 
@@ -373,6 +362,13 @@
             this.списокБлюдToolStripMenuItem.Size = new System.Drawing.Size(254, 28);
             this.списокБлюдToolStripMenuItem.Text = "список блюд";
             this.списокБлюдToolStripMenuItem.Click += new System.EventHandler(this.списокБлюдToolStripMenuItem_Click);
+            // 
+            // списокПродуктовToolStripMenuItem
+            // 
+            this.списокПродуктовToolStripMenuItem.Name = "списокПродуктовToolStripMenuItem";
+            this.списокПродуктовToolStripMenuItem.Size = new System.Drawing.Size(254, 28);
+            this.списокПродуктовToolStripMenuItem.Text = "список продуктов";
+            this.списокПродуктовToolStripMenuItem.Click += new System.EventHandler(this.списокПродуктовToolStripMenuItem_Click);
             // 
             // WarningLabel
             // 
@@ -443,18 +439,6 @@
             this.groupNameLabel.TabIndex = 25;
             this.groupNameLabel.Text = "Группа";
             // 
-            // списокПродуктовToolStripMenuItem
-            // 
-            this.списокПродуктовToolStripMenuItem.Name = "списокПродуктовToolStripMenuItem";
-            this.списокПродуктовToolStripMenuItem.Size = new System.Drawing.Size(254, 28);
-            this.списокПродуктовToolStripMenuItem.Text = "список продуктов";
-            // 
-            // продуктToolStripMenuItem
-            // 
-            this.продуктToolStripMenuItem.Name = "продуктToolStripMenuItem";
-            this.продуктToolStripMenuItem.Size = new System.Drawing.Size(235, 28);
-            this.продуктToolStripMenuItem.Text = "продукт";
-            // 
             // BalancedNutritionForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -504,7 +488,6 @@
         private ToolStripMenuItem списокБлюдToolStripMenuItem;
         private Label WarningLabel;
         private ToolStripMenuItem добавитьToolStripMenuItem;
-        private ToolStripMenuItem приёмПищиToolStripMenuItem;
         private DataGridViewTextBoxColumn Column1;
         private DataGridViewTextBoxColumn Column2;
         private DataGridViewTextBoxColumn Column3;
@@ -520,8 +503,7 @@
         private DataGridViewTextBoxColumn Column13;
         private DataGridViewTextBoxColumn Column14;
         private ListBox nutrientListBox;
-        private ToolStripMenuItem ингридиентВБлюдоToolStripMenuItem;
-        private ToolStripMenuItem блюдоВПриёмПищиToolStripMenuItem;
+        private ToolStripMenuItem блюдоВМенюToolStripMenuItem;
         private Label menuLabel;
         private Npgsql.NpgsqlCommandBuilder npgsqlCommandBuilder1;
         private Label idLabel;

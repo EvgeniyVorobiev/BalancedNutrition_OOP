@@ -5,7 +5,7 @@ using System.Text;
 
 namespace BalancedNutritionLibrary
 {
-    public class ProductNutrients 
+    public class ProductNutrients
     {
         public ProductNutrients()
         {

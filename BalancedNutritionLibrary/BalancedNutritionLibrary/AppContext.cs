@@ -30,10 +30,10 @@ namespace BalancedNutritionLibrary
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseNpgsql("Host=localhost;Port=5432;Database=bndb;Username=postgres");
-            
+
         }
 
-        protected override void OnModelCreating (ModelBuilder modelBuilder)
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Role>()
                 .HasMany(r => r.Users)
@@ -119,29 +119,29 @@ namespace BalancedNutritionLibrary
                 .Property(dish => dish.Weight)
                 .IsRequired();
             modelBuilder.Entity<Dish>()
-                .Property (dish => dish.DishCharacteristic)
+                .Property(dish => dish.DishCharacteristic)
                 .IsRequired();
             modelBuilder.Entity<Dish>()
-                .Property (dish => dish.CookingMethod)
+                .Property(dish => dish.CookingMethod)
                 .IsRequired();
             modelBuilder.Entity<Dish>()
-                .Property (dish => dish.CookingTechnology)
+                .Property(dish => dish.CookingTechnology)
                 .IsRequired();
 
             modelBuilder.Entity<Ingredient>()
                 .HasOne(i => i.Dish)
-                .WithMany(dish => dish.Ingridients);
-/*            modelBuilder.Entity<Ingredient>()
-                .HasMany(i => i.Products)
-                .WithMany(p => p.Ingridients);*/
+                .WithMany(dish => dish.Ingredients);
+            /*            modelBuilder.Entity<Ingredient>()
+                            .HasMany(i => i.Products)
+                            .WithMany(p => p.Ingridients);*/
             modelBuilder.Entity<Ingredient>()
                 .HasKey(i => i.Id);
             modelBuilder.Entity<Ingredient>()
-                .Property (i => i.Name)
+                .Property(i => i.Name)
                 .IsRequired()
                 .HasMaxLength(30);
             modelBuilder.Entity<Ingredient>()
-                .Property (i => i.WastePercent)
+                .Property(i => i.WastePercent)
                 .IsRequired();
             modelBuilder.Entity<Ingredient>()
                 .Property(i => i.IngredientWaste)
@@ -156,7 +156,7 @@ namespace BalancedNutritionLibrary
             modelBuilder.Entity<Product>()
                 .HasKey(product => product.Id);
             modelBuilder.Entity<Product>()
-                .Property (product => product.Name)
+                .Property(product => product.Name)
                 .IsRequired()
                 .HasMaxLength(30);
             modelBuilder.Entity<Product>()

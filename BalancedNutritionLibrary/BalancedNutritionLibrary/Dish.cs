@@ -18,10 +18,10 @@ namespace BalancedNutritionLibrary
             {
                 Dish dish = new Dish { Id = this.Id, Name = this.Name, CookingMethod = this.CookingMethod, 
                 CookingTechnology = this.CookingTechnology, DishCharacteristic = this.DishCharacteristic,
-                Weight = this.Weight, DishNutrients = this.DishNutrients, Ingridients = this.Ingridients,
+                Weight = this.Weight, DishNutrients = this.DishNutrients, Ingredients = this.Ingredients,
                 Meals = this.Meals};
                 db.Add(dish);
-                db.SaveChanges();
+                //db.SaveChanges();
             }
         }
 
@@ -35,7 +35,7 @@ namespace BalancedNutritionLibrary
         [Required]
         public string DishCharacteristic { get; set; }
         public ICollection <Meal> Meals { get; set; }
-        public ICollection <Ingredient> Ingridients { get; set; }
+        public ICollection <Ingredient> Ingredients { get; set; }
         public ICollection <DishNutrients> DishNutrients { get; set; }
     }
 }

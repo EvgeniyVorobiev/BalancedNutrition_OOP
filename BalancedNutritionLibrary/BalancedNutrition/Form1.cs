@@ -25,7 +25,7 @@ namespace BalancedNutrition
             using (BalancedNutritionLibrary.AppContext db = new BalancedNutritionLibrary.AppContext()) 
             {
                 Role role1 = new Role { Name = "Администратор" };
-                Role role2 = new Role { Name = "Составитель питания" };
+                Role role2 = new Role { Name = "Диетолог" };
                 Role role3 = new Role { Name = "Родитель" };
 
 
@@ -112,12 +112,40 @@ namespace BalancedNutrition
                 NutrientsDirectory nutrientsDirectory2 = new NutrientsDirectory { Name = "Жиры" };
                 NutrientsDirectory nutrientsDirectory3 = new NutrientsDirectory { Name = "Углероды" };
                 NutrientsDirectory nutrientsDirectory4 = new NutrientsDirectory { Name = "Калорийность" };
-                NutrientsDirectory nutrientsDirectory5 = new NutrientsDirectory { Name = "B1" };
-                NutrientsDirectory nutrientsDirectory6 = new NutrientsDirectory { Name = "B2" };
-                NutrientsDirectory nutrientsDirectory7 = new NutrientsDirectory { Name = "C" };
-                //db.AddRange(nutrientsDirectory1, nutrientsDirectory2, nutrientsDirectory3, nutrientsDirectory4,
-                //   nutrientsDirectory5, nutrientsDirectory6, nutrientsDirectory7);
-                db.SaveChanges();
+
+                NutrientsDirectory nutrientsDirectory5 = new NutrientsDirectory { Name = "C" };
+                NutrientsDirectory nutrientsDirectory6 = new NutrientsDirectory { Name = "B1" };
+                NutrientsDirectory nutrientsDirectory7 = new NutrientsDirectory { Name = "B2" };
+                NutrientsDirectory nutrientsDirectory8 = new NutrientsDirectory { Name = "A" };
+                NutrientsDirectory nutrientsDirectory9 = new NutrientsDirectory { Name = "D" };
+
+                NutrientsDirectory nutrientsDirectory10 = new NutrientsDirectory { Name = "Ca" };
+                NutrientsDirectory nutrientsDirectory11 = new NutrientsDirectory { Name = "P" };
+                NutrientsDirectory nutrientsDirectory12 = new NutrientsDirectory { Name = "Mg" };
+                NutrientsDirectory nutrientsDirectory13 = new NutrientsDirectory { Name = "Fe" };
+                NutrientsDirectory nutrientsDirectory14 = new NutrientsDirectory { Name = "K" };
+                NutrientsDirectory nutrientsDirectory15 = new NutrientsDirectory { Name = "I" };
+                NutrientsDirectory nutrientsDirectory16 = new NutrientsDirectory { Name = "Se" };
+                NutrientsDirectory nutrientsDirectory17 = new NutrientsDirectory { Name = "F" };
+
+                /* db.AddRange(nutrientsDirectory1, nutrientsDirectory2, nutrientsDirectory3, nutrientsDirectory4,
+                    nutrientsDirectory5, nutrientsDirectory6, nutrientsDirectory7, nutrientsDirectory8, nutrientsDirectory9,
+                    nutrientsDirectory10, nutrientsDirectory11, nutrientsDirectory12, nutrientsDirectory13, nutrientsDirectory14,
+                    nutrientsDirectory15, nutrientsDirectory16, nutrientsDirectory17);*/
+
+
+
+                for (int i = 0; i < 5; i++)
+                    for (int j = 0; j < 5; j++)
+                    {
+                        //
+                        //menuDataGridView.Rows.Add("aboba");
+
+                            }
+
+
+
+                //db.SaveChanges();
 
                 /*foreach (Role r in db.Roles)
                 {
@@ -126,7 +154,7 @@ namespace BalancedNutrition
                 // dataGridViewColumn = new DataGridViewColumn { HeaderText = "", CellType = string };
                 //dataGridViewColumncolumn
                 //dataGridView1.Columns.Add(dataGridViewColumn);
-                
+
             }
         }
 
@@ -241,7 +269,7 @@ namespace BalancedNutrition
 
         private void ингридиентToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            IngrigientCreation ingrigientCreation = new IngrigientCreation();
+            IngregientCreation ingrigientCreation = new IngregientCreation();
             ingrigientCreation.ShowDialog();
         }
 
@@ -258,7 +286,7 @@ namespace BalancedNutrition
 
         private void ингридиентВБлюдоToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            IngrigientCreation ingrigientCreation = new IngrigientCreation();
+            IngregientCreation ingrigientCreation = new IngregientCreation();
             ingrigientCreation.ShowDialog();
         }
 
@@ -277,6 +305,18 @@ namespace BalancedNutrition
         {
             DishList dishList = new DishList();
             dishList.ShowDialog();
+        }
+
+        private void продуктToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            ProductCreation productCreation = new ProductCreation();
+            productCreation.ShowDialog();
+        }
+
+        private void списокПродуктовToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ProductList productList = new ProductList();
+            productList.ShowDialog();
         }
     }
 }
