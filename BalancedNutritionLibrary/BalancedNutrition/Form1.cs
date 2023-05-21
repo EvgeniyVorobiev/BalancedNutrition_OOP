@@ -128,10 +128,10 @@ namespace BalancedNutrition
                 NutrientsDirectory nutrientsDirectory16 = new NutrientsDirectory { Name = "Se" };
                 NutrientsDirectory nutrientsDirectory17 = new NutrientsDirectory { Name = "F" };
 
-                /* db.AddRange(nutrientsDirectory1, nutrientsDirectory2, nutrientsDirectory3, nutrientsDirectory4,
-                    nutrientsDirectory5, nutrientsDirectory6, nutrientsDirectory7, nutrientsDirectory8, nutrientsDirectory9,
-                    nutrientsDirectory10, nutrientsDirectory11, nutrientsDirectory12, nutrientsDirectory13, nutrientsDirectory14,
-                    nutrientsDirectory15, nutrientsDirectory16, nutrientsDirectory17);*/
+/*                db.AddRange(nutrientsDirectory1, nutrientsDirectory2, nutrientsDirectory3, nutrientsDirectory4,
+                   nutrientsDirectory5, nutrientsDirectory6, nutrientsDirectory7, nutrientsDirectory8, nutrientsDirectory9,
+                   nutrientsDirectory10, nutrientsDirectory11, nutrientsDirectory12, nutrientsDirectory13, nutrientsDirectory14,
+                   nutrientsDirectory15, nutrientsDirectory16, nutrientsDirectory17);*/
 
 
 
@@ -230,7 +230,7 @@ namespace BalancedNutrition
                 menuDateLabel.Text = menu.BeginingDate.Day.ToString() +"." + menu.BeginingDate.Month +
                     "." + menu.BeginingDate.Year + "-" + menu.EndDate.Day + "." +
                     menu.EndDate.Month + "." + menu.EndDate.Year;
-                groupNameLabel.Text = "Ãğóïïà " + menu.Groups.ToList().Last().Name;
+                groupNameLabel.Text = "Ãğóïïà " + menu.Group.Name;
             }
             else
             {
@@ -292,7 +292,8 @@ namespace BalancedNutrition
 
         private void äîáàâèòüToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            DishToMeal dishToMeal = new DishToMeal();
+            dishToMeal.ShowDialog();
         }
 
         private void áëşäîÂÏğè¸ìÏèùèToolStripMenuItem_Click(object sender, EventArgs e)
@@ -317,6 +318,35 @@ namespace BalancedNutrition
         {
             ProductList productList = new ProductList();
             productList.ShowDialog();
+        }
+
+        private void ïëàíîâîåÌåíşToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (LoginLabel.Visible == true)
+            {
+                WarningLabel.Visible = false;
+                OpenPlannedMenu openPlannedMenu = new OpenPlannedMenu();
+                openPlannedMenu.ShowDialog();
+                menuDataGridView.Rows.Clear();
+                string[] days = new string[openPlannedMenu.days.Count + 1];
+                days[0] = "";
+                for (int i = 1; i < days.Length; i++)
+                {
+                    days[i] = openPlannedMenu.days[i - 1].Date.ToString();
+                }
+                menuDataGridView.Rows.Add(days);
+                menu = openPlannedMenu.menu;
+                idLabel.Text = "ID " + menu.Id;
+                menuDateLabel.Text = menu.BeginingDate.Day.ToString() + "." + menu.BeginingDate.Month +
+                    "." + menu.BeginingDate.Year + "-" + menu.EndDate.Day + "." +
+                    menu.EndDate.Month + "." + menu.EndDate.Year;
+                //groupNameLabel.Text = "Ãğóïïà " + menu.Groups.ToList().Last().Name;
+            }
+            else
+            {
+                WarningLabel.Text = "Äëÿ îòêğûòèÿ ìåíş íåîáõîäèìî âîéòè â àêêàóíò";
+                WarningLabel.Visible = true;
+            }
         }
     }
 }

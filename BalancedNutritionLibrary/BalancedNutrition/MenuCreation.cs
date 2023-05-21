@@ -60,10 +60,10 @@ namespace BalancedNutrition
                 {
                     int servingsNumber = Convert.ToInt32(servingsNumberTextBox.Text);
                     PlannedMenu plannedMenu = new PlannedMenu { BeginingDate = beginDate, EndDate = endDate,
-                        User = user, Groups = new List<Group>() };
+                        User = user, Group = new Group()};
                     Group group = new Group { Name = groupName, NumberOfServings = servingsNumber,
                         PlannedMenus = new List<PlannedMenu>() };
-                    plannedMenu.Groups.Add(group);
+                    plannedMenu.Group =group;
                     db.Add(plannedMenu);
                     db.Add(group);
                     db.SaveChanges();
@@ -90,12 +90,12 @@ namespace BalancedNutrition
                 else
                 {
                     PlannedMenu plannedMenu = new PlannedMenu { BeginingDate = beginDate, EndDate = endDate,
-                    User = user, Groups = new List<Group>() };
+                    User = user, Group = new Group() };
                     List <Group> groups= db.Groups.Where(g => g.Name == groupName).ToList();
                     if (groups.Count > 0)
                     {
                         Group group = groups[0];
-                        plannedMenu.Groups.Add(group);
+                        plannedMenu.Group = group;
                         db.Add(plannedMenu);
                         db.SaveChanges();
 

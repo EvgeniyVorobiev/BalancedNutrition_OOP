@@ -42,11 +42,11 @@
             // 
             this.dishMealLabel.AutoSize = true;
             this.dishMealLabel.Font = new System.Drawing.Font("Arial", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.dishMealLabel.Location = new System.Drawing.Point(26, 21);
+            this.dishMealLabel.Location = new System.Drawing.Point(71, 23);
             this.dishMealLabel.Name = "dishMealLabel";
-            this.dishMealLabel.Size = new System.Drawing.Size(489, 33);
+            this.dishMealLabel.Size = new System.Drawing.Size(397, 33);
             this.dishMealLabel.TabIndex = 0;
-            this.dishMealLabel.Text = "Добавление блюда в прием пищи";
+            this.dishMealLabel.Text = "Добавление блюда в меню";
             this.dishMealLabel.Click += new System.EventHandler(this.label1_Click);
             // 
             // button1
@@ -118,7 +118,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(554, 332);
+            this.ClientSize = new System.Drawing.Size(554, 559);
             this.Controls.Add(this.dishLabel);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.mealLabel);

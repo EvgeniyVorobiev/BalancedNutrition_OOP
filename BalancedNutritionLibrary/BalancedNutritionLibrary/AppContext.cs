@@ -95,7 +95,7 @@ namespace BalancedNutritionLibrary
 
             modelBuilder.Entity<Group>()
                 .HasMany(g => g.PlannedMenus)
-                .WithMany(pm => pm.Groups);
+                .WithOne(pm => pm.Group);
             modelBuilder.Entity<Group>()
                 .HasKey(g => g.Id);
             modelBuilder.Entity<Group>()

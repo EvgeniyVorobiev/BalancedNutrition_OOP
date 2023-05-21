@@ -20,6 +20,6 @@ namespace BalancedNutritionLibrary
         public DateTime EndDate { get; set; }
         public User User { get; set; }
         public ICollection <Day> Days { get; set; }
-        public ICollection <Group> Groups { get; set; }
+        public Group Group { get; set; }
     }
 }
