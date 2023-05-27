@@ -28,6 +28,7 @@ namespace BalancedNutrition
                 menu = db.PlannedMenus.Where(pm => pm.Id == Convert.ToInt32(plannedMenuTextBox.Text)).First();
                 days = db.Days.Where(d => d.PlannedMenu.Id == menu.Id).ToList();
                 group = menu.Group;
+                BalancedNutritionForm.PlannedMenuLoad(menu);
                 Close();
             }
         }

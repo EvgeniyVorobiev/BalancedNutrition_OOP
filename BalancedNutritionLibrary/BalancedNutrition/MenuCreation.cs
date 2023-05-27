@@ -60,61 +60,62 @@ namespace BalancedNutrition
                 {
                     int servingsNumber = Convert.ToInt32(servingsNumberTextBox.Text);
                     PlannedMenu plannedMenu = new PlannedMenu { BeginingDate = beginDate, EndDate = endDate,
-                        User = user, Group = new Group()};
+                        User = user, Group = new Group(), Days = new List<BalancedNutritionLibrary.Day> { }
+                    };
                     Group group = new Group { Name = groupName, NumberOfServings = servingsNumber,
                         PlannedMenus = new List<PlannedMenu>() };
-                    plannedMenu.Group =group;
-                    db.Add(plannedMenu);
-                    db.Add(group);
-                    db.SaveChanges();
+                    plannedMenu.Group = group;
 
                     for (int i = 0; i <= Convert.ToInt32(endDate.Day - beginDate.Day); i++)
                     {
                         DateTime date = beginDate.AddDays(i);
                         BalancedNutritionLibrary.Day day = new BalancedNutritionLibrary.Day
                         { Date = date, PlannedMenu = plannedMenu, Meals = new List<Meal>() };
-                        if (mealCheckBox1.Checked == true) day.Meals.Add(new Meal { Name = "Завтрак" });
-                        if (mealCheckBox1.Checked == true) day.Meals.Add(new Meal { Name = "Обед" });
-                        if (mealCheckBox1.Checked == true) day.Meals.Add(new Meal { Name = "Полдник" });
-                        if (mealCheckBox1.Checked == true) day.Meals.Add(new Meal { Name = "Ужин" });
-                        db.Days.Add(day);
+                        if (mealCheckBox1.Checked == true) day.Meals.Add(new Meal { Name = "Завтрак", Dishes = new List<Dish> {} });
+                        if (mealCheckBox1.Checked == true) day.Meals.Add(new Meal { Name = "Обед", Dishes = new List<Dish> { } });
+                        if (mealCheckBox1.Checked == true) day.Meals.Add(new Meal { Name = "Полдник", Dishes = new List<Dish> { } });
+                        if (mealCheckBox1.Checked == true) day.Meals.Add(new Meal { Name = "Ужин", Dishes = new List<Dish> { } });
+                        plannedMenu.Days.Add(day);
                     }
                     db.SaveChanges();
                     foreach (BalancedNutritionLibrary.Day d in db.Days.Where(d => d.PlannedMenu == plannedMenu))
                     {
                         days.Add(Convert.ToString(d.Date.Day)+ "." + Convert.ToString(d.Date.Month) + "." + Convert.ToString(d.Date.Year)); 
                     }
+                    db.Add(plannedMenu);
+                    db.SaveChanges();
                     menu = plannedMenu;
                     Close();
                 }
                 else
                 {
                     PlannedMenu plannedMenu = new PlannedMenu { BeginingDate = beginDate, EndDate = endDate,
-                    User = user, Group = new Group() };
+                    User = user, Group = new Group(), Days = new List<BalancedNutritionLibrary.Day> { }
+                    };
                     List <Group> groups= db.Groups.Where(g => g.Name == groupName).ToList();
                     if (groups.Count > 0)
                     {
                         Group group = groups[0];
                         plannedMenu.Group = group;
-                        db.Add(plannedMenu);
-                        db.SaveChanges();
 
                         for (int i = 0; i <= Convert.ToInt32(endDate.Day - beginDate.Day); i++)
                         {
                             DateTime date = beginDate.AddDays(i);
                             BalancedNutritionLibrary.Day day = new BalancedNutritionLibrary.Day
                             { Date = date, PlannedMenu = plannedMenu, Meals = new List<Meal>() };
-                            if (mealCheckBox1.Checked == true) day.Meals.Add(new Meal { Name = "Завтрак" });
-                            if (mealCheckBox1.Checked == true) day.Meals.Add(new Meal { Name = "Обед" });
-                            if (mealCheckBox1.Checked == true) day.Meals.Add(new Meal { Name = "Полдник" });
-                            if (mealCheckBox1.Checked == true) day.Meals.Add(new Meal { Name = "Ужин" });
-                            db.Days.Add(day);
+                            if (mealCheckBox1.Checked == true) day.Meals.Add(new Meal { Name = "Завтрак", Dishes = new List<Dish> { } });
+                            if (mealCheckBox1.Checked == true) day.Meals.Add(new Meal { Name = "Обед", Dishes = new List<Dish> { } });
+                            if (mealCheckBox1.Checked == true) day.Meals.Add(new Meal { Name = "Полдник", Dishes = new List<Dish> { } });
+                            if (mealCheckBox1.Checked == true) day.Meals.Add(new Meal { Name = "Ужин", Dishes = new List<Dish> { } });
+                            plannedMenu.Days.Add(day);
                         }
                         db.SaveChanges();
                         foreach (BalancedNutritionLibrary.Day d in db.Days.Where(d => d.PlannedMenu == plannedMenu))
                         {
                             days.Add(Convert.ToString(d.Date.Day) + "." + Convert.ToString(d.Date.Month) + "." + Convert.ToString(d.Date.Year));
                         }
+                        db.Add(plannedMenu);
+                        db.SaveChanges();
                         menu = plannedMenu;
                         Close();
                     }

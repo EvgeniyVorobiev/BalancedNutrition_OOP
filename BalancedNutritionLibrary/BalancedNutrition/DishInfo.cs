@@ -14,17 +14,19 @@ namespace BalancedNutrition
     public partial class DishInfo : Form
     {
         //Dish dish = BalancedNutrition.
+        Dish selectedDish = new Dish();
         public DishInfo()
         {
             InitializeComponent();
         }
-
+        public void DishLoad(Dish selectedDish)
+        {
+            this.selectedDish = selectedDish;
+        }
         private void DishInfo_Load(object sender, EventArgs e)
         {
             using (BalancedNutritionLibrary.AppContext db = new BalancedNutritionLibrary.AppContext())
             {
-                DishList dishList = (DishList)Owner;
-                Dish selectedDish = dishList.selectedDish;
 
                 nameTextBox.Text = selectedDish.Name;
                 methodTextBox.Text = selectedDish.CookingMethod;

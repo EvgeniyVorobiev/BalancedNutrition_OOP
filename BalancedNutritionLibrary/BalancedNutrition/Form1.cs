@@ -13,6 +13,10 @@ namespace BalancedNutrition
         {
             InitializeComponent();
         }
+        public static void PlannedMenuLoad (PlannedMenu plannedMenu)
+        {
+           menu = plannedMenu;
+        }
 
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -29,81 +33,6 @@ namespace BalancedNutrition
                 Role role3 = new Role { Name = "Родитель" };
 
 
-
-                /*Dish dish1 = new Dish { Name = "Борщ с мясом", DishWeight = 0.25f, CookingMethod = "Варка",
-                CookingTechnology = "Свеклу, капусту, лук нарезают соломкой, картофель - брусочкам...",
-                DishCharacteristic = "Овощи не переаврены, сохранили форму нарезки. Вкус кисло-сладкий..."};
-                Dish dish2 = new Dish { Name = "Винегрет овощной", DishWeight = 0.2f, CookingMethod = "Варка",
-                CookingTechnology = "Отварные очищенные картофель, свеклу и морковь нарезают...",
-                DishCharacteristic = "овощи нарезаны мелкими ломтиками, равномерно перемешаны..."};
-                Dish dish3 = new Dish { Name = "Капуста тушеная", DishWeight = 0.25f, CookingMethod = "Тушение",
-                CookingTechnology = "Нарезанную соломкой свежую капусту кладут...",
-                DishCharacteristic = "смесь тушенной капусты с овощами..."};
-                Dish dish4 = new Dish { Name = "Компот из сушеных фруктов", DishWeight = 0.15f, CookingMethod = "Варка",
-                CookingTechnology = "Подготовленные сушеные плоды или ягоды заливают горячей водой...",
-                DishCharacteristic = "плоды, ягоды не переваренные, уложены в стакан..."};
-
-                Product product1 = new Product { Name = "Свекла", ProductWeight = 0.05f };
-                Product product2 = new Product { Name = "Лук репчатый", ProductWeight = 0.02f };
-                Product product3 = new Product { Name = "Картофель", ProductWeight = 0.05f };
-                Product product4 = new Product { Name = "Капуста", ProductWeight = 0.04f };
-                Product product5 = new Product { Name = "Вода", ProductWeight = 0.02f };
-                Product product6 = new Product { Name = "Крыжовник", ProductWeight = 0.05f };
-                Product product7 = new Product { Name = "Морковь", ProductWeight = 0.02f };
-
-                Ingridient ingridient1 = new Ingridient { Name = product1.Name, CookingMethod = "Варка",
-                IngridientWaste = 0.01f, WastePercent = (0.01f / product1.ProductWeight )};
-                Ingridient ingridient2 = new Ingridient { Name = product2.Name, CookingMethod = "Варка",
-                IngridientWaste = 0.005f, WastePercent = (0.005f / product2.ProductWeight )};
-                Ingridient ingridient3 = new Ingridient { Name = product3.Name, CookingMethod = "Варка",
-                IngridientWaste = 0.02f, WastePercent = (0.02f / product3.ProductWeight )};
-                Ingridient ingridient4 = new Ingridient { Name = product4.Name, CookingMethod = "Тушение",
-                IngridientWaste = 0.005f, WastePercent = (0.005f / product4.ProductWeight )};
-                Ingridient ingridient5 = new Ingridient { Name = product5.Name, CookingMethod = "Кипячение",
-                IngridientWaste = 0.0004f, WastePercent = (0.0004f / product5.ProductWeight )};
-                Ingridient ingridient6 = new Ingridient { Name = product6.Name, CookingMethod = "Варка",
-                IngridientWaste = 0.0009f, WastePercent = (0.0009f / product6.ProductWeight )};
-                Ingridient ingridient7 = new Ingridient { Name = product7.Name, CookingMethod = "Варка",
-                IngridientWaste = 0.003f, WastePercent = (0.002f / product7.ProductWeight )};
-
-                NutrientsDirectory nutrientsDirectory1 = new NutrientsDirectory { Name = "Белки" };
-                NutrientsDirectory nutrientsDirectory2 = new NutrientsDirectory { Name = "Жиры" };
-                NutrientsDirectory nutrientsDirectory3 = new NutrientsDirectory { Name = "Углероды" };
-                NutrientsDirectory nutrientsDirectory4 = new NutrientsDirectory { Name = "Калорийность" };
-                NutrientsDirectory nutrientsDirectory5 = new NutrientsDirectory { Name = "B1" };
-                NutrientsDirectory nutrientsDirectory6 = new NutrientsDirectory { Name = "B2" };
-                NutrientsDirectory nutrientsDirectory7 = new NutrientsDirectory { Name = "C" };
-
-                *//*DishNutrients dishNutrients1 = new DishNutrients { Dish = dish1, 
-                    NutrientsDirectories = { nutrientsDirectory1 }, DishNutrientWeight = 0.004f  };
-                DishNutrients dishNutrients2 = new DishNutrients { Dish = dish2,
-                    NutrientsDirectories = { nutrientsDirectory2 }, DishNutrientWeight = 0.002f  };
-                DishNutrients dishNutrients3 = new DishNutrients { Dish = dish3, 
-                    NutrientsDirectories = { nutrientsDirectory3 }, DishNutrientWeight = 0.021f  };
-                DishNutrients dishNutrients4 = new DishNutrients { Dish = dish4, 
-                    NutrientsDirectories = { nutrientsDirectory4 }, DishNutrientWeight = 0.120f  };
-
-                ProductNutrients productNutrients1 = new ProductNutrients { Product = product1, 
-                    NutrientsDirectories = { nutrientsDirectory1 }, ProductNutrientWeight = 0.004f  };
-                ProductNutrients productNutrients2 = new ProductNutrients { Product = product1, 
-                    NutrientsDirectories = { nutrientsDirectory2 }, ProductNutrientWeight = 0.002f  };
-                ProductNutrients productNutrients3 = new ProductNutrients { Product = product1, 
-                    NutrientsDirectories = { nutrientsDirectory3 }, ProductNutrientWeight = 0.021f  };
-                ProductNutrients productNutrients4 = new ProductNutrients { Product = product1, 
-                    NutrientsDirectories = { nutrientsDirectory4 }, ProductNutrientWeight = 0.120f  };*//*
-
-                db.Dishes.AddRange(dish1, dish2, dish3, dish4);
-                db.Products.AddRange(product1, product2, product3,
-                    product4, product5, product6, product7);
-                db.Ingridients.AddRange(ingridient1, ingridient2, ingridient3, ingridient4,
-                    ingridient5, ingridient6, ingridient7);
-                db.NutrientsDirectories.AddRange(nutrientsDirectory1, nutrientsDirectory2, nutrientsDirectory3,
-                    nutrientsDirectory4, nutrientsDirectory5, nutrientsDirectory6, nutrientsDirectory7);
-                *//*db.ProductNutrients.AddRange(productNutrients1, productNutrients2, productNutrients3, productNutrients4);
-                db.DishNutrients.AddRange(dishNutrients1, dishNutrients2, dishNutrients3, dishNutrients4);*/
-
-                //Product product = new Product { Name = "fff", Weight = 100, ProductNutrients = new List<ProductNutrients>()};
-                //product.Add();
 
 
                 //db.Roles.AddRange(role1, role2, role3);
@@ -293,6 +222,7 @@ namespace BalancedNutrition
         private void добавитьToolStripMenuItem_Click(object sender, EventArgs e)
         {
             DishToMeal dishToMeal = new DishToMeal();
+            dishToMeal.PlannedMenuLoad(menu);
             dishToMeal.ShowDialog();
         }
 

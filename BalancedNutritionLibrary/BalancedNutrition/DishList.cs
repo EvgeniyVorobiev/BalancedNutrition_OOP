@@ -49,6 +49,7 @@ namespace BalancedNutrition
                 //List <DishNutrients> dishNutrients = db.DishNutrients.Where(dn => dn.Dish == selectedDish).ToList();
                 //listBox1.Items.Add(dishNutrients[0].DishNutrientWeight.ToString());
                 DishInfo dishInfo = new DishInfo();
+                dishInfo.DishLoad(selectedDish);
                 dishInfo.ShowDialog(this);
             }
         }
