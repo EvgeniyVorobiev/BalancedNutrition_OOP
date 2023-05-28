@@ -9,7 +9,7 @@ namespace BalancedNutritionLibrary
     {
         public Meal()
         {
-
+            Dishes = new List<Dish>();
         }
         [Key]
         public int Id { get; set; }
@@ -18,6 +18,6 @@ namespace BalancedNutritionLibrary
         [MaxLength(30)]
         public string Name { get; set; }
         public Day Day { get; set; }
-        public ICollection <Dish> Dishes { get; set; }
+        public List <Dish> Dishes { get; set; }
     }
 }

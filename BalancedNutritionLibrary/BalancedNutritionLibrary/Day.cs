@@ -10,7 +10,7 @@ namespace BalancedNutritionLibrary
     {
         public Day()
         {
-
+            Meals= new List<Meal>();
         }
 
         [Key]
@@ -19,6 +19,6 @@ namespace BalancedNutritionLibrary
         [Required]
         public DateTime Date { get; set; }
         public PlannedMenu PlannedMenu { get; set;}
-        public ICollection <Meal> Meals { get; set; }
+        public List <Meal> Meals { get; set; }
     }
 }

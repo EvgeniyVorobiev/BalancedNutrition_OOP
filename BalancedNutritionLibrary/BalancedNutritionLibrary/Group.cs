@@ -10,7 +10,7 @@ namespace BalancedNutritionLibrary
     {
         public Group()
         {
-
+            PlannedMenus = new List<PlannedMenu>();
         }
 
         [Key]
@@ -21,6 +21,6 @@ namespace BalancedNutritionLibrary
         public string Name { get; set; }
         [Required]
         public int NumberOfServings { get; set; }
-        public ICollection <PlannedMenu> PlannedMenus { get; set;}
+        public List <PlannedMenu> PlannedMenus { get; set;}
     }
 }

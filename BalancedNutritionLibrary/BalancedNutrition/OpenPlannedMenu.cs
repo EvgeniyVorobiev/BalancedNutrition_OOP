@@ -1,4 +1,5 @@
 ﻿using BalancedNutritionLibrary;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -25,9 +26,19 @@ namespace BalancedNutrition
         {
             using (BalancedNutritionLibrary.AppContext db = new BalancedNutritionLibrary.AppContext())
             {
-                menu = db.PlannedMenus.Where(pm => pm.Id == Convert.ToInt32(plannedMenuTextBox.Text)).First();
-                days = db.Days.Where(d => d.PlannedMenu.Id == menu.Id).ToList();
-                group = menu.Group;
+                menu = db.PlannedMenus.Include(pm => pm.Days).Where(pm => pm.Id == Convert.ToInt32(plannedMenuTextBox.Text)).First();
+                days = db.Days.Include(d => d.Meals).Where(d => d.PlannedMenu.Id == menu.Id).ToList();
+                menu.Days = days;
+                Group groupPM = new Group();
+                foreach (Group group in db.Groups)
+                {
+                    foreach (PlannedMenu plannedMenu in group.PlannedMenus)
+                    {
+                        if (plannedMenu.Id == menu.Id)
+                            groupPM = group;
+                    }
+                }
+                
                 BalancedNutritionForm.PlannedMenuLoad(menu);
                 Close();
             }

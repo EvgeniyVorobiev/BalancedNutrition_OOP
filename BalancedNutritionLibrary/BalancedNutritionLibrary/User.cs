@@ -9,7 +9,7 @@ namespace BalancedNutritionLibrary
     {
         public User()
         {
-
+            PlannedMenus = new List<PlannedMenu>();
         }
         [Key]
         public int Id { get; set; }
@@ -21,6 +21,6 @@ namespace BalancedNutritionLibrary
         [MaxLength(32)]
         public string Password { get; set; }
         public Role Role { get; set; }
-        public ICollection <PlannedMenu> PlannedMenus { get; set; }
+        public List <PlannedMenu> PlannedMenus { get; set; }
     }
 }

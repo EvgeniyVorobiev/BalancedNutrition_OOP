@@ -9,7 +9,9 @@ namespace BalancedNutritionLibrary
     {
         public Dish()
         {
-
+            Meals = new List<Meal>();
+            Ingredients= new List<Ingredient>();
+            DishNutrients = new List<DishNutrients>();
         }
 
         public override void Add()
@@ -21,12 +23,8 @@ namespace BalancedNutritionLibrary
                 Weight = this.Weight, DishNutrients = this.DishNutrients, Ingredients = this.Ingredients,
                 Meals = this.Meals};
                 db.Add(dish);
-                //db.SaveChanges();
             }
         }
-
-        //[Key]
-        //public int Id {get; set;} 
 
         [Required]
         public string CookingMethod { get; set; }
@@ -34,8 +32,8 @@ namespace BalancedNutritionLibrary
         public string CookingTechnology { get; set; }
         [Required]
         public string DishCharacteristic { get; set; }
-        public ICollection <Meal> Meals { get; set; }
-        public ICollection <Ingredient> Ingredients { get; set; }
-        public ICollection <DishNutrients> DishNutrients { get; set; }
+        public List <Meal> Meals { get; set; }
+        public List <Ingredient> Ingredients { get; set; }
+        public List<DishNutrients> DishNutrients { get; set; }
     }
 }

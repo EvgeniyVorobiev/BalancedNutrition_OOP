@@ -9,7 +9,8 @@ namespace BalancedNutritionLibrary
     {
         public Product()
         {
-
+            Ingredients = new List<Ingredient>();
+            ProductNutrients = new List<ProductNutrients>();
         }
 
         public override void Add()
@@ -19,20 +20,10 @@ namespace BalancedNutritionLibrary
                 Product product = new Product { Id = this.Id, Ingredients = this.Ingredients, Name = this.Name,
                 ProductNutrients = this.ProductNutrients, Weight = this.Weight};
                 db.Products.Add(product);
-                //db.SaveChanges();
             }
         }
 
-/*        [Key]
-        public int Id { get; set; }
-
-        [Required]
-        [MaxLength(30)]
-        public string Name { get; set; }
-        [Required]
-        public float Weight { get; set; }*/
-
-        public ICollection <Ingredient> Ingredients { get; set; }
-        public ICollection <ProductNutrients> ProductNutrients { get; set; }
+        public List <Ingredient> Ingredients { get; set; }
+        public List <ProductNutrients> ProductNutrients { get; set; }
     }
 }

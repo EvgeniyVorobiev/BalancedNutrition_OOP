@@ -9,7 +9,7 @@ namespace BalancedNutritionLibrary
     {
         public Role()
         {
-
+            Users = new List<User>();
         }
 
         [Key]
@@ -18,7 +18,7 @@ namespace BalancedNutritionLibrary
         [Required]
         [MaxLength(20)]
         public string Name { get; set; }
-        public ICollection <User> Users { get; set; }
+        public List <User> Users { get; set; }
 
     }
 }

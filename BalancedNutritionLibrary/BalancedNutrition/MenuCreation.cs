@@ -66,18 +66,19 @@ namespace BalancedNutrition
                         PlannedMenus = new List<PlannedMenu>() };
                     plannedMenu.Group = group;
 
-                    for (int i = 0; i <= Convert.ToInt32(endDate.Day - beginDate.Day); i++)
+                    for (int i = 0; i <= Convert.ToInt32((endDate.Date - beginDate.Date).Days); i++)
                     {
                         DateTime date = beginDate.AddDays(i);
                         BalancedNutritionLibrary.Day day = new BalancedNutritionLibrary.Day
-                        { Date = date, PlannedMenu = plannedMenu, Meals = new List<Meal>() };
+                        { Date = date, PlannedMenu = plannedMenu, Meals = new List<Meal> { } };
                         if (mealCheckBox1.Checked == true) day.Meals.Add(new Meal { Name = "Завтрак", Dishes = new List<Dish> {} });
                         if (mealCheckBox1.Checked == true) day.Meals.Add(new Meal { Name = "Обед", Dishes = new List<Dish> { } });
                         if (mealCheckBox1.Checked == true) day.Meals.Add(new Meal { Name = "Полдник", Dishes = new List<Dish> { } });
                         if (mealCheckBox1.Checked == true) day.Meals.Add(new Meal { Name = "Ужин", Dishes = new List<Dish> { } });
+                        //db.Days.Add(day);
                         plannedMenu.Days.Add(day);
+                        //db.SaveChanges();
                     }
-                    db.SaveChanges();
                     foreach (BalancedNutritionLibrary.Day d in db.Days.Where(d => d.PlannedMenu == plannedMenu))
                     {
                         days.Add(Convert.ToString(d.Date.Day)+ "." + Convert.ToString(d.Date.Month) + "." + Convert.ToString(d.Date.Year)); 
@@ -98,7 +99,7 @@ namespace BalancedNutrition
                         Group group = groups[0];
                         plannedMenu.Group = group;
 
-                        for (int i = 0; i <= Convert.ToInt32(endDate.Day - beginDate.Day); i++)
+                        for (int i = 0; i <= Convert.ToInt32((endDate.Date - beginDate.Date).Days); i++)
                         {
                             DateTime date = beginDate.AddDays(i);
                             BalancedNutritionLibrary.Day day = new BalancedNutritionLibrary.Day
@@ -107,9 +108,11 @@ namespace BalancedNutrition
                             if (mealCheckBox1.Checked == true) day.Meals.Add(new Meal { Name = "Обед", Dishes = new List<Dish> { } });
                             if (mealCheckBox1.Checked == true) day.Meals.Add(new Meal { Name = "Полдник", Dishes = new List<Dish> { } });
                             if (mealCheckBox1.Checked == true) day.Meals.Add(new Meal { Name = "Ужин", Dishes = new List<Dish> { } });
+                         //   db.Days.Add(day);
                             plannedMenu.Days.Add(day);
+                         //   db.SaveChanges();
                         }
-                        db.SaveChanges();
+                        
                         foreach (BalancedNutritionLibrary.Day d in db.Days.Where(d => d.PlannedMenu == plannedMenu))
                         {
                             days.Add(Convert.ToString(d.Date.Day) + "." + Convert.ToString(d.Date.Month) + "." + Convert.ToString(d.Date.Year));

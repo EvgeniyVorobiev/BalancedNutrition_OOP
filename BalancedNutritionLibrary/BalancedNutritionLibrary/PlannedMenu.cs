@@ -9,7 +9,7 @@ namespace BalancedNutritionLibrary
     {
         public PlannedMenu()
         {
-
+            Days = new List<Day>();
         }
         [Key]
         public int Id { get; set; }
@@ -19,7 +19,7 @@ namespace BalancedNutritionLibrary
         [Required]
         public DateTime EndDate { get; set; }
         public User User { get; set; }
-        public ICollection <Day> Days { get; set; }
+        public List <Day> Days { get; set; }
         public Group Group { get; set; }
     }
 }

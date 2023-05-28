@@ -9,7 +9,7 @@ namespace BalancedNutritionLibrary
     {
         public Ingredient()
         {
-
+            Products = new List<Product>(); 
         }
 
         [Key]
@@ -25,6 +25,6 @@ namespace BalancedNutritionLibrary
         [Required]
         public string CookingMethod { get; set; }
         public Dish Dish { get; set; }
-        public ICollection <Product> Products { get; set; }
+        public List <Product> Products { get; set; }
     }
 }

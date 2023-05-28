@@ -57,21 +57,55 @@ namespace BalancedNutrition
                 NutrientsDirectory nutrientsDirectory16 = new NutrientsDirectory { Name = "Se" };
                 NutrientsDirectory nutrientsDirectory17 = new NutrientsDirectory { Name = "F" };
 
-/*                db.AddRange(nutrientsDirectory1, nutrientsDirectory2, nutrientsDirectory3, nutrientsDirectory4,
-                   nutrientsDirectory5, nutrientsDirectory6, nutrientsDirectory7, nutrientsDirectory8, nutrientsDirectory9,
-                   nutrientsDirectory10, nutrientsDirectory11, nutrientsDirectory12, nutrientsDirectory13, nutrientsDirectory14,
-                   nutrientsDirectory15, nutrientsDirectory16, nutrientsDirectory17);*/
+                /*                db.AddRange(nutrientsDirectory1, nutrientsDirectory2, nutrientsDirectory3, nutrientsDirectory4,
+                                   nutrientsDirectory5, nutrientsDirectory6, nutrientsDirectory7, nutrientsDirectory8, nutrientsDirectory9,
+                                   nutrientsDirectory10, nutrientsDirectory11, nutrientsDirectory12, nutrientsDirectory13, nutrientsDirectory14,
+                                   nutrientsDirectory15, nutrientsDirectory16, nutrientsDirectory17);*/
 
 
-
-                for (int i = 0; i < 5; i++)
-                    for (int j = 0; j < 5; j++)
+                List<BalancedNutritionLibrary.Day> daysMenu = menu.Days.ToList();
+                List<Meal> mealsMenu = new List<Meal> { };
+                List<Dish> dishesMenu = new List<Dish> { };
+                List<menuResultSet> menuResultSet = new List<menuResultSet>();
+                foreach (BalancedNutritionLibrary.Day day in daysMenu)
+                {
+                    mealsMenu.AddRange(db.Meals.Where(m => m.Day == day).Include(m => m.Dishes));
+                }
+                foreach (Meal meal in mealsMenu)
+                {
+                    foreach (Dish dish in db.Dishes.Include(d => d.Meals))
                     {
-                        //
-                        //menuDataGridView.Rows.Add("aboba");
+                        dishesMenu.AddRange(meal.Dishes);
+                    }
+                }
 
+                foreach(Dish dish in dishesMenu)
+                {
+                    foreach (Meal meal in dish.Meals) 
+                    {
+                        foreach (BalancedNutritionLibrary.Day day in daysMenu)
+                        {
+                            menuResultSet.Add(new menuResultSet()
+                            {
+                                date = meal.Day.Date,
+                                dishName = dish.Name,
+                                mealName = meal.Name
                             }
+                            );
+                        }  
+                    }
+                }
 
+                for (int i = 0; i < menuResultSet.Count; i++)
+                {
+                    menuDataGridView.Rows.Add(menuResultSet[i].date, menuResultSet[i].mealName, menuResultSet[i].dishName);   
+                }
+                for (int i = 0; i < 2; i++)
+                {
+                    menuDataGridView.Rows.Add(daysMenu[i].Date);
+                    menuDataGridView.Rows.Add(mealsMenu[i].Name);
+                    menuDataGridView.Rows.Add(dishesMenu[i].Name);
+                }
 
 
                 //db.SaveChanges();
@@ -257,20 +291,12 @@ namespace BalancedNutrition
                 WarningLabel.Visible = false;
                 OpenPlannedMenu openPlannedMenu = new OpenPlannedMenu();
                 openPlannedMenu.ShowDialog();
-                menuDataGridView.Rows.Clear();
-                string[] days = new string[openPlannedMenu.days.Count + 1];
-                days[0] = "";
-                for (int i = 1; i < days.Length; i++)
-                {
-                    days[i] = openPlannedMenu.days[i - 1].Date.ToString();
-                }
-                menuDataGridView.Rows.Add(days);
-                menu = openPlannedMenu.menu;
+                //menu = openPlannedMenu.menu;
                 idLabel.Text = "ID " + menu.Id;
                 menuDateLabel.Text = menu.BeginingDate.Day.ToString() + "." + menu.BeginingDate.Month +
                     "." + menu.BeginingDate.Year + "-" + menu.EndDate.Day + "." +
                     menu.EndDate.Month + "." + menu.EndDate.Year;
-                //groupNameLabel.Text = "Ãðóïïà " + menu.Groups.ToList().Last().Name;
+                groupNameLabel.Text = "Ãðóïïà " + menu.Group.Name;
             }
             else
             {

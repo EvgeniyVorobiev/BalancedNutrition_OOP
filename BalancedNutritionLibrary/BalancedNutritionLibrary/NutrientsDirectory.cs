@@ -17,7 +17,7 @@ namespace BalancedNutritionLibrary
         [Required]
         [MaxLength(30)]
         public string Name { get; set; }
-        public ICollection <DishNutrients> DishNutrients { get; set; }
-        public ICollection <ProductNutrients> ProductNutrients { get; set; }
+        public List <DishNutrients> DishNutrients { get; set; }
+        public List <ProductNutrients> ProductNutrients { get; set; }
     }
 }
