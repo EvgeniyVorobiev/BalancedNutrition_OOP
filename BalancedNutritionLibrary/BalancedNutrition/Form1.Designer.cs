@@ -32,6 +32,10 @@
             this.LoginLinkLabel = new System.Windows.Forms.LinkLabel();
             this.LoginPictureBox = new System.Windows.Forms.PictureBox();
             this.menuDataGridView = new System.Windows.Forms.DataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewButtonColumn();
             this.button1 = new System.Windows.Forms.Button();
             this.LoginLabel = new System.Windows.Forms.Label();
             this.OutLabel = new System.Windows.Forms.LinkLabel();
@@ -45,7 +49,6 @@
             this.плановоеМенюToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.списокБлюдToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.списокПродуктовToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.добавитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.WarningLabel = new System.Windows.Forms.Label();
             this.nutrientListBox = new System.Windows.Forms.ListBox();
             this.menuLabel = new System.Windows.Forms.Label();
@@ -53,10 +56,7 @@
             this.idLabel = new System.Windows.Forms.Label();
             this.menuDateLabel = new System.Windows.Forms.Label();
             this.groupNameLabel = new System.Windows.Forms.Label();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.button2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.LoginPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.menuDataGridView)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -104,16 +104,49 @@
             this.menuDataGridView.ReadOnly = true;
             this.menuDataGridView.RowHeadersWidth = 51;
             this.menuDataGridView.RowTemplate.Height = 29;
-            this.menuDataGridView.Size = new System.Drawing.Size(985, 487);
+            this.menuDataGridView.Size = new System.Drawing.Size(753, 487);
             this.menuDataGridView.TabIndex = 13;
             this.menuDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "Дата";
+            this.Column1.MinimumWidth = 6;
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            this.Column1.Width = 125;
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "Приём пищи";
+            this.Column2.MinimumWidth = 6;
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            this.Column2.Width = 225;
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "Блюдо";
+            this.Column3.MinimumWidth = 6;
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            this.Column3.Width = 225;
+            // 
+            // Column4
+            // 
+            this.Column4.HeaderText = "";
+            this.Column4.MinimumWidth = 6;
+            this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
+            this.Column4.Text = "Удалить из меню";
+            this.Column4.Width = 125;
             // 
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.button1.Location = new System.Drawing.Point(12, 108);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(428, 50);
+            this.button1.Size = new System.Drawing.Size(368, 50);
             this.button1.TabIndex = 14;
             this.button1.Text = "Обновить данные в таблице";
             this.button1.UseVisualStyleBackColor = true;
@@ -164,8 +197,7 @@
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.создатьToolStripMenuItem,
-            this.открытьToolStripMenuItem,
-            this.добавитьToolStripMenuItem});
+            this.открытьToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
@@ -238,19 +270,12 @@
             this.списокПродуктовToolStripMenuItem.Text = "список продуктов";
             this.списокПродуктовToolStripMenuItem.Click += new System.EventHandler(this.списокПродуктовToolStripMenuItem_Click);
             // 
-            // добавитьToolStripMenuItem
-            // 
-            this.добавитьToolStripMenuItem.Name = "добавитьToolStripMenuItem";
-            this.добавитьToolStripMenuItem.Size = new System.Drawing.Size(249, 27);
-            this.добавитьToolStripMenuItem.Text = "Добавить блюдо в меню";
-            this.добавитьToolStripMenuItem.Click += new System.EventHandler(this.добавитьToolStripMenuItem_Click);
-            // 
             // WarningLabel
             // 
             this.WarningLabel.AutoSize = true;
             this.WarningLabel.Font = new System.Drawing.Font("Arial", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.WarningLabel.ForeColor = System.Drawing.Color.Red;
-            this.WarningLabel.Location = new System.Drawing.Point(460, 120);
+            this.WarningLabel.Location = new System.Drawing.Point(288, 34);
             this.WarningLabel.Name = "WarningLabel";
             this.WarningLabel.Size = new System.Drawing.Size(144, 26);
             this.WarningLabel.TabIndex = 20;
@@ -263,9 +288,9 @@
             this.nutrientListBox.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.nutrientListBox.FormattingEnabled = true;
             this.nutrientListBox.ItemHeight = 23;
-            this.nutrientListBox.Location = new System.Drawing.Point(1024, 175);
+            this.nutrientListBox.Location = new System.Drawing.Point(839, 175);
             this.nutrientListBox.Name = "nutrientListBox";
-            this.nutrientListBox.Size = new System.Drawing.Size(394, 487);
+            this.nutrientListBox.Size = new System.Drawing.Size(579, 487);
             this.nutrientListBox.TabIndex = 21;
             this.nutrientListBox.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
             // 
@@ -314,43 +339,23 @@
             this.groupNameLabel.TabIndex = 25;
             this.groupNameLabel.Text = "Группа";
             // 
-            // Column1
+            // button2
             // 
-            this.Column1.HeaderText = "Дата";
-            this.Column1.MinimumWidth = 6;
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            this.Column1.Width = 125;
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "Приём пищи";
-            this.Column2.MinimumWidth = 6;
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            this.Column2.Width = 225;
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "Блюдо";
-            this.Column3.MinimumWidth = 6;
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
-            this.Column3.Width = 225;
-            // 
-            // Column4
-            // 
-            this.Column4.HeaderText = "";
-            this.Column4.MinimumWidth = 6;
-            this.Column4.Name = "Column4";
-            this.Column4.ReadOnly = true;
-            this.Column4.Width = 125;
+            this.button2.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.button2.Location = new System.Drawing.Point(397, 108);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(368, 50);
+            this.button2.TabIndex = 26;
+            this.button2.Text = "Добавить блюдо в меню";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // BalancedNutritionForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1447, 684);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.groupNameLabel);
             this.Controls.Add(this.menuDateLabel);
             this.Controls.Add(this.idLabel);
@@ -394,7 +399,6 @@
         private ToolStripMenuItem плановоеМенюToolStripMenuItem;
         private ToolStripMenuItem списокБлюдToolStripMenuItem;
         private Label WarningLabel;
-        private ToolStripMenuItem добавитьToolStripMenuItem;
         private ListBox nutrientListBox;
         private Label menuLabel;
         private Npgsql.NpgsqlCommandBuilder npgsqlCommandBuilder1;
@@ -407,5 +411,6 @@
         private DataGridViewTextBoxColumn Column2;
         private DataGridViewTextBoxColumn Column3;
         private DataGridViewButtonColumn Column4;
+        private Button button2;
     }
 }

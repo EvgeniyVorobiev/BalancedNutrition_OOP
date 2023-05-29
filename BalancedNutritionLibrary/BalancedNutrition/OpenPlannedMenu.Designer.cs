@@ -31,6 +31,7 @@
             this.plannedMenuLabel = new System.Windows.Forms.Label();
             this.openPlannedMenuButton = new System.Windows.Forms.Button();
             this.plannedMenuTextBox = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // plannedMenuLabel
@@ -59,17 +60,27 @@
             this.plannedMenuTextBox.Size = new System.Drawing.Size(85, 30);
             this.plannedMenuTextBox.TabIndex = 2;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(12, 99);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(0, 23);
+            this.label1.TabIndex = 3;
+            this.label1.Visible = false;
+            // 
             // OpenPlannedMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(430, 181);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.plannedMenuTextBox);
             this.Controls.Add(this.openPlannedMenuButton);
             this.Controls.Add(this.plannedMenuLabel);
             this.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "OpenPlannedMenu";
             this.Text = "OpenPlannedMenu";
             this.ResumeLayout(false);
@@ -82,5 +93,6 @@
         private Label plannedMenuLabel;
         private Button openPlannedMenuButton;
         private TextBox plannedMenuTextBox;
+        private Label label1;
     }
 }

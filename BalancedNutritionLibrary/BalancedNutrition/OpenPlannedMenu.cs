@@ -24,23 +24,42 @@ namespace BalancedNutrition
 
         private void openPlannedMenuButton_Click(object sender, EventArgs e)
         {
-            using (BalancedNutritionLibrary.AppContext db = new BalancedNutritionLibrary.AppContext())
+            if (plannedMenuTextBox.Text != "")
             {
-                menu = db.PlannedMenus.Include(pm => pm.Days).Where(pm => pm.Id == Convert.ToInt32(plannedMenuTextBox.Text)).First();
-                days = db.Days.Include(d => d.Meals).Where(d => d.PlannedMenu.Id == menu.Id).ToList();
-                menu.Days = days;
-                Group groupPM = new Group();
-                foreach (Group group in db.Groups)
+                label1.Visible = false;
+                using (BalancedNutritionLibrary.AppContext db = new BalancedNutritionLibrary.AppContext())
                 {
-                    foreach (PlannedMenu plannedMenu in group.PlannedMenus)
+                    if (db.PlannedMenus.Where(pm => pm.Id == Convert.ToInt32(plannedMenuTextBox.Text)).ToList().Count > 0 )
                     {
-                        if (plannedMenu.Id == menu.Id)
-                            groupPM = group;
+                        menu = db.PlannedMenus.Include(pm => pm.Days).Where(pm => pm.Id == Convert.ToInt32(plannedMenuTextBox.Text)).First();
+                        days = db.Days.Include(d => d.Meals).Where(d => d.PlannedMenu.Id == menu.Id).ToList();
+                        menu.Days = days;
+                        Group groupPM = new Group();
+                        foreach (Group group in db.Groups)
+                        {
+                            foreach (PlannedMenu plannedMenu in group.PlannedMenus)
+                            {
+                                if (plannedMenu.Id == menu.Id)
+                                    groupPM = group;
+                            }
+                        }
+
+                        BalancedNutritionForm.PlannedMenuLoad(menu);
+                        Close();
+                    }
+                    else
+                    {
+                        label1.Visible = true;
+                        label1.ForeColor = Color.Red;
+                        label1.Text = "Проверьте правильность введенных данных";
                     }
                 }
-                
-                BalancedNutritionForm.PlannedMenuLoad(menu);
-                Close();
+            }
+            else
+            {
+                label1.Visible = true;
+                label1.ForeColor = Color.Red;
+                label1.Text = "Проверьте правильность введенных данных";
             }
         }
     }

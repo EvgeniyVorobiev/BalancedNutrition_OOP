@@ -8,6 +8,7 @@ namespace BalancedNutrition
     {
         public static string username = "";
         public static PlannedMenu menu = new PlannedMenu();
+        List<menuResultSet> menuResultSet = new List<menuResultSet>();
 
         public BalancedNutritionForm()
         {
@@ -66,7 +67,8 @@ namespace BalancedNutrition
                 List<BalancedNutritionLibrary.Day> daysMenu = menu.Days.ToList();
                 List<Meal> mealsMenu = new List<Meal> { };
                 List<Dish> dishesMenu = new List<Dish> { };
-                List<menuResultSet> menuResultSet = new List<menuResultSet>();
+                menuResultSet.Clear();
+                menuDataGridView.Rows.Clear();
                 foreach (BalancedNutritionLibrary.Day day in daysMenu)
                 {
                     mealsMenu.AddRange(db.Meals.Where(m => m.Day == day).Include(m => m.Dishes).Include(m => m.Day));
@@ -117,7 +119,7 @@ namespace BalancedNutrition
 
                 for (int i = 0; i < menuResultSet.Count; i++)
                 {
-                    menuDataGridView.Rows.Add(menuResultSet[i].day.Date, menuResultSet[i].meal.Name, menuResultSet[i].dish.Name);   
+                    menuDataGridView.Rows.Add(menuResultSet[i].day.Date, menuResultSet[i].meal.Name, menuResultSet[i].dish.Name, "Удалить");   
                 }
 
 
@@ -173,7 +175,13 @@ namespace BalancedNutrition
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-
+            if (menuDataGridView.CurrentCell.Value == "Удалить")
+            {
+                DeleteDishFromMeal deleteDishFromMeal = new DeleteDishFromMeal();
+                deleteDishFromMeal.MealAndDishLoad(menuResultSet[menuDataGridView.CurrentRow.Index].meal,
+                    menuResultSet[menuDataGridView.CurrentRow.Index].dish);
+                deleteDishFromMeal.ShowDialog();
+            }    
         }
 
         private void LoginLabel_Click(object sender, EventArgs e)
@@ -268,9 +276,7 @@ namespace BalancedNutrition
 
         private void добавитьToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            DishToMeal dishToMeal = new DishToMeal();
-            dishToMeal.PlannedMenuLoad(menu);
-            dishToMeal.ShowDialog();
+
         }
 
         private void блюдоВПриёмПищиToolStripMenuItem_Click(object sender, EventArgs e)
@@ -313,9 +319,22 @@ namespace BalancedNutrition
             }
             else
             {
-                WarningLabel.Text = "Для открытия меню необходимо войти в аккаунт";
+                WarningLabel.Text = "Для открытия меню, необходимо войти в аккаунт";
                 WarningLabel.Visible = true;
             }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (menu.Id == 0)
+            {
+                WarningLabel.Text = "Для добавления блюда в меню, необходимо открыть или создать меню";
+                WarningLabel.Visible = true;
+            }
+
+            DishToMeal dishToMeal = new DishToMeal();
+            dishToMeal.PlannedMenuLoad(menu);
+            dishToMeal.ShowDialog();
         }
     }
 }
