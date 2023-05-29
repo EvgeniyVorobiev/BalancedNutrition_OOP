@@ -78,7 +78,7 @@ namespace BalancedNutrition
                     //PlannedMenu plannedMenu = BalancedNutritionForm.menu;
                     BalancedNutritionLibrary.Day day =
                         db.Days.Where(d => d.PlannedMenu == plannedMenu && d.Date.Date == dateTime.Date).ToList()[0];
-                    Meal meal = db.Meals.Where(m => m.Day == day).ToList()[0];
+                    Meal meal = db.Meals.Where(m => m.Day == day && m.Name == mealName).ToList()[0];
                     meal.Dishes = new List<Dish> { dish };
                     db.Meals.Update(meal);
                     db.SaveChanges(); 

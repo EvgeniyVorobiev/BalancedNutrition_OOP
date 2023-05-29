@@ -69,7 +69,7 @@ namespace BalancedNutrition
                 List<menuResultSet> menuResultSet = new List<menuResultSet>();
                 foreach (BalancedNutritionLibrary.Day day in daysMenu)
                 {
-                    mealsMenu.AddRange(db.Meals.Where(m => m.Day == day).Include(m => m.Dishes));
+                    mealsMenu.AddRange(db.Meals.Where(m => m.Day == day).Include(m => m.Dishes).Include(m => m.Day));
                 }
                 foreach (Meal meal in mealsMenu)
                 {
@@ -79,32 +79,45 @@ namespace BalancedNutrition
                     }
                 }
 
-                foreach(Dish dish in dishesMenu)
+                foreach (BalancedNutritionLibrary.Day day in daysMenu)
+                {
+                    foreach (Meal meal in mealsMenu)
+                    {
+                        foreach (Dish dish in meal.Dishes)
+                        {
+                            if (day.Id == meal.Day.Id)
+                                menuResultSet.Add(new menuResultSet()
+                                {
+                                    day = day,
+                                    dish = dish,
+                                    meal = meal
+                                }
+                            );
+                        }
+                    }
+                }
+
+/*                foreach(Dish dish in dishesMenu)
                 {
                     foreach (Meal meal in dish.Meals) 
                     {
                         foreach (BalancedNutritionLibrary.Day day in daysMenu)
                         {
+                            if (day.Id == meal.Day.Id)
                             menuResultSet.Add(new menuResultSet()
                             {
-                                date = meal.Day.Date,
+                                date = day.Date,
                                 dishName = dish.Name,
                                 mealName = meal.Name
                             }
                             );
                         }  
                     }
-                }
+                }*/
 
                 for (int i = 0; i < menuResultSet.Count; i++)
                 {
-                    menuDataGridView.Rows.Add(menuResultSet[i].date, menuResultSet[i].mealName, menuResultSet[i].dishName);   
-                }
-                for (int i = 0; i < 2; i++)
-                {
-                    menuDataGridView.Rows.Add(daysMenu[i].Date);
-                    menuDataGridView.Rows.Add(mealsMenu[i].Name);
-                    menuDataGridView.Rows.Add(dishesMenu[i].Name);
+                    menuDataGridView.Rows.Add(menuResultSet[i].day.Date, menuResultSet[i].meal.Name, menuResultSet[i].dish.Name);   
                 }
 
 

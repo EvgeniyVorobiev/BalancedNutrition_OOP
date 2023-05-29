@@ -12,8 +12,8 @@ namespace BalancedNutritionLibrary
         {
 
         }
-        public DateTime date { get; set; }
-        public string mealName { get; set; }
-        public string dishName { get; set; }
+        public BalancedNutritionLibrary.Day day{ get; set; }
+        public Meal meal { get; set; }
+        public Dish dish { get; set; }
     }
 }
