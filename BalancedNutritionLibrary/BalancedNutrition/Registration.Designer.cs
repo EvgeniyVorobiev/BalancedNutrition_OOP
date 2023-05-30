@@ -127,7 +127,7 @@
             this.RoleComboBox.FormattingEnabled = true;
             this.RoleComboBox.Items.AddRange(new object[] {
             "Администратор",
-            "Составитель питания",
+            "Диетолог",
             "Родитель"});
             this.RoleComboBox.Location = new System.Drawing.Point(58, 300);
             this.RoleComboBox.Name = "RoleComboBox";

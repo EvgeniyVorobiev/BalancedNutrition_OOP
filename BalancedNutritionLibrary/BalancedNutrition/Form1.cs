@@ -69,13 +69,14 @@ namespace BalancedNutrition
                 List<Dish> dishesMenu = new List<Dish> { };
                 menuResultSet.Clear();
                 menuDataGridView.Rows.Clear();
+
                 foreach (BalancedNutritionLibrary.Day day in daysMenu)
                 {
                     mealsMenu.AddRange(db.Meals.Where(m => m.Day == day).Include(m => m.Dishes).Include(m => m.Day));
                 }
                 foreach (Meal meal in mealsMenu)
                 {
-                    foreach (Dish dish in db.Dishes.Include(d => d.Meals))
+                    foreach (Dish dish in db.Dishes.Include(d => d.Meals).Include(d => d.DishNutrients))
                     {
                         dishesMenu.AddRange(meal.Dishes);
                     }
@@ -92,7 +93,8 @@ namespace BalancedNutrition
                                 {
                                     day = day,
                                     dish = dish,
-                                    meal = meal
+                                    meal = meal,
+                                    dishNutrients = dish.DishNutrients
                                 }
                             );
                         }
@@ -331,10 +333,13 @@ namespace BalancedNutrition
                 WarningLabel.Text = "Для добавления блюда в меню, необходимо открыть или создать меню";
                 WarningLabel.Visible = true;
             }
-
-            DishToMeal dishToMeal = new DishToMeal();
-            dishToMeal.PlannedMenuLoad(menu);
-            dishToMeal.ShowDialog();
+            else
+            {
+                WarningLabel.Visible = false;
+                DishToMeal dishToMeal = new DishToMeal();
+                dishToMeal.PlannedMenuLoad(menu);
+                dishToMeal.ShowDialog();
+            }
         }
     }
 }

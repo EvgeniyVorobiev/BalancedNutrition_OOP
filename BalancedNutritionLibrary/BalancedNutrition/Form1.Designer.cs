@@ -50,23 +50,38 @@
             this.списокБлюдToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.списокПродуктовToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.WarningLabel = new System.Windows.Forms.Label();
-            this.nutrientListBox = new System.Windows.Forms.ListBox();
             this.menuLabel = new System.Windows.Forms.Label();
             this.npgsqlCommandBuilder1 = new Npgsql.NpgsqlCommandBuilder();
             this.idLabel = new System.Windows.Forms.Label();
             this.menuDateLabel = new System.Windows.Forms.Label();
             this.groupNameLabel = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
+            this.nutrientsGroupBox = new System.Windows.Forms.GroupBox();
+            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.dateColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nutrientNameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nutrientWeightColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nutrientWeightNormColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dateColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.mealColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.weightColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.weightNormColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.LoginPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.menuDataGridView)).BeginInit();
             this.menuStrip1.SuspendLayout();
+            this.nutrientsGroupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // LoginLinkLabel
             // 
             this.LoginLinkLabel.AutoSize = true;
             this.LoginLinkLabel.Font = new System.Drawing.Font("Arial", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.LoginLinkLabel.Location = new System.Drawing.Point(1355, 47);
+            this.LoginLinkLabel.Location = new System.Drawing.Point(1732, 47);
             this.LoginLinkLabel.Name = "LoginLinkLabel";
             this.LoginLinkLabel.Size = new System.Drawing.Size(63, 26);
             this.LoginLinkLabel.TabIndex = 1;
@@ -77,7 +92,7 @@
             // LoginPictureBox
             // 
             this.LoginPictureBox.Image = ((System.Drawing.Image)(resources.GetObject("LoginPictureBox.Image")));
-            this.LoginPictureBox.Location = new System.Drawing.Point(1239, 37);
+            this.LoginPictureBox.Location = new System.Drawing.Point(1616, 37);
             this.LoginPictureBox.Name = "LoginPictureBox";
             this.LoginPictureBox.Size = new System.Drawing.Size(48, 48);
             this.LoginPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -104,7 +119,7 @@
             this.menuDataGridView.ReadOnly = true;
             this.menuDataGridView.RowHeadersWidth = 51;
             this.menuDataGridView.RowTemplate.Height = 29;
-            this.menuDataGridView.Size = new System.Drawing.Size(753, 487);
+            this.menuDataGridView.Size = new System.Drawing.Size(659, 699);
             this.menuDataGridView.TabIndex = 13;
             this.menuDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
@@ -122,7 +137,7 @@
             this.Column2.MinimumWidth = 6;
             this.Column2.Name = "Column2";
             this.Column2.ReadOnly = true;
-            this.Column2.Width = 225;
+            this.Column2.Width = 130;
             // 
             // Column3
             // 
@@ -146,7 +161,7 @@
             this.button1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.button1.Location = new System.Drawing.Point(12, 108);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(368, 50);
+            this.button1.Size = new System.Drawing.Size(306, 50);
             this.button1.TabIndex = 14;
             this.button1.Text = "Обновить данные в таблице";
             this.button1.UseVisualStyleBackColor = true;
@@ -156,7 +171,7 @@
             // 
             this.LoginLabel.AutoSize = true;
             this.LoginLabel.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.LoginLabel.Location = new System.Drawing.Point(1284, 49);
+            this.LoginLabel.Location = new System.Drawing.Point(1661, 49);
             this.LoginLabel.Name = "LoginLabel";
             this.LoginLabel.Size = new System.Drawing.Size(56, 24);
             this.LoginLabel.TabIndex = 16;
@@ -168,7 +183,7 @@
             // 
             this.OutLabel.AutoSize = true;
             this.OutLabel.Font = new System.Drawing.Font("Arial", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.OutLabel.Location = new System.Drawing.Point(1338, 120);
+            this.OutLabel.Location = new System.Drawing.Point(1715, 120);
             this.OutLabel.Name = "OutLabel";
             this.OutLabel.Size = new System.Drawing.Size(80, 26);
             this.OutLabel.TabIndex = 17;
@@ -181,7 +196,7 @@
             // 
             this.RoleLabel.AutoSize = true;
             this.RoleLabel.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.RoleLabel.Location = new System.Drawing.Point(1239, 88);
+            this.RoleLabel.Location = new System.Drawing.Point(1616, 88);
             this.RoleLabel.Name = "RoleLabel";
             this.RoleLabel.Size = new System.Drawing.Size(91, 23);
             this.RoleLabel.TabIndex = 18;
@@ -201,7 +216,7 @@
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.menuStrip1.Size = new System.Drawing.Size(1447, 31);
+            this.menuStrip1.Size = new System.Drawing.Size(1822, 31);
             this.menuStrip1.TabIndex = 19;
             this.menuStrip1.Text = "menuStrip1";
             this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
@@ -283,17 +298,6 @@
             this.WarningLabel.Visible = false;
             this.WarningLabel.Click += new System.EventHandler(this.WarningLabel_Click);
             // 
-            // nutrientListBox
-            // 
-            this.nutrientListBox.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.nutrientListBox.FormattingEnabled = true;
-            this.nutrientListBox.ItemHeight = 23;
-            this.nutrientListBox.Location = new System.Drawing.Point(839, 175);
-            this.nutrientListBox.Name = "nutrientListBox";
-            this.nutrientListBox.Size = new System.Drawing.Size(579, 487);
-            this.nutrientListBox.TabIndex = 21;
-            this.nutrientListBox.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
-            // 
             // menuLabel
             // 
             this.menuLabel.AutoSize = true;
@@ -342,25 +346,162 @@
             // button2
             // 
             this.button2.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button2.Location = new System.Drawing.Point(397, 108);
+            this.button2.Location = new System.Drawing.Point(387, 108);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(368, 50);
+            this.button2.Size = new System.Drawing.Size(284, 50);
             this.button2.TabIndex = 26;
             this.button2.Text = "Добавить блюдо в меню";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
+            // nutrientsGroupBox
+            // 
+            this.nutrientsGroupBox.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.nutrientsGroupBox.Controls.Add(this.dataGridView2);
+            this.nutrientsGroupBox.Controls.Add(this.label2);
+            this.nutrientsGroupBox.Controls.Add(this.label1);
+            this.nutrientsGroupBox.Controls.Add(this.dataGridView1);
+            this.nutrientsGroupBox.Location = new System.Drawing.Point(698, 175);
+            this.nutrientsGroupBox.Name = "nutrientsGroupBox";
+            this.nutrientsGroupBox.Size = new System.Drawing.Size(1114, 699);
+            this.nutrientsGroupBox.TabIndex = 27;
+            this.nutrientsGroupBox.TabStop = false;
+            // 
+            // dataGridView2
+            // 
+            this.dataGridView2.AllowUserToAddRows = false;
+            this.dataGridView2.AllowUserToDeleteRows = false;
+            this.dataGridView2.BackgroundColor = System.Drawing.SystemColors.Window;
+            this.dataGridView2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dateColumn1,
+            this.nutrientNameColumn,
+            this.nutrientWeightColumn,
+            this.nutrientWeightNormColumn});
+            this.dataGridView2.Location = new System.Drawing.Point(589, 52);
+            this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.ReadOnly = true;
+            this.dataGridView2.RowHeadersWidth = 51;
+            this.dataGridView2.RowTemplate.Height = 29;
+            this.dataGridView2.Size = new System.Drawing.Size(525, 647);
+            this.dataGridView2.TabIndex = 3;
+            // 
+            // dateColumn1
+            // 
+            this.dateColumn1.HeaderText = "Дата";
+            this.dateColumn1.MinimumWidth = 6;
+            this.dateColumn1.Name = "dateColumn1";
+            this.dateColumn1.ReadOnly = true;
+            this.dateColumn1.Width = 125;
+            // 
+            // nutrientNameColumn
+            // 
+            this.nutrientNameColumn.HeaderText = "Название";
+            this.nutrientNameColumn.MinimumWidth = 6;
+            this.nutrientNameColumn.Name = "nutrientNameColumn";
+            this.nutrientNameColumn.ReadOnly = true;
+            this.nutrientNameColumn.Width = 125;
+            // 
+            // nutrientWeightColumn
+            // 
+            this.nutrientWeightColumn.HeaderText = "Содержание";
+            this.nutrientWeightColumn.MinimumWidth = 6;
+            this.nutrientWeightColumn.Name = "nutrientWeightColumn";
+            this.nutrientWeightColumn.ReadOnly = true;
+            this.nutrientWeightColumn.Width = 110;
+            // 
+            // nutrientWeightNormColumn
+            // 
+            this.nutrientWeightNormColumn.HeaderText = "Содержание (норма)";
+            this.nutrientWeightNormColumn.MinimumWidth = 6;
+            this.nutrientWeightNormColumn.Name = "nutrientWeightNormColumn";
+            this.nutrientWeightNormColumn.ReadOnly = true;
+            this.nutrientWeightNormColumn.Width = 110;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label2.Location = new System.Drawing.Point(719, 23);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(225, 23);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "Питательные вещества";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label1.Location = new System.Drawing.Point(98, 23);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(413, 23);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Суммарные объёмы блюд по приёмам пищи";
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.Window;
+            this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dateColumn,
+            this.mealColumn,
+            this.weightColumn,
+            this.weightNormColumn});
+            this.dataGridView1.Location = new System.Drawing.Point(0, 52);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.RowHeadersWidth = 51;
+            this.dataGridView1.RowTemplate.Height = 29;
+            this.dataGridView1.Size = new System.Drawing.Size(560, 647);
+            this.dataGridView1.TabIndex = 0;
+            // 
+            // dateColumn
+            // 
+            this.dateColumn.HeaderText = "Дата";
+            this.dateColumn.MinimumWidth = 6;
+            this.dateColumn.Name = "dateColumn";
+            this.dateColumn.ReadOnly = true;
+            this.dateColumn.Width = 125;
+            // 
+            // mealColumn
+            // 
+            this.mealColumn.HeaderText = "Приём пищи";
+            this.mealColumn.MinimumWidth = 6;
+            this.mealColumn.Name = "mealColumn";
+            this.mealColumn.ReadOnly = true;
+            this.mealColumn.Width = 130;
+            // 
+            // weightColumn
+            // 
+            this.weightColumn.HeaderText = "Объём, г";
+            this.weightColumn.MinimumWidth = 6;
+            this.weightColumn.Name = "weightColumn";
+            this.weightColumn.ReadOnly = true;
+            this.weightColumn.Width = 125;
+            // 
+            // weightNormColumn
+            // 
+            this.weightNormColumn.HeaderText = "Объём (норма), г";
+            this.weightNormColumn.MinimumWidth = 6;
+            this.weightNormColumn.Name = "weightNormColumn";
+            this.weightNormColumn.ReadOnly = true;
+            this.weightNormColumn.Width = 125;
+            // 
             // BalancedNutritionForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1447, 684);
+            this.ClientSize = new System.Drawing.Size(1822, 886);
+            this.Controls.Add(this.nutrientsGroupBox);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.groupNameLabel);
             this.Controls.Add(this.menuDateLabel);
             this.Controls.Add(this.idLabel);
             this.Controls.Add(this.menuLabel);
-            this.Controls.Add(this.nutrientListBox);
             this.Controls.Add(this.WarningLabel);
             this.Controls.Add(this.RoleLabel);
             this.Controls.Add(this.OutLabel);
@@ -378,6 +519,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.menuDataGridView)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.nutrientsGroupBox.ResumeLayout(false);
+            this.nutrientsGroupBox.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -399,7 +544,6 @@
         private ToolStripMenuItem плановоеМенюToolStripMenuItem;
         private ToolStripMenuItem списокБлюдToolStripMenuItem;
         private Label WarningLabel;
-        private ListBox nutrientListBox;
         private Label menuLabel;
         private Npgsql.NpgsqlCommandBuilder npgsqlCommandBuilder1;
         private Label idLabel;
@@ -407,10 +551,23 @@
         private Label groupNameLabel;
         private ToolStripMenuItem продуктToolStripMenuItem;
         private ToolStripMenuItem списокПродуктовToolStripMenuItem;
+        private Button button2;
+        private GroupBox nutrientsGroupBox;
         private DataGridViewTextBoxColumn Column1;
         private DataGridViewTextBoxColumn Column2;
         private DataGridViewTextBoxColumn Column3;
         private DataGridViewButtonColumn Column4;
-        private Button button2;
+        private DataGridView dataGridView2;
+        private DataGridViewTextBoxColumn dateColumn1;
+        private DataGridViewTextBoxColumn nutrientNameColumn;
+        private DataGridViewTextBoxColumn nutrientWeightColumn;
+        private DataGridViewTextBoxColumn nutrientWeightNormColumn;
+        private Label label2;
+        private Label label1;
+        private DataGridView dataGridView1;
+        private DataGridViewTextBoxColumn dateColumn;
+        private DataGridViewTextBoxColumn mealColumn;
+        private DataGridViewTextBoxColumn weightColumn;
+        private DataGridViewTextBoxColumn weightNormColumn;
     }
 }

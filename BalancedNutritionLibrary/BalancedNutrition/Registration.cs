@@ -68,7 +68,8 @@ namespace BalancedNutrition
                 else
                 {
                     if (PasswordTextBox1.Text == PasswordTextBox2.Text && LoginTextBox.Text != ""
-                        && RoleComboBox.Text != "" && PasswordTextBox1.Text != "" && PasswordTextBox2.Text != "")
+                        && RoleComboBox.Text != "" && PasswordTextBox1.Text != "" && PasswordTextBox2.Text != ""
+                        && db.Roles.Where(r => r.Name == RoleComboBox.Text).ToList().Count > 0)
                     {
                         MD5 mD5 = MD5.Create();
                         var hash = mD5.ComputeHash(Encoding.UTF8.GetBytes(PasswordTextBox1.Text));
@@ -102,6 +103,8 @@ namespace BalancedNutrition
                             WarningLabel.Text += "\nВ поле логин ничего не указано.";
                         if (RoleComboBox.Text == "")
                             WarningLabel.Text += "\nНе выбрана роль пользователя.";
+                        if (db.Roles.Where(r => r.Name == RoleComboBox.Text).ToList().Count == 0) 
+                            WarningLabel.Text += "\nРоль указана не верно.";
                     }
                 }
             }
