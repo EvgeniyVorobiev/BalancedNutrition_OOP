@@ -57,14 +57,14 @@
             this.groupNameLabel = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.nutrientsGroupBox = new System.Windows.Forms.GroupBox();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.nutrientsDataGridView = new System.Windows.Forms.DataGridView();
             this.dateColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nutrientNameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nutrientWeightColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nutrientWeightNormColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dishWeightDataGridView = new System.Windows.Forms.DataGridView();
             this.dateColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.mealColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.weightColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -73,8 +73,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.menuDataGridView)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.nutrientsGroupBox.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nutrientsDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dishWeightDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // LoginLinkLabel
@@ -357,35 +357,35 @@
             // nutrientsGroupBox
             // 
             this.nutrientsGroupBox.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.nutrientsGroupBox.Controls.Add(this.dataGridView2);
+            this.nutrientsGroupBox.Controls.Add(this.nutrientsDataGridView);
             this.nutrientsGroupBox.Controls.Add(this.label2);
             this.nutrientsGroupBox.Controls.Add(this.label1);
-            this.nutrientsGroupBox.Controls.Add(this.dataGridView1);
+            this.nutrientsGroupBox.Controls.Add(this.dishWeightDataGridView);
             this.nutrientsGroupBox.Location = new System.Drawing.Point(698, 175);
             this.nutrientsGroupBox.Name = "nutrientsGroupBox";
             this.nutrientsGroupBox.Size = new System.Drawing.Size(1114, 699);
             this.nutrientsGroupBox.TabIndex = 27;
             this.nutrientsGroupBox.TabStop = false;
             // 
-            // dataGridView2
+            // nutrientsDataGridView
             // 
-            this.dataGridView2.AllowUserToAddRows = false;
-            this.dataGridView2.AllowUserToDeleteRows = false;
-            this.dataGridView2.BackgroundColor = System.Drawing.SystemColors.Window;
-            this.dataGridView2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.nutrientsDataGridView.AllowUserToAddRows = false;
+            this.nutrientsDataGridView.AllowUserToDeleteRows = false;
+            this.nutrientsDataGridView.BackgroundColor = System.Drawing.SystemColors.Window;
+            this.nutrientsDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.nutrientsDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.nutrientsDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dateColumn1,
             this.nutrientNameColumn,
             this.nutrientWeightColumn,
             this.nutrientWeightNormColumn});
-            this.dataGridView2.Location = new System.Drawing.Point(589, 52);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.ReadOnly = true;
-            this.dataGridView2.RowHeadersWidth = 51;
-            this.dataGridView2.RowTemplate.Height = 29;
-            this.dataGridView2.Size = new System.Drawing.Size(525, 647);
-            this.dataGridView2.TabIndex = 3;
+            this.nutrientsDataGridView.Location = new System.Drawing.Point(589, 52);
+            this.nutrientsDataGridView.Name = "nutrientsDataGridView";
+            this.nutrientsDataGridView.ReadOnly = true;
+            this.nutrientsDataGridView.RowHeadersWidth = 51;
+            this.nutrientsDataGridView.RowTemplate.Height = 29;
+            this.nutrientsDataGridView.Size = new System.Drawing.Size(525, 647);
+            this.nutrientsDataGridView.TabIndex = 3;
             // 
             // dateColumn1
             // 
@@ -439,25 +439,25 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "Суммарные объёмы блюд по приёмам пищи";
             // 
-            // dataGridView1
+            // dishWeightDataGridView
             // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.Window;
-            this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dishWeightDataGridView.AllowUserToAddRows = false;
+            this.dishWeightDataGridView.AllowUserToDeleteRows = false;
+            this.dishWeightDataGridView.BackgroundColor = System.Drawing.SystemColors.Window;
+            this.dishWeightDataGridView.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.dishWeightDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dishWeightDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dateColumn,
             this.mealColumn,
             this.weightColumn,
             this.weightNormColumn});
-            this.dataGridView1.Location = new System.Drawing.Point(0, 52);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 29;
-            this.dataGridView1.Size = new System.Drawing.Size(560, 647);
-            this.dataGridView1.TabIndex = 0;
+            this.dishWeightDataGridView.Location = new System.Drawing.Point(0, 52);
+            this.dishWeightDataGridView.Name = "dishWeightDataGridView";
+            this.dishWeightDataGridView.ReadOnly = true;
+            this.dishWeightDataGridView.RowHeadersWidth = 51;
+            this.dishWeightDataGridView.RowTemplate.Height = 29;
+            this.dishWeightDataGridView.Size = new System.Drawing.Size(560, 647);
+            this.dishWeightDataGridView.TabIndex = 0;
             // 
             // dateColumn
             // 
@@ -521,8 +521,8 @@
             this.menuStrip1.PerformLayout();
             this.nutrientsGroupBox.ResumeLayout(false);
             this.nutrientsGroupBox.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nutrientsDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dishWeightDataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -557,14 +557,14 @@
         private DataGridViewTextBoxColumn Column2;
         private DataGridViewTextBoxColumn Column3;
         private DataGridViewButtonColumn Column4;
-        private DataGridView dataGridView2;
+        private DataGridView nutrientsDataGridView;
         private DataGridViewTextBoxColumn dateColumn1;
         private DataGridViewTextBoxColumn nutrientNameColumn;
         private DataGridViewTextBoxColumn nutrientWeightColumn;
         private DataGridViewTextBoxColumn nutrientWeightNormColumn;
         private Label label2;
         private Label label1;
-        private DataGridView dataGridView1;
+        private DataGridView dishWeightDataGridView;
         private DataGridViewTextBoxColumn dateColumn;
         private DataGridViewTextBoxColumn mealColumn;
         private DataGridViewTextBoxColumn weightColumn;

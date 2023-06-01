@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace BalancedNutritionLibrary
 {
-    public class menuResultSet
+    public class MenuResultSet
     {
-        public menuResultSet()
+        public MenuResultSet()
         {
             dishNutrients = new List<DishNutrients> {};
         }

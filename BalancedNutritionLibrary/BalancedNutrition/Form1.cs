@@ -1,6 +1,7 @@
 using BalancedNutritionLibrary;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
+using System.Windows.Forms;
 
 namespace BalancedNutrition
 {
@@ -8,7 +9,13 @@ namespace BalancedNutrition
     {
         public static string username = "";
         public static PlannedMenu menu = new PlannedMenu();
-        List<menuResultSet> menuResultSet = new List<menuResultSet>();
+        List<MenuResultSet> menuResultSet = new List<MenuResultSet>();
+        List<BalancedNutritionLibrary.Day> daysMenu = new List<BalancedNutritionLibrary.Day> { };
+        List<Meal> mealsMenu = new List<Meal> { };
+        List<Dish> dishesMenu = new List<Dish> { };
+        List<DayNutrients> dayNutrients = new List<DayNutrients>();
+        List<float> normNutrients = new List<float> {54, 60, 261, 1800,
+        50, 0.9f, 1, 500, 10, 900, 800, 200, 10, 600, 0.1f, 0.02f, 2};
 
         public BalancedNutritionForm()
         {
@@ -27,7 +34,7 @@ namespace BalancedNutrition
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            using (BalancedNutritionLibrary.AppContext db = new BalancedNutritionLibrary.AppContext()) 
+            using (BalancedNutritionLibrary.AppContext db = new BalancedNutritionLibrary.AppContext())
             {
                 Role role1 = new Role { Name = "Администратор" };
                 Role role2 = new Role { Name = "Диетолог" };
@@ -38,35 +45,38 @@ namespace BalancedNutrition
 
                 //db.Roles.AddRange(role1, role2, role3);
 
-                NutrientsDirectory nutrientsDirectory1 = new NutrientsDirectory { Name = "Белки" };
-                NutrientsDirectory nutrientsDirectory2 = new NutrientsDirectory { Name = "Жиры" };
-                NutrientsDirectory nutrientsDirectory3 = new NutrientsDirectory { Name = "Углероды" };
-                NutrientsDirectory nutrientsDirectory4 = new NutrientsDirectory { Name = "Калорийность" };
+                NutrientsDirectory nutrientsDirectory1 = new NutrientsDirectory { Name = "Белки (г/сут)" };
+                NutrientsDirectory nutrientsDirectory2 = new NutrientsDirectory { Name = "Жиры (г/сут)" };
+                NutrientsDirectory nutrientsDirectory3 = new NutrientsDirectory { Name = "Углероды (г/сут)" };
+                NutrientsDirectory nutrientsDirectory4 = new NutrientsDirectory { Name = "Калорийность (ккал/сут)" };
 
-                NutrientsDirectory nutrientsDirectory5 = new NutrientsDirectory { Name = "C" };
-                NutrientsDirectory nutrientsDirectory6 = new NutrientsDirectory { Name = "B1" };
-                NutrientsDirectory nutrientsDirectory7 = new NutrientsDirectory { Name = "B2" };
-                NutrientsDirectory nutrientsDirectory8 = new NutrientsDirectory { Name = "A" };
-                NutrientsDirectory nutrientsDirectory9 = new NutrientsDirectory { Name = "D" };
+                NutrientsDirectory nutrientsDirectory5 = new NutrientsDirectory { Name = "C (мг/сут)" };
+                NutrientsDirectory nutrientsDirectory6 = new NutrientsDirectory { Name = "B1 (мг/сут)" };
+                NutrientsDirectory nutrientsDirectory7 = new NutrientsDirectory { Name = "B2 (мг/сут)" };
+                NutrientsDirectory nutrientsDirectory8 = new NutrientsDirectory { Name = "A (рет.экв/сут)" };
+                NutrientsDirectory nutrientsDirectory9 = new NutrientsDirectory { Name = "D (мкг/сут)" };
 
-                NutrientsDirectory nutrientsDirectory10 = new NutrientsDirectory { Name = "Ca" };
-                NutrientsDirectory nutrientsDirectory11 = new NutrientsDirectory { Name = "P" };
-                NutrientsDirectory nutrientsDirectory12 = new NutrientsDirectory { Name = "Mg" };
-                NutrientsDirectory nutrientsDirectory13 = new NutrientsDirectory { Name = "Fe" };
-                NutrientsDirectory nutrientsDirectory14 = new NutrientsDirectory { Name = "K" };
-                NutrientsDirectory nutrientsDirectory15 = new NutrientsDirectory { Name = "I" };
-                NutrientsDirectory nutrientsDirectory16 = new NutrientsDirectory { Name = "Se" };
-                NutrientsDirectory nutrientsDirectory17 = new NutrientsDirectory { Name = "F" };
+                NutrientsDirectory nutrientsDirectory10 = new NutrientsDirectory { Name = "Ca (мг/сут)" };
+                NutrientsDirectory nutrientsDirectory11 = new NutrientsDirectory { Name = "P (мг/сут)" };
+                NutrientsDirectory nutrientsDirectory12 = new NutrientsDirectory { Name = "Mg (мг/сут)" };
+                NutrientsDirectory nutrientsDirectory13 = new NutrientsDirectory { Name = "Fe (мг/сут)" };
+                NutrientsDirectory nutrientsDirectory14 = new NutrientsDirectory { Name = "K (мг/сут)" };
+                NutrientsDirectory nutrientsDirectory15 = new NutrientsDirectory { Name = "I (мг/сут)" };
+                NutrientsDirectory nutrientsDirectory16 = new NutrientsDirectory { Name = "Se (мг/сут)" };
+                NutrientsDirectory nutrientsDirectory17 = new NutrientsDirectory { Name = "F (мг/сут)" };
+
+
 
                 /*                db.AddRange(nutrientsDirectory1, nutrientsDirectory2, nutrientsDirectory3, nutrientsDirectory4,
                                    nutrientsDirectory5, nutrientsDirectory6, nutrientsDirectory7, nutrientsDirectory8, nutrientsDirectory9,
                                    nutrientsDirectory10, nutrientsDirectory11, nutrientsDirectory12, nutrientsDirectory13, nutrientsDirectory14,
                                    nutrientsDirectory15, nutrientsDirectory16, nutrientsDirectory17);*/
+                //db.SaveChanges();
 
 
-                List<BalancedNutritionLibrary.Day> daysMenu = menu.Days.ToList();
-                List<Meal> mealsMenu = new List<Meal> { };
-                List<Dish> dishesMenu = new List<Dish> { };
+                daysMenu = menu.Days.ToList();
+                mealsMenu.Clear();
+                dishesMenu.Clear();
                 menuResultSet.Clear();
                 menuDataGridView.Rows.Clear();
 
@@ -89,7 +99,7 @@ namespace BalancedNutrition
                         foreach (Dish dish in meal.Dishes)
                         {
                             if (day.Id == meal.Day.Id)
-                                menuResultSet.Add(new menuResultSet()
+                                menuResultSet.Add(new MenuResultSet()
                                 {
                                     day = day,
                                     dish = dish,
@@ -101,28 +111,55 @@ namespace BalancedNutrition
                     }
                 }
 
-/*                foreach(Dish dish in dishesMenu)
-                {
-                    foreach (Meal meal in dish.Meals) 
-                    {
-                        foreach (BalancedNutritionLibrary.Day day in daysMenu)
-                        {
-                            if (day.Id == meal.Day.Id)
-                            menuResultSet.Add(new menuResultSet()
-                            {
-                                date = day.Date,
-                                dishName = dish.Name,
-                                mealName = meal.Name
-                            }
-                            );
-                        }  
-                    }
-                }*/
-
                 for (int i = 0; i < menuResultSet.Count; i++)
                 {
-                    menuDataGridView.Rows.Add(menuResultSet[i].day.Date, menuResultSet[i].meal.Name, menuResultSet[i].dish.Name, "Удалить");   
+                    menuDataGridView.Rows.Add(menuResultSet[i].day.Date, menuResultSet[i].meal.Name, menuResultSet[i].dish.Name, "Удалить");
                 }
+
+
+
+
+                dayNutrients.Clear();
+                nutrientsDataGridView.Rows.Clear();
+                for (int i = 0; i < daysMenu.Count; i++)
+                {
+                    dayNutrients.Add(new DayNutrients());
+                    dayNutrients[i].DayDate = daysMenu[i].Date;
+                    for (int j = 0; j < mealsMenu.Count; j++)
+                    {
+                        if (mealsMenu[j].Day.Id == daysMenu[i].Id)
+                        {
+                            for (int k = 0; k < mealsMenu[j].Dishes.Count; k++)
+                            {
+                                for (int l = 0; l < 17; l++)
+                                {
+                                    if (dayNutrients[i].Nutrients.Count < 17) { dayNutrients[i].Nutrients.Add(new Nutrient { }); }
+
+                                    dayNutrients[i].Nutrients[l].NutrientName = db.DishNutrients.Include(dn => dn.NutrientsDirectory)
+                                    .Include(dn => dn.Dish).Where(dn => dn.Dish.Id == mealsMenu[j].Dishes[k].Id)
+                                    .ToList()[l].NutrientsDirectory.Name;
+                                    dayNutrients[i].Nutrients[l].NutrientWeight += db.DishNutrients
+                                        .Where(dn => dn.Dish.Id == mealsMenu[j].Dishes[k].Id).ToList()[l].DishNutrientWeight;
+                                }
+
+                            }
+                        }
+                    }
+                }
+
+                for (int i = 0; i < dayNutrients.Count; i++)
+                {
+                    for (int j = 0; j < dayNutrients[i].Nutrients.Count; j++)
+                    {
+                        nutrientsDataGridView.Rows.Add(dayNutrients[i].DayDate, dayNutrients[i].Nutrients[j].NutrientName,
+                        dayNutrients[i].Nutrients[j].NutrientWeight, normNutrients[j]);
+                    }
+                }
+
+
+
+
+
 
 
                 //db.SaveChanges();
