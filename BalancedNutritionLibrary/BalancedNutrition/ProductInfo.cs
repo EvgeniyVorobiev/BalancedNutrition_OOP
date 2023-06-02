@@ -1,4 +1,5 @@
 ﻿using BalancedNutritionLibrary;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,6 +14,9 @@ namespace BalancedNutrition
 {
     public partial class ProductInfo : Form
     {
+        public Product selectedProduct = new Product();
+        public ProductList productList1 = new ProductList();
+        
         public ProductInfo()
         {
             InitializeComponent();
@@ -28,6 +32,7 @@ namespace BalancedNutrition
             using (BalancedNutritionLibrary.AppContext db = new BalancedNutritionLibrary.AppContext())
             {
                 ProductList productList = (ProductList)Owner;
+                productList1 = productList;
                 Product selectedProduct = productList.selectedProduct;
 
                 productNameTextBox.Text = selectedProduct.Name;
@@ -53,6 +58,19 @@ namespace BalancedNutrition
                 ITextBox.Text = productNutrients[14].ProductNutrientWeight.ToString();
                 SeTextBox.Text = productNutrients[15].ProductNutrientWeight.ToString();
                 FTextBox.Text = productNutrients[16].ProductNutrientWeight.ToString();
+            }
+        }
+
+        private void deleteButton_Click(object sender, EventArgs e)
+        {
+            using (BalancedNutritionLibrary.AppContext db = new BalancedNutritionLibrary.AppContext())
+            {
+                db.ProductNutrients.RemoveRange(db.Products.Include(p => p.ProductNutrients).Where(p => p.Name == productNameTextBox.Text).ToList()[0].ProductNutrients.ToList());
+                db.Products.Remove(db.Products.Include(p => p.ProductNutrients).Where(p => p.Name == productNameTextBox.Text).ToList()[0]);
+                
+                db.SaveChanges();
+                productList1.RefreshProducts();
+                Close();
             }
         }
     }

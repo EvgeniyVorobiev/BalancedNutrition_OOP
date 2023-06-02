@@ -16,7 +16,20 @@ namespace BalancedNutrition
     public partial class ProductList : Form
     {
         public Product selectedProduct = new Product();
-        readonly List<Product> products = new List<Product> { };
+        public List<Product> products = new List<Product> { };
+        public void RefreshProducts() 
+        {
+            listBox1.Items.Clear();
+            using (BalancedNutritionLibrary.AppContext db = new BalancedNutritionLibrary.AppContext())
+            {
+                products = db.Products.ToList();
+                List<string> productNames = new List<string>();
+                foreach (Product p in products)
+                {
+                    listBox1.Items.Add(p.Name);
+                }
+            }
+        }
         public ProductList()
         {
             InitializeComponent();

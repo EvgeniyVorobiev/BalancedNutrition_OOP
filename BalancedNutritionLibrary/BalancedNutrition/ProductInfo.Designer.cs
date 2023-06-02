@@ -67,6 +67,7 @@
             this.productNameTextBox = new System.Windows.Forms.TextBox();
             this.productNameLabel = new System.Windows.Forms.Label();
             this.productLabel = new System.Windows.Forms.Label();
+            this.deleteButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // FTextBox
@@ -442,11 +443,23 @@
             this.productLabel.Text = "Информация о продукте";
             this.productLabel.Click += new System.EventHandler(this.productCreationLabel_Click);
             // 
+            // deleteButton
+            // 
+            this.deleteButton.ForeColor = System.Drawing.Color.Red;
+            this.deleteButton.Location = new System.Drawing.Point(16, 379);
+            this.deleteButton.Name = "deleteButton";
+            this.deleteButton.Size = new System.Drawing.Size(189, 29);
+            this.deleteButton.TabIndex = 79;
+            this.deleteButton.Text = "Удалить";
+            this.deleteButton.UseVisualStyleBackColor = true;
+            this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
+            // 
             // ProductInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(943, 420);
+            this.Controls.Add(this.deleteButton);
             this.Controls.Add(this.FTextBox);
             this.Controls.Add(this.FLabel);
             this.Controls.Add(this.MgTextBox);
@@ -538,5 +551,6 @@
         private TextBox productNameTextBox;
         private Label productNameLabel;
         private Label productLabel;
+        private Button deleteButton;
     }
 }

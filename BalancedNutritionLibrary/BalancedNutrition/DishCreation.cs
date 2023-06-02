@@ -150,6 +150,8 @@ namespace BalancedNutrition
                 technologyTextBox.Clear();
                 characteristicTextBox.Clear();
 
+                ingredientListBox.Items.Clear();
+
                 WarningLabel.ForeColor = Color.Green;
                 WarningLabel.Text = "Блюдо добавлено в базу данных";
                 WarningLabel.Visible = true;

@@ -68,6 +68,7 @@
             this.MgLabel = new System.Windows.Forms.Label();
             this.FTextBox = new System.Windows.Forms.TextBox();
             this.FLabel = new System.Windows.Forms.Label();
+            this.infoLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // productCreationLabel
@@ -395,11 +396,20 @@
             this.FLabel.TabIndex = 38;
             this.FLabel.Text = "F, мг";
             // 
+            // infoLabel
+            // 
+            this.infoLabel.AutoSize = true;
+            this.infoLabel.Location = new System.Drawing.Point(24, 385);
+            this.infoLabel.Name = "infoLabel";
+            this.infoLabel.Size = new System.Drawing.Size(0, 23);
+            this.infoLabel.TabIndex = 40;
+            // 
             // ProductCreation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(705, 495);
+            this.Controls.Add(this.infoLabel);
             this.Controls.Add(this.FTextBox);
             this.Controls.Add(this.FLabel);
             this.Controls.Add(this.MgTextBox);
@@ -493,5 +503,6 @@
         private Label MgLabel;
         private TextBox FTextBox;
         private Label FLabel;
+        private Label infoLabel;
     }
 }
