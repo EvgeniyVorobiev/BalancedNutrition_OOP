@@ -1,4 +1,5 @@
 ﻿using BalancedNutritionLibrary;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using System;
 using System.Collections.Generic;
@@ -19,24 +20,14 @@ namespace BalancedNutrition
         public MenuCreation()
         {
             InitializeComponent();
-        }
-
-        private void groupCheckBox_CheckedChanged(object sender, EventArgs e)
-        {
-            if (groupCheckBox.Checked == true)
+            using (BalancedNutritionLibrary.AppContext db = new BalancedNutritionLibrary.AppContext())
             {
-                servingsNumberLabel.Visible = true;
-                servingsNumberTextBox.Visible = true;
+                List<Group> groups = db.Groups.ToList();
+                foreach (Group group in groups)
+                {
+                    groupComboBox.Items.Add(group.Name);
+                }
             }
-            else
-            {
-                servingsNumberTextBox.Visible = false;
-                servingsNumberLabel.Visible = false;
-            }
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
 
         }
 
@@ -52,51 +43,23 @@ namespace BalancedNutrition
             {
                 DateTime beginDate = beginingDateTimePicker.Value;
                 DateTime endDate = endDateTimePicker.Value;
-                string groupName = groupTextBox.Text;
+                string groupName = groupComboBox.Text;
                 string userName = BalancedNutritionForm.username;
                 List<User> users = db.Users.Where(u => u.Login == userName).ToList();
                 User user = users[0];
-                if (groupCheckBox.Checked == true)
+                if (beginDate < endDate && groupName != "")
                 {
-                    int servingsNumber = Convert.ToInt32(servingsNumberTextBox.Text);
-                    PlannedMenu plannedMenu = new PlannedMenu { BeginingDate = beginDate, EndDate = endDate,
-                        User = user, Group = new Group(), Days = new List<BalancedNutritionLibrary.Day> { }
+                    PlannedMenu plannedMenu = new PlannedMenu
+                    {
+                        BeginingDate = beginDate,
+                        EndDate = endDate,
+                        User = user,
+                        Group = new Group(),
+                        Days = new List<BalancedNutritionLibrary.Day> { }
                     };
-                    Group group = new Group { Name = groupName, NumberOfServings = servingsNumber,
-                        PlannedMenus = new List<PlannedMenu>() };
-                    plannedMenu.Group = group;
-
-                    for (int i = 0; i <= Convert.ToInt32((endDate.Date - beginDate.Date).Days); i++)
+                    if (db.Groups.Where(g => g.Name == groupName).ToList().Count > 0)
                     {
-                        DateTime date = beginDate.AddDays(i);
-                        BalancedNutritionLibrary.Day day = new BalancedNutritionLibrary.Day
-                        { Date = date, PlannedMenu = plannedMenu, Meals = new List<Meal> { } };
-                        if (mealCheckBox1.Checked == true) day.Meals.Add(new Meal { Name = "Завтрак", Dishes = new List<Dish> {} });
-                        if (mealCheckBox1.Checked == true) day.Meals.Add(new Meal { Name = "Обед", Dishes = new List<Dish> { } });
-                        if (mealCheckBox1.Checked == true) day.Meals.Add(new Meal { Name = "Полдник", Dishes = new List<Dish> { } });
-                        if (mealCheckBox1.Checked == true) day.Meals.Add(new Meal { Name = "Ужин", Dishes = new List<Dish> { } });
-                        //db.Days.Add(day);
-                        plannedMenu.Days.Add(day);
-                        //db.SaveChanges();
-                    }
-                    foreach (BalancedNutritionLibrary.Day d in db.Days.Where(d => d.PlannedMenu == plannedMenu))
-                    {
-                        days.Add(Convert.ToString(d.Date.Day)+ "." + Convert.ToString(d.Date.Month) + "." + Convert.ToString(d.Date.Year)); 
-                    }
-                    db.Add(plannedMenu);
-                    db.SaveChanges();
-                    menu = plannedMenu;
-                    Close();
-                }
-                else
-                {
-                    PlannedMenu plannedMenu = new PlannedMenu { BeginingDate = beginDate, EndDate = endDate,
-                    User = user, Group = new Group(), Days = new List<BalancedNutritionLibrary.Day> { }
-                    };
-                    List <Group> groups= db.Groups.Where(g => g.Name == groupName).ToList();
-                    if (groups.Count > 0)
-                    {
-                        Group group = groups[0];
+                        Group group = db.Groups.Where(g => g.Name == groupName).ToList().Last();
                         plannedMenu.Group = group;
 
                         for (int i = 0; i <= Convert.ToInt32((endDate.Date - beginDate.Date).Days); i++)
@@ -108,11 +71,11 @@ namespace BalancedNutrition
                             if (mealCheckBox1.Checked == true) day.Meals.Add(new Meal { Name = "Обед", Dishes = new List<Dish> { } });
                             if (mealCheckBox1.Checked == true) day.Meals.Add(new Meal { Name = "Полдник", Dishes = new List<Dish> { } });
                             if (mealCheckBox1.Checked == true) day.Meals.Add(new Meal { Name = "Ужин", Dishes = new List<Dish> { } });
-                         //   db.Days.Add(day);
+                            //   db.Days.Add(day);
                             plannedMenu.Days.Add(day);
-                         //   db.SaveChanges();
+                            //   db.SaveChanges();
                         }
-                        
+
                         foreach (BalancedNutritionLibrary.Day d in db.Days.Where(d => d.PlannedMenu == plannedMenu))
                         {
                             days.Add(Convert.ToString(d.Date.Day) + "." + Convert.ToString(d.Date.Month) + "." + Convert.ToString(d.Date.Year));
@@ -122,13 +85,17 @@ namespace BalancedNutrition
                         menu = plannedMenu;
                         Close();
                     }
-                    else 
-                    { 
-                    
+                    else
+                    {
+
                         warningLabel.Text = "Группа не найдена";
                         warningLabel.Visible = true;
                     }
-                    
+                }
+                else
+                {
+                    warningLabel.Text = "Проверьте правильность введённых данных";
+                    warningLabel.Visible = true;
                 }
             }
         }
@@ -136,6 +103,31 @@ namespace BalancedNutrition
         private void mealCheckBox1_CheckedChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void groupComboBox_TextUpdate(object sender, EventArgs e)
+        {
+            using (BalancedNutritionLibrary.AppContext db = new BalancedNutritionLibrary.AppContext())
+            {
+                if (groupComboBox.Text != "") 
+                {
+                    groupComboBox.Items.Clear();
+                    List<Group> groups = db.Groups.Where(g => EF.Functions.Like(g.Name, "%" + groupComboBox.Text + "%")).ToList();
+                    foreach (Group group in groups)
+                    {
+                        groupComboBox.Items.Add(group.Name);
+                    } 
+                }
+                else if (groupComboBox.Text == "")
+                {
+                    groupComboBox.Items.Clear();
+                    List<Group> groups = db.Groups.ToList();
+                    foreach (Group group in groups)
+                    {
+                        groupComboBox.Items.Add(group.Name);
+                    }
+                }
+            }
         }
     }
 }

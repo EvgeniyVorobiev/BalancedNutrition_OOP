@@ -33,23 +33,20 @@
             this.endDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.beginLabel = new System.Windows.Forms.Label();
             this.endLabel = new System.Windows.Forms.Label();
-            this.groupTextBox = new System.Windows.Forms.TextBox();
             this.groupLabel = new System.Windows.Forms.Label();
-            this.servingsNumberLabel = new System.Windows.Forms.Label();
-            this.servingsNumberTextBox = new System.Windows.Forms.TextBox();
-            this.groupCheckBox = new System.Windows.Forms.CheckBox();
             this.menuCreationLabel = new System.Windows.Forms.Label();
             this.warningLabel = new System.Windows.Forms.Label();
             this.mealCheckBox1 = new System.Windows.Forms.CheckBox();
             this.mealCheckBox2 = new System.Windows.Forms.CheckBox();
             this.mealCheckBox3 = new System.Windows.Forms.CheckBox();
             this.mealCheckBox4 = new System.Windows.Forms.CheckBox();
+            this.groupComboBox = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // createButton
             // 
             this.createButton.Font = new System.Drawing.Font("Arial", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.createButton.Location = new System.Drawing.Point(106, 501);
+            this.createButton.Location = new System.Drawing.Point(106, 396);
             this.createButton.Name = "createButton";
             this.createButton.Size = new System.Drawing.Size(236, 51);
             this.createButton.TabIndex = 0;
@@ -89,51 +86,14 @@
             this.endLabel.TabIndex = 4;
             this.endLabel.Text = "Дата окончания";
             // 
-            // groupTextBox
-            // 
-            this.groupTextBox.Location = new System.Drawing.Point(294, 298);
-            this.groupTextBox.Name = "groupTextBox";
-            this.groupTextBox.Size = new System.Drawing.Size(139, 30);
-            this.groupTextBox.TabIndex = 5;
-            // 
             // groupLabel
             // 
             this.groupLabel.AutoSize = true;
             this.groupLabel.Location = new System.Drawing.Point(23, 298);
             this.groupLabel.Name = "groupLabel";
-            this.groupLabel.Size = new System.Drawing.Size(257, 23);
+            this.groupLabel.Size = new System.Drawing.Size(164, 23);
             this.groupLabel.TabIndex = 6;
-            this.groupLabel.Text = "Напишите название группы";
-            // 
-            // servingsNumberLabel
-            // 
-            this.servingsNumberLabel.AutoSize = true;
-            this.servingsNumberLabel.Location = new System.Drawing.Point(23, 402);
-            this.servingsNumberLabel.Name = "servingsNumberLabel";
-            this.servingsNumberLabel.Size = new System.Drawing.Size(265, 23);
-            this.servingsNumberLabel.TabIndex = 7;
-            this.servingsNumberLabel.Text = "Введите количество порций";
-            this.servingsNumberLabel.Visible = false;
-            // 
-            // servingsNumberTextBox
-            // 
-            this.servingsNumberTextBox.Location = new System.Drawing.Point(294, 399);
-            this.servingsNumberTextBox.Name = "servingsNumberTextBox";
-            this.servingsNumberTextBox.Size = new System.Drawing.Size(139, 30);
-            this.servingsNumberTextBox.TabIndex = 8;
-            this.servingsNumberTextBox.Visible = false;
-            this.servingsNumberTextBox.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
-            // 
-            // groupCheckBox
-            // 
-            this.groupCheckBox.AutoSize = true;
-            this.groupCheckBox.Location = new System.Drawing.Point(23, 351);
-            this.groupCheckBox.Name = "groupCheckBox";
-            this.groupCheckBox.Size = new System.Drawing.Size(382, 27);
-            this.groupCheckBox.TabIndex = 9;
-            this.groupCheckBox.Text = "Нажмите, если группа ещё не создана";
-            this.groupCheckBox.UseVisualStyleBackColor = true;
-            this.groupCheckBox.CheckedChanged += new System.EventHandler(this.groupCheckBox_CheckedChanged);
+            this.groupLabel.Text = "Выберите группу";
             // 
             // menuCreationLabel
             // 
@@ -150,7 +110,7 @@
             this.warningLabel.AutoSize = true;
             this.warningLabel.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.warningLabel.ForeColor = System.Drawing.Color.Red;
-            this.warningLabel.Location = new System.Drawing.Point(23, 459);
+            this.warningLabel.Location = new System.Drawing.Point(23, 357);
             this.warningLabel.Name = "warningLabel";
             this.warningLabel.Size = new System.Drawing.Size(62, 23);
             this.warningLabel.TabIndex = 11;
@@ -198,22 +158,28 @@
             this.mealCheckBox4.Text = "Ужин";
             this.mealCheckBox4.UseVisualStyleBackColor = true;
             // 
+            // groupComboBox
+            // 
+            this.groupComboBox.FormattingEnabled = true;
+            this.groupComboBox.Location = new System.Drawing.Point(193, 295);
+            this.groupComboBox.Name = "groupComboBox";
+            this.groupComboBox.Size = new System.Drawing.Size(240, 31);
+            this.groupComboBox.TabIndex = 16;
+            this.groupComboBox.TextUpdate += new System.EventHandler(this.groupComboBox_TextUpdate);
+            // 
             // MenuCreation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(448, 564);
+            this.ClientSize = new System.Drawing.Size(448, 468);
+            this.Controls.Add(this.groupComboBox);
             this.Controls.Add(this.mealCheckBox4);
             this.Controls.Add(this.mealCheckBox3);
             this.Controls.Add(this.mealCheckBox2);
             this.Controls.Add(this.mealCheckBox1);
             this.Controls.Add(this.warningLabel);
             this.Controls.Add(this.menuCreationLabel);
-            this.Controls.Add(this.groupCheckBox);
-            this.Controls.Add(this.servingsNumberTextBox);
-            this.Controls.Add(this.servingsNumberLabel);
             this.Controls.Add(this.groupLabel);
-            this.Controls.Add(this.groupTextBox);
             this.Controls.Add(this.endLabel);
             this.Controls.Add(this.beginLabel);
             this.Controls.Add(this.endDateTimePicker);
@@ -237,16 +203,13 @@
         private DateTimePicker endDateTimePicker;
         private Label beginLabel;
         private Label endLabel;
-        private TextBox groupTextBox;
         private Label groupLabel;
-        private Label servingsNumberLabel;
-        private TextBox servingsNumberTextBox;
-        private CheckBox groupCheckBox;
         private Label menuCreationLabel;
         private Label warningLabel;
         private CheckBox mealCheckBox1;
         private CheckBox mealCheckBox2;
         private CheckBox mealCheckBox3;
         private CheckBox mealCheckBox4;
+        private ComboBox groupComboBox;
     }
 }

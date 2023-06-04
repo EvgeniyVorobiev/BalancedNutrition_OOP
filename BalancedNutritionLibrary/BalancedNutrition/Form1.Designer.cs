@@ -69,6 +69,7 @@
             this.mealColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.weightColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.weightNormColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.группуToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.LoginPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.menuDataGridView)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -225,6 +226,7 @@
             // 
             this.создатьToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.менюToolStripMenuItem,
+            this.группуToolStripMenuItem,
             this.блюдоToolStripMenuItem,
             this.продуктToolStripMenuItem});
             this.создатьToolStripMenuItem.Name = "создатьToolStripMenuItem";
@@ -491,6 +493,13 @@
             this.weightNormColumn.ReadOnly = true;
             this.weightNormColumn.Width = 125;
             // 
+            // группуToolStripMenuItem
+            // 
+            this.группуToolStripMenuItem.Name = "группуToolStripMenuItem";
+            this.группуToolStripMenuItem.Size = new System.Drawing.Size(235, 28);
+            this.группуToolStripMenuItem.Text = "группу";
+            this.группуToolStripMenuItem.Click += new System.EventHandler(this.группуToolStripMenuItem_Click);
+            // 
             // BalancedNutritionForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -569,5 +578,6 @@
         private DataGridViewTextBoxColumn mealColumn;
         private DataGridViewTextBoxColumn weightColumn;
         private DataGridViewTextBoxColumn weightNormColumn;
+        private ToolStripMenuItem группуToolStripMenuItem;
     }
 }

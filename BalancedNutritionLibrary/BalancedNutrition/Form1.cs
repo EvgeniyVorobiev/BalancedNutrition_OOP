@@ -249,11 +249,14 @@ namespace BalancedNutrition
                 }
                 menuDataGridView.Rows.Add(days);
                 menu = menuCreation.menu;
+                if (menu.Id != 0) 
+                { 
                 idLabel.Text = "ID " + menu.Id;
                 menuDateLabel.Text = menu.BeginingDate.Day.ToString() +"." + menu.BeginingDate.Month +
                     "." + menu.BeginingDate.Year + "-" + menu.EndDate.Day + "." +
                     menu.EndDate.Month + "." + menu.EndDate.Year;
                 groupNameLabel.Text = "Ãðóïïà " + menu.Group.Name;
+                }
             }
             else
             {
@@ -350,11 +353,14 @@ namespace BalancedNutrition
                 OpenPlannedMenu openPlannedMenu = new OpenPlannedMenu();
                 openPlannedMenu.ShowDialog();
                 //menu = openPlannedMenu.menu;
-                idLabel.Text = "ID " + menu.Id;
-                menuDateLabel.Text = menu.BeginingDate.Day.ToString() + "." + menu.BeginingDate.Month +
-                    "." + menu.BeginingDate.Year + "-" + menu.EndDate.Day + "." +
-                    menu.EndDate.Month + "." + menu.EndDate.Year;
-                groupNameLabel.Text = "Ãðóïïà " + menu.Group.Name;
+                if (menu.Id != 0)
+                {
+                    idLabel.Text = "ID " + menu.Id;
+                    menuDateLabel.Text = menu.BeginingDate.Day.ToString() + "." + menu.BeginingDate.Month +
+                        "." + menu.BeginingDate.Year + "-" + menu.EndDate.Day + "." +
+                        menu.EndDate.Month + "." + menu.EndDate.Year;
+                    groupNameLabel.Text = "Ãðóïïà " + menu.Group.Name;
+                }
             }
             else
             {
@@ -377,6 +383,12 @@ namespace BalancedNutrition
                 dishToMeal.PlannedMenuLoad(menu);
                 dishToMeal.ShowDialog();
             }
+        }
+
+        private void ãðóïïóToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            GroupCreation groupCreation = new GroupCreation();
+            groupCreation.ShowDialog();
         }
     }
 }

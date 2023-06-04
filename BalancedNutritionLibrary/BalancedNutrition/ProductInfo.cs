@@ -68,6 +68,7 @@ namespace BalancedNutrition
                 db.ProductNutrients.RemoveRange(db.Products.Include(p => p.ProductNutrients).Where(p => p.Name == productNameTextBox.Text).ToList()[0].ProductNutrients.ToList());
                 db.Products.Remove(db.Products.Include(p => p.ProductNutrients).Where(p => p.Name == productNameTextBox.Text).ToList()[0]);
                 
+
                 db.SaveChanges();
                 productList1.RefreshProducts();
                 Close();
