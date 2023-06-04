@@ -152,7 +152,7 @@ namespace BalancedNutritionLibrary
 
             modelBuilder.Entity<Product>()
                 .HasMany(product => product.Ingredients)
-                .WithMany(i => i.Products);
+                .WithOne(i => i.Product);
             modelBuilder.Entity<Product>()
                 .HasKey(product => product.Id);
             modelBuilder.Entity<Product>()

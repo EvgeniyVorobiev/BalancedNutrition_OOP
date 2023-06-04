@@ -215,24 +215,24 @@ namespace BalancedNutrition
                         db.SaveChanges();
 
                         nameTextBox.Clear();
-                        weightTextBox.Clear();
-                        proteinTextBox.Clear();
-                        fatsTextBox.Clear();
-                        carbsTextBox.Clear();
-                        caloriesTextBox.Clear();
-                        CTextBox.Clear();
-                        B1TextBox.Clear();
-                        B2TextBox.Clear();
-                        ATextBox.Clear();
-                        DTextBox.Clear();
-                        CaTextBox.Clear();
-                        PTextBox.Clear();
-                        MgTextBox.Clear();
-                        FeTextBox.Clear();
-                        KTextBox.Clear();
-                        ITextBox.Clear();
-                        SeTextBox.Clear();
-                        FTextBox.Clear();
+                        weightTextBox.Text = "0";
+                        proteinTextBox.Text = "0";
+                        fatsTextBox.Text = "0";
+                        carbsTextBox.Text = "0";
+                        caloriesTextBox.Text = "0";
+                        CTextBox.Text = "0";
+                        B1TextBox.Text = "0";
+                        B2TextBox.Text = "0";
+                        ATextBox.Text = "0";
+                        DTextBox.Text = "0";
+                        CaTextBox.Text = "0";
+                        PTextBox.Text = "0";
+                        MgTextBox.Text = "0";
+                        FeTextBox.Text = "0";
+                        KTextBox.Text = "0";
+                        ITextBox.Text = "0";
+                        SeTextBox.Text = "0";
+                        FTextBox.Text = "0";
                         technologyTextBox.Clear();
                         characteristicTextBox.Clear();
 
@@ -267,6 +267,34 @@ namespace BalancedNutrition
             {
                 ingredientListBox.Items.Add(IngregientCreation.ingredients[i].Name);
             }
+            float productWeight = 0;
+            float proteinWeight = 0;
+            float fatsWeight = 0;
+            float carbsWeight = 0;
+            float caloriesWeight = 0;
+
+            float CWeight = 0;
+            float B1Weight = 0;
+            float B2Weight = 0;
+            float AWeight = 0;
+            float DWeight = 0;
+
+            float CaWeight = 0;
+            float PWeight = 0;
+            float MgWeight = 0;
+            float FeWeight = 0;
+            float KWeight = 0;
+            float IWeight = 0;
+            float SeWeight = 0;
+            float FWeight = 0;
+            foreach (Ingredient ingredient in IngregientCreation.ingredients)
+            {
+                productWeight += ingredient.Product.Weight;
+                proteinWeight += ingredient.Product.ProductNutrients[0].ProductNutrientWeight;
+            }
+            weightTextBox.Text = productWeight.ToString();
+            proteinTextBox.Text = proteinWeight.ToString();
+
         }
 
         private void ingridientListBox_SelectedIndexChanged(object sender, EventArgs e)

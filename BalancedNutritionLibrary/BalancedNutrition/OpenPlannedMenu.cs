@@ -31,7 +31,7 @@ namespace BalancedNutrition
                 {
                     if (db.PlannedMenus.Where(pm => pm.Id == Convert.ToInt32(plannedMenuTextBox.Text)).ToList().Count > 0 )
                     {
-                        menu = db.PlannedMenus.Include(pm => pm.Days).Where(pm => pm.Id == Convert.ToInt32(plannedMenuTextBox.Text)).First();
+                        menu = db.PlannedMenus.Include(pm => pm.Days).Include(pm => pm.Group).Where(pm => pm.Id == Convert.ToInt32(plannedMenuTextBox.Text)).First();
                         days = db.Days.Include(d => d.Meals).Where(d => d.PlannedMenu.Id == menu.Id).ToList();
                         menu.Days = days;
                         Group groupPM = new Group();

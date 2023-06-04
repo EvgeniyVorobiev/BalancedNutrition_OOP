@@ -67,10 +67,23 @@ namespace BalancedNutrition
                             DateTime date = beginDate.AddDays(i);
                             BalancedNutritionLibrary.Day day = new BalancedNutritionLibrary.Day
                             { Date = date, PlannedMenu = plannedMenu, Meals = new List<Meal>() };
-                            if (mealCheckBox1.Checked == true) day.Meals.Add(new Meal { Name = "Завтрак", Dishes = new List<Dish> { } });
-                            if (mealCheckBox1.Checked == true) day.Meals.Add(new Meal { Name = "Обед", Dishes = new List<Dish> { } });
-                            if (mealCheckBox1.Checked == true) day.Meals.Add(new Meal { Name = "Полдник", Dishes = new List<Dish> { } });
-                            if (mealCheckBox1.Checked == true) day.Meals.Add(new Meal { Name = "Ужин", Dishes = new List<Dish> { } });
+                            if (mealCheckBox1.Checked == true)
+                            {
+                                day.Meals.Add(new Meal { Name = "Завтрак", Dishes = new List<Dish> { } });
+                            }
+                            if (mealCheckBox2.Checked == true) { day.Meals.Add(new Meal 
+                            {
+                                Name = "Обед", Dishes = new List<Dish> { } }); 
+                            }
+
+                            if (mealCheckBox3.Checked == true)
+                            {
+                                day.Meals.Add(new Meal { Name = "Полдник", Dishes = new List<Dish> { } });
+                            }
+                            if (mealCheckBox4.Checked == true)
+                            {
+                                day.Meals.Add(new Meal { Name = "Ужин", Dishes = new List<Dish> { } });
+                            }
                             //   db.Days.Add(day);
                             plannedMenu.Days.Add(day);
                             //   db.SaveChanges();

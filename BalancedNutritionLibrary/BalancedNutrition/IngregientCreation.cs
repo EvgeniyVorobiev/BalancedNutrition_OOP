@@ -51,7 +51,7 @@ namespace BalancedNutrition
                         string cookingMethod = methodComboBox.Text;
                         float weightWaste = (float)Convert.ToDecimal(wasteTextBox.Text);
 
-                        Product product = db.Products.Where(p => p.Name == productName).ToList()[0];
+                        Product product = db.Products.Include(p => p.ProductNutrients).Where(p => p.Name == productName).ToList()[0];
                         float productWeight = product.Weight;
 
                         Ingredient ingredient = new Ingredient
@@ -59,7 +59,8 @@ namespace BalancedNutrition
                             Name = ingredientName,
                             CookingMethod = cookingMethod,
                             IngredientWaste = weightWaste,
-                            WastePercent = (((productWeight - weightWaste) * 100) / productWeight)
+                            WastePercent = (((productWeight - weightWaste) * 100) / productWeight),
+                            Product = product
                         };
                         ingredients.Add(ingredient);
                         db.SaveChanges();

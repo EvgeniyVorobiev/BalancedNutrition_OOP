@@ -175,6 +175,7 @@
             this.weightTextBox.Name = "weightTextBox";
             this.weightTextBox.Size = new System.Drawing.Size(220, 30);
             this.weightTextBox.TabIndex = 9;
+            this.weightTextBox.Text = "0";
             // 
             // technologyTextBox
             // 
@@ -240,6 +241,7 @@
             this.FTextBox.Name = "FTextBox";
             this.FTextBox.Size = new System.Drawing.Size(75, 30);
             this.FTextBox.TabIndex = 77;
+            this.FTextBox.Text = "0";
             // 
             // FLabel
             // 
@@ -256,6 +258,7 @@
             this.MgTextBox.Name = "MgTextBox";
             this.MgTextBox.Size = new System.Drawing.Size(75, 30);
             this.MgTextBox.TabIndex = 75;
+            this.MgTextBox.Text = "0";
             // 
             // MgLabel
             // 
@@ -272,6 +275,7 @@
             this.PTextBox.Name = "PTextBox";
             this.PTextBox.Size = new System.Drawing.Size(75, 30);
             this.PTextBox.TabIndex = 73;
+            this.PTextBox.Text = "0";
             // 
             // PLabel
             // 
@@ -288,6 +292,7 @@
             this.SeTextBox.Name = "SeTextBox";
             this.SeTextBox.Size = new System.Drawing.Size(75, 30);
             this.SeTextBox.TabIndex = 71;
+            this.SeTextBox.Text = "0";
             // 
             // SeLabel
             // 
@@ -304,6 +309,7 @@
             this.ITextBox.Name = "ITextBox";
             this.ITextBox.Size = new System.Drawing.Size(75, 30);
             this.ITextBox.TabIndex = 69;
+            this.ITextBox.Text = "0";
             // 
             // ILabel
             // 
@@ -320,6 +326,7 @@
             this.KTextBox.Name = "KTextBox";
             this.KTextBox.Size = new System.Drawing.Size(75, 30);
             this.KTextBox.TabIndex = 67;
+            this.KTextBox.Text = "0";
             // 
             // KLabel
             // 
@@ -336,6 +343,7 @@
             this.FeTextBox.Name = "FeTextBox";
             this.FeTextBox.Size = new System.Drawing.Size(75, 30);
             this.FeTextBox.TabIndex = 65;
+            this.FeTextBox.Text = "0";
             // 
             // FeLabel
             // 
@@ -352,6 +360,7 @@
             this.CaTextBox.Name = "CaTextBox";
             this.CaTextBox.Size = new System.Drawing.Size(75, 30);
             this.CaTextBox.TabIndex = 63;
+            this.CaTextBox.Text = "0";
             // 
             // CaLabel
             // 
@@ -368,6 +377,7 @@
             this.DTextBox.Name = "DTextBox";
             this.DTextBox.Size = new System.Drawing.Size(75, 30);
             this.DTextBox.TabIndex = 61;
+            this.DTextBox.Text = "0";
             // 
             // Dlabel
             // 
@@ -384,6 +394,7 @@
             this.ATextBox.Name = "ATextBox";
             this.ATextBox.Size = new System.Drawing.Size(75, 30);
             this.ATextBox.TabIndex = 59;
+            this.ATextBox.Text = "0";
             // 
             // ALabel
             // 
@@ -400,6 +411,7 @@
             this.CTextBox.Name = "CTextBox";
             this.CTextBox.Size = new System.Drawing.Size(75, 30);
             this.CTextBox.TabIndex = 57;
+            this.CTextBox.Text = "0";
             // 
             // B2TextBox
             // 
@@ -407,6 +419,7 @@
             this.B2TextBox.Name = "B2TextBox";
             this.B2TextBox.Size = new System.Drawing.Size(75, 30);
             this.B2TextBox.TabIndex = 56;
+            this.B2TextBox.Text = "0";
             // 
             // B1TextBox
             // 
@@ -414,6 +427,7 @@
             this.B1TextBox.Name = "B1TextBox";
             this.B1TextBox.Size = new System.Drawing.Size(75, 30);
             this.B1TextBox.TabIndex = 55;
+            this.B1TextBox.Text = "0";
             // 
             // caloriesTextBox
             // 
@@ -421,6 +435,7 @@
             this.caloriesTextBox.Name = "caloriesTextBox";
             this.caloriesTextBox.Size = new System.Drawing.Size(75, 30);
             this.caloriesTextBox.TabIndex = 54;
+            this.caloriesTextBox.Text = "0";
             // 
             // carbsTextBox
             // 
@@ -428,6 +443,7 @@
             this.carbsTextBox.Name = "carbsTextBox";
             this.carbsTextBox.Size = new System.Drawing.Size(75, 30);
             this.carbsTextBox.TabIndex = 53;
+            this.carbsTextBox.Text = "0";
             // 
             // fatsTextBox
             // 
@@ -435,6 +451,7 @@
             this.fatsTextBox.Name = "fatsTextBox";
             this.fatsTextBox.Size = new System.Drawing.Size(75, 30);
             this.fatsTextBox.TabIndex = 52;
+            this.fatsTextBox.Text = "0";
             // 
             // proteinTextBox
             // 
@@ -442,6 +459,7 @@
             this.proteinTextBox.Name = "proteinTextBox";
             this.proteinTextBox.Size = new System.Drawing.Size(75, 30);
             this.proteinTextBox.TabIndex = 51;
+            this.proteinTextBox.Text = "0";
             // 
             // CLabel
             // 

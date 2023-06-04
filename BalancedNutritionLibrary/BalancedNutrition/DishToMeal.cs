@@ -33,7 +33,12 @@ namespace BalancedNutrition
                     listBox1.Items.Add(d.Name);
                     dishComboBox.Items.Add(d.Name);
                 }
-
+                plannedMenu = BalancedNutritionForm.menu;
+                BalancedNutritionLibrary.Day day = plannedMenu.Days[0];
+                foreach (Meal meal in day.Meals)
+                {
+                    mealComboBox.Items.Add(meal.Name);
+                }
             }
         }
 
@@ -44,50 +49,65 @@ namespace BalancedNutrition
 
         private void button1_Click(object sender, EventArgs e)
         {
-            using (BalancedNutritionLibrary.AppContext db = new BalancedNutritionLibrary.AppContext())
+            try
             {
-                bool dateBool = true;
-                bool mealBool = false;
-                bool dishBool = false;
+                using (BalancedNutritionLibrary.AppContext db = new BalancedNutritionLibrary.AppContext())
+                {
+                    bool dateBool = true;
+                    bool mealBool = false;
+                    bool dishBool = false;
 
-                if (dateTimePicker.Value.Date > plannedMenu.EndDate.Date || dateTimePicker.Value.Date < plannedMenu.BeginingDate.Date)
-                    dateBool = false;
-                
-                foreach (Meal meal1 in db.Meals.ToList())
-                {
-                    if (meal1.Name == mealComboBox.Text)
+                    if (dateTimePicker.Value.Date > plannedMenu.EndDate.Date || dateTimePicker.Value.Date < plannedMenu.BeginingDate.Date)
+                        dateBool = false;
+
+                    foreach (Meal meal1 in db.Meals.ToList())
                     {
-                        mealBool = true;
-                        break;
+                        if (meal1.Name == mealComboBox.Text)
+                        {
+                            mealBool = true;
+                            break;
+                        }
+                    }
+                    foreach (Dish dish1 in db.Dishes.ToList())
+                    {
+                        if (dish1.Name == dishComboBox.Text)
+                        {
+                            dishBool = true;
+                            break;
+                        }
+                    }
+                    if (dateBool == true && mealBool == true && dishBool == true)
+                    {
+                        statusLabel.Hide();
+                        DateTime dateTime = dateTimePicker.Value;
+                        string mealName = mealComboBox.Text;
+                        string dishName = dishComboBox.Text;
+                        Dish dish = db.Dishes.Where(d => d.Name == dishName).ToList()[0];
+                        //PlannedMenu plannedMenu = BalancedNutritionForm.menu;
+                        BalancedNutritionLibrary.Day day =
+                            db.Days.Where(d => d.PlannedMenu == plannedMenu && d.Date.Date == dateTime.Date).ToList()[0];
+                        Meal meal = db.Meals.Where(m => m.Day == day && m.Name == mealName).ToList()[0];
+                        meal.Dishes = new List<Dish> { dish };
+                        db.Meals.Update(meal);
+                        db.SaveChanges();
+
+                        statusLabel.Visible = true;
+                        statusLabel.ForeColor = Color.Green;
+                        statusLabel.Text = "Блюдо добавлено в меню";
+                    }
+                    else
+                    {
+                        statusLabel.Visible = true;
+                        statusLabel.ForeColor = Color.Red;
+                        statusLabel.Text = "Проверьте правильность введённых данных";
                     }
                 }
-                foreach (Dish dish1 in db.Dishes.ToList())
-                {
-                    if (dish1.Name == dishComboBox.Text)
-                    {
-                        dishBool = true;
-                        break;
-                    }
-                }
-                if (dateBool == true && mealBool == true && dishBool == true) {
-                    statusLabel.Hide();
-                    DateTime dateTime = dateTimePicker.Value;
-                    string mealName = mealComboBox.Text;
-                    string dishName = dishComboBox.Text;
-                    Dish dish = db.Dishes.Where(d => d.Name == dishName).ToList()[0];
-                    //PlannedMenu plannedMenu = BalancedNutritionForm.menu;
-                    BalancedNutritionLibrary.Day day =
-                        db.Days.Where(d => d.PlannedMenu == plannedMenu && d.Date.Date == dateTime.Date).ToList()[0];
-                    Meal meal = db.Meals.Where(m => m.Day == day && m.Name == mealName).ToList()[0];
-                    meal.Dishes = new List<Dish> { dish };
-                    db.Meals.Update(meal);
-                    db.SaveChanges(); 
-                }
-                else {
-                    statusLabel.Show();
-                    statusLabel.ForeColor = Color.Red;
-                    statusLabel.Text = "Проверьте правильность введённых данных";
-                }
+            }
+            catch
+            {
+                statusLabel.Visible = true;
+                statusLabel.ForeColor = Color.Red;
+                statusLabel.Text = "Проверьте правильность введённых данных";
             }
         }
 
@@ -136,15 +156,6 @@ namespace BalancedNutrition
                         }*/
         }
 
-        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            /*            using (BalancedNutritionLibrary.AppContext db = new BalancedNutritionLibrary.AppContext())
-                        {
-                            selectedDish = db.Dishes.Where(d => d.Name == listBox1.SelectedItem.ToString()).ToList()[0];
-                            DishInfo dishInfo = new DishInfo();
-                            dishInfo.ShowDialog(this);
-                        }*/
-        }
 
         private void pictureBox1_MouseHover(object sender, EventArgs e)
         {
@@ -153,7 +164,7 @@ namespace BalancedNutrition
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-        using (BalancedNutritionLibrary.AppContext db = new BalancedNutritionLibrary.AppContext()) 
+            using (BalancedNutritionLibrary.AppContext db = new BalancedNutritionLibrary.AppContext())
             {
                 if (dishComboBox.Text != "")
                 {
@@ -177,8 +188,8 @@ namespace BalancedNutrition
                         dishComboBox.Items.Add(d.Name);
                     }
                 }
-            } 
-    }
+            }
+        }
 
         private void pictureBox1_MouseLeave(object sender, EventArgs e)
         {
@@ -198,6 +209,11 @@ namespace BalancedNutrition
                 dishInfo.DishLoad(selectedDish);
                 dishInfo.ShowDialog(this);
             }
+        }
+
+        private void mealComboBox_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

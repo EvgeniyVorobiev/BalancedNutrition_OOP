@@ -76,15 +76,11 @@
             // mealComboBox
             // 
             this.mealComboBox.FormattingEnabled = true;
-            this.mealComboBox.Items.AddRange(new object[] {
-            "Завтрак",
-            "Обед",
-            "Полдник",
-            "Ужин"});
             this.mealComboBox.Location = new System.Drawing.Point(249, 159);
             this.mealComboBox.Name = "mealComboBox";
             this.mealComboBox.Size = new System.Drawing.Size(250, 31);
             this.mealComboBox.TabIndex = 3;
+            this.mealComboBox.Click += new System.EventHandler(this.mealComboBox_Click);
             // 
             // dateLabel
             // 
