@@ -35,10 +35,10 @@
             this.wasteLabel = new System.Windows.Forms.Label();
             this.warningLabel = new System.Windows.Forms.Label();
             this.wasteTextBox = new System.Windows.Forms.TextBox();
-            this.productNameTextBox = new System.Windows.Forms.TextBox();
             this.productNameLabel = new System.Windows.Forms.Label();
             this.ingridientTextBox = new System.Windows.Forms.TextBox();
             this.IngridientNameLabel = new System.Windows.Forms.Label();
+            this.productNameComboBox = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // ingridientLabel
@@ -114,13 +114,6 @@
             this.wasteTextBox.Size = new System.Drawing.Size(204, 30);
             this.wasteTextBox.TabIndex = 13;
             // 
-            // productNameTextBox
-            // 
-            this.productNameTextBox.Location = new System.Drawing.Point(247, 122);
-            this.productNameTextBox.Name = "productNameTextBox";
-            this.productNameTextBox.Size = new System.Drawing.Size(204, 30);
-            this.productNameTextBox.TabIndex = 20;
-            // 
             // productNameLabel
             // 
             this.productNameLabel.AutoSize = true;
@@ -146,14 +139,24 @@
             this.IngridientNameLabel.TabIndex = 37;
             this.IngridientNameLabel.Text = "Название ингридиента";
             // 
-            // IngrigientCreation
+            // productNameComboBox
+            // 
+            this.productNameComboBox.FormattingEnabled = true;
+            this.productNameComboBox.Location = new System.Drawing.Point(247, 129);
+            this.productNameComboBox.Name = "productNameComboBox";
+            this.productNameComboBox.Size = new System.Drawing.Size(204, 31);
+            this.productNameComboBox.TabIndex = 39;
+            this.productNameComboBox.SelectedIndexChanged += new System.EventHandler(this.productNameComboBox_SelectedIndexChanged);
+            this.productNameComboBox.TextUpdate += new System.EventHandler(this.productNameComboBox_TextUpdate);
+            // 
+            // IngregientCreation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(495, 479);
+            this.Controls.Add(this.productNameComboBox);
             this.Controls.Add(this.ingridientTextBox);
             this.Controls.Add(this.IngridientNameLabel);
-            this.Controls.Add(this.productNameTextBox);
             this.Controls.Add(this.productNameLabel);
             this.Controls.Add(this.wasteTextBox);
             this.Controls.Add(this.warningLabel);
@@ -165,7 +168,7 @@
             this.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.Name = "IngrigientCreation";
+            this.Name = "IngregientCreation";
             this.Text = "IngrigientCreation";
             this.Load += new System.EventHandler(this.IngrigientCreation_Load);
             this.ResumeLayout(false);
@@ -182,9 +185,9 @@
         private Label wasteLabel;
         private Label warningLabel;
         private TextBox wasteTextBox;
-        private TextBox productNameTextBox;
         private Label productNameLabel;
         private TextBox ingridientTextBox;
         private Label IngridientNameLabel;
+        private ComboBox productNameComboBox;
     }
 }

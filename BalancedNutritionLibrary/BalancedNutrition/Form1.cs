@@ -241,13 +241,6 @@ namespace BalancedNutrition
                 MenuCreation menuCreation = new MenuCreation();
                 menuCreation.ShowDialog();
                 menuDataGridView.Rows.Clear();
-                string[] days = new string[menuCreation.days.Count + 1];
-                days[0] = "";
-                for (int i = 1; i < days.Length; i++)
-                {
-                    days[i] = menuCreation.days[i-1];
-                }
-                menuDataGridView.Rows.Add(days);
                 menu = menuCreation.menu;
                 if (menu.Id != 0) 
                 { 
@@ -352,6 +345,7 @@ namespace BalancedNutrition
                 WarningLabel.Visible = false;
                 OpenPlannedMenu openPlannedMenu = new OpenPlannedMenu();
                 openPlannedMenu.ShowDialog();
+                menuDataGridView.Rows.Clear();
                 //menu = openPlannedMenu.menu;
                 if (menu.Id != 0)
                 {
