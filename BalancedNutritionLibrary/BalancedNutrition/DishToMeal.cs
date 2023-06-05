@@ -24,21 +24,30 @@ namespace BalancedNutrition
         public DishToMeal()
         {
             InitializeComponent();
-            using (BalancedNutritionLibrary.AppContext db = new BalancedNutritionLibrary.AppContext())
+            try
             {
+                using (BalancedNutritionLibrary.AppContext db = new BalancedNutritionLibrary.AppContext())
+                {
 
-                dishes = db.Dishes.ToList();
-                foreach (Dish d in dishes)
-                {
-                    listBox1.Items.Add(d.Name);
-                    dishComboBox.Items.Add(d.Name);
+                    dishes = db.Dishes.ToList();
+                    foreach (Dish d in dishes)
+                    {
+                        listBox1.Items.Add(d.Name);
+                        dishComboBox.Items.Add(d.Name);
+                    }
+                    plannedMenu = BalancedNutritionForm.menu;
+                    BalancedNutritionLibrary.Day day = plannedMenu.Days[0];
+                    foreach (Meal meal in day.Meals)
+                    {
+                        mealComboBox.Items.Add(meal.Name);
+                    }
                 }
-                plannedMenu = BalancedNutritionForm.menu;
-                BalancedNutritionLibrary.Day day = plannedMenu.Days[0];
-                foreach (Meal meal in day.Meals)
-                {
-                    mealComboBox.Items.Add(meal.Name);
-                }
+            }
+            catch
+            {
+                statusLabel.Visible = true;
+                statusLabel.ForeColor = Color.Red;
+                statusLabel.Text = "Произошла ошибка при загрузке приёмов пищи";
             }
         }
 

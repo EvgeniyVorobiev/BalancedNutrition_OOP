@@ -62,7 +62,6 @@
             this.carbohydratesLabel = new System.Windows.Forms.Label();
             this.fatsLabel = new System.Windows.Forms.Label();
             this.proteinLabel = new System.Windows.Forms.Label();
-            this.ingredientButton = new System.Windows.Forms.Button();
             this.ingredientListBox = new System.Windows.Forms.ListBox();
             this.ingredientLabel = new System.Windows.Forms.Label();
             this.characteristicTextBox = new System.Windows.Forms.TextBox();
@@ -367,15 +366,6 @@
             this.proteinLabel.TabIndex = 92;
             this.proteinLabel.Text = "Белки, г";
             // 
-            // ingredientButton
-            // 
-            this.ingredientButton.Location = new System.Drawing.Point(431, 443);
-            this.ingredientButton.Name = "ingredientButton";
-            this.ingredientButton.Size = new System.Drawing.Size(227, 47);
-            this.ingredientButton.TabIndex = 91;
-            this.ingredientButton.Text = "Добавить ингредиент";
-            this.ingredientButton.UseVisualStyleBackColor = true;
-            // 
             // ingredientListBox
             // 
             this.ingredientListBox.FormattingEnabled = true;
@@ -532,7 +522,6 @@
             this.Controls.Add(this.carbohydratesLabel);
             this.Controls.Add(this.fatsLabel);
             this.Controls.Add(this.proteinLabel);
-            this.Controls.Add(this.ingredientButton);
             this.Controls.Add(this.ingredientListBox);
             this.Controls.Add(this.ingredientLabel);
             this.Controls.Add(this.characteristicTextBox);
@@ -592,7 +581,6 @@
         private Label carbohydratesLabel;
         private Label fatsLabel;
         private Label proteinLabel;
-        private Button ingredientButton;
         private ListBox ingredientListBox;
         private Label ingredientLabel;
         private TextBox characteristicTextBox;

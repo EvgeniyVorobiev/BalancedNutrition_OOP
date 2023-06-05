@@ -162,8 +162,33 @@ namespace BalancedNutrition
                         }
 
                         productResultSet.Clear();
-                        
-                        foreach (Dish dish in dishesMenu) 
+                        int c2 = 0;
+                        foreach (Dish dish in dishesMenu)
+                        {
+                            foreach (Ingredient ingredient in dish.Ingredients)
+                            { 
+                                bool isAdded = false;
+                                foreach (ProductResultSet set in productResultSet)
+                                {
+                                    if (set.Product.Id == ingredient.Product.Id)
+                                    {
+                                        isAdded = true;
+                                    }
+                                    else
+                                    {
+                                        c2++;
+                                    }
+                                }
+                                if (isAdded == false)
+                                {
+                                    productResultSet.Add(new ProductResultSet() { Product = ingredient.Product, Weight = ingredient.Product.Weight });
+                                }
+                                else
+                                {
+                                    productResultSet[c2].Weight += ingredient.Product.Weight;
+                                }
+                            }
+                        }
                 
                         
 
@@ -287,6 +312,11 @@ namespace BalancedNutrition
             idLabel.Text = "ID";
             menuDateLabel.Text = "xx.xx.xxxx - xx.xx.xxxx";
             groupNameLabel.Text = "Группа";
+            WarningLabel.Text = "";
+            menuDataGridView.Rows.Clear();
+            nutrientsDataGridView.Rows.Clear();
+            dishWeightDataGridView.Rows.Clear();
+            productsDataGridView.Rows.Clear();
 
         }
 
@@ -447,8 +477,9 @@ namespace BalancedNutrition
 
         private void button2_Click(object sender, EventArgs e)
         {
-            if (menu.Id == 0 && RoleLabel.Text != "")
+            if (menu.Id == 0)
             {
+                WarningLabel.ForeColor = Color.Red;
                 WarningLabel.Text = "Для добавления блюда в меню, необходимо открыть или создать меню";
                 WarningLabel.Visible = true;
             }

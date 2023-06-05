@@ -207,11 +207,19 @@ namespace BalancedNutrition
                         };
 
                         for (int i = 0; i < IngregientCreation.ingredients.Count; i++)
-                            dish.Ingredients.Add(IngregientCreation.ingredients[i]);
+                            IngregientCreation.ingredients[i].Dish = dish;
+
+                        
 
                         dish.Add();
                         db.DishNutrients.AddRange(proteins, fats, carbs, calories, C, B1, B2, A, D,
                             Ca, P, Mg, Fe, K, I, Se, F);
+                        foreach (Ingredient ingredient in IngregientCreation.ingredients)
+                        {
+                            Product product = db.Products.Where(p => p.Id == ingredient.Product.Id).ToList().Last();
+                            product.Ingredients.Add(ingredient);
+                            db.Products.Update(product);
+                        }
                         db.SaveChanges();
 
                         nameTextBox.Clear();
@@ -289,11 +297,43 @@ namespace BalancedNutrition
             float FWeight = 0;
             foreach (Ingredient ingredient in IngregientCreation.ingredients)
             {
-                productWeight += ingredient.Product.Weight;
+                productWeight += ingredient.Product.Weight - ingredient.IngredientWaste;
                 proteinWeight += ingredient.Product.ProductNutrients[0].ProductNutrientWeight;
+                fatsWeight += ingredient.Product.ProductNutrients[1].ProductNutrientWeight;
+                carbsWeight += ingredient.Product.ProductNutrients[2].ProductNutrientWeight;
+                caloriesWeight += ingredient.Product.ProductNutrients[3].ProductNutrientWeight;
+                CWeight += ingredient.Product.ProductNutrients[4].ProductNutrientWeight;
+                B1Weight += ingredient.Product.ProductNutrients[5].ProductNutrientWeight;
+                B2Weight += ingredient.Product.ProductNutrients[6].ProductNutrientWeight;
+                AWeight += ingredient.Product.ProductNutrients[7].ProductNutrientWeight;
+                DWeight += ingredient.Product.ProductNutrients[8].ProductNutrientWeight;
+                CaWeight += ingredient.Product.ProductNutrients[9].ProductNutrientWeight;
+                PWeight += ingredient.Product.ProductNutrients[10].ProductNutrientWeight;
+                MgWeight += ingredient.Product.ProductNutrients[11].ProductNutrientWeight;
+                FeWeight += ingredient.Product.ProductNutrients[12].ProductNutrientWeight;
+                KWeight += ingredient.Product.ProductNutrients[13].ProductNutrientWeight;
+                IWeight += ingredient.Product.ProductNutrients[14].ProductNutrientWeight;
+                SeWeight += ingredient.Product.ProductNutrients[15].ProductNutrientWeight;
+                FWeight += ingredient.Product.ProductNutrients[16].ProductNutrientWeight;
             }
             weightTextBox.Text = productWeight.ToString();
             proteinTextBox.Text = proteinWeight.ToString();
+            fatsTextBox.Text = fatsWeight.ToString();
+            carbsTextBox.Text = carbsWeight.ToString();
+            caloriesTextBox.Text = caloriesWeight.ToString();
+            CTextBox.Text = CWeight.ToString();
+            B1TextBox.Text = B1Weight.ToString();
+            B2TextBox.Text = B2Weight.ToString();
+            ATextBox.Text = AWeight.ToString();
+            DTextBox.Text = DWeight.ToString();
+            CaTextBox.Text = CaWeight.ToString();
+            PTextBox.Text = PWeight.ToString();
+            MgTextBox.Text = MgWeight.ToString();
+            FeTextBox.Text = FeWeight.ToString();
+            KTextBox.Text = KWeight.ToString();
+            ITextBox.Text = IWeight.ToString();
+            SeTextBox.Text = SeWeight.ToString();
+            FTextBox.Text = FWeight.ToString();
 
         }
 

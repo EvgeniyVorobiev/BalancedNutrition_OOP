@@ -56,7 +56,7 @@ namespace BalancedNutrition
 
                     List<NutrientsDirectory> nutrients = db.NutrientsDirectories.ToList();
                     Product product = new Product { Name = productName, Weight = productWeight,
-                        ProductNutrients = new List<ProductNutrients>() };
+                        ProductNutrients = new List<ProductNutrients>(), Ingredients = new List<Ingredient>() };
 
                     ProductNutrients proteins = new ProductNutrients { ProductNutrientWeight = proteinWeight,
                         Product = product, NutrientsDirectory = db.NutrientsDirectories.ToList()[0] };
@@ -80,19 +80,19 @@ namespace BalancedNutrition
 
                     ProductNutrients Ca = new ProductNutrients { ProductNutrientWeight = CaWeight,
                         Product = product, NutrientsDirectory = db.NutrientsDirectories.ToList()[9] };
-                    ProductNutrients P = new ProductNutrients { ProductNutrientWeight = DWeight,
+                    ProductNutrients P = new ProductNutrients { ProductNutrientWeight = PWeight,
                         Product = product, NutrientsDirectory = db.NutrientsDirectories.ToList()[10] };
-                    ProductNutrients Mg = new ProductNutrients { ProductNutrientWeight = DWeight,
+                    ProductNutrients Mg = new ProductNutrients { ProductNutrientWeight = MgWeight,
                         Product = product, NutrientsDirectory = db.NutrientsDirectories.ToList()[11] };
-                    ProductNutrients Fe = new ProductNutrients { ProductNutrientWeight = DWeight,
+                    ProductNutrients Fe = new ProductNutrients { ProductNutrientWeight = FeWeight,
                         Product = product, NutrientsDirectory = db.NutrientsDirectories.ToList()[12] };
-                    ProductNutrients K = new ProductNutrients { ProductNutrientWeight = DWeight,
+                    ProductNutrients K = new ProductNutrients { ProductNutrientWeight = KWeight,
                         Product = product, NutrientsDirectory = db.NutrientsDirectories.ToList()[13] };
-                    ProductNutrients I = new ProductNutrients { ProductNutrientWeight = DWeight,
+                    ProductNutrients I = new ProductNutrients { ProductNutrientWeight = IWeight,
                         Product = product, NutrientsDirectory = db.NutrientsDirectories.ToList()[14] };
-                    ProductNutrients Se = new ProductNutrients { ProductNutrientWeight = DWeight,
+                    ProductNutrients Se = new ProductNutrients { ProductNutrientWeight = SeWeight,
                         Product = product, NutrientsDirectory = db.NutrientsDirectories.ToList()[15] };
-                    ProductNutrients F = new ProductNutrients { ProductNutrientWeight = DWeight,
+                    ProductNutrients F = new ProductNutrients { ProductNutrientWeight = FWeight,
                         Product = product, NutrientsDirectory = db.NutrientsDirectories.ToList()[16] };
 
                     product.Add();
@@ -146,7 +146,7 @@ namespace BalancedNutrition
 
                     }
                 }
-                catch (System.FormatException ex)
+                catch
                 {
                     infoLabel.ForeColor = Color.Red;
                     infoLabel.Text = "Проверьте правильность введённых данных";

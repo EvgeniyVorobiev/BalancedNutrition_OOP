@@ -54,25 +54,36 @@ namespace BalancedNutrition
                         Product product = db.Products.Include(p => p.ProductNutrients).Where(p => p.Name == productName).ToList()[0];
                         float productWeight = product.Weight;
 
-                        Ingredient ingredient = new Ingredient
+                        if (weightWaste > productWeight)
                         {
-                            Name = ingredientName,
-                            CookingMethod = cookingMethod,
-                            IngredientWaste = weightWaste,
-                            WastePercent = (((productWeight - weightWaste) * 100) / productWeight),
-                            Product = product
-                        };
-                        ingredients.Add(ingredient);
-                        db.SaveChanges();
+                            warningLabel.Visible = true;
+                            warningLabel.ForeColor = Color.Red;
+                            warningLabel.Text = "Проверьте правильность введённых данных";
+                        }
+                        else
+                        {
+                            Ingredient ingredient = new Ingredient
+                            {
+                                Name = ingredientName,
+                                CookingMethod = cookingMethod,
+                                IngredientWaste = weightWaste,
+                                WastePercent = (((productWeight - weightWaste) * 100) / productWeight),
+                                Product = db.Products.Where(p => p.Id == product.Id).ToList()[0]
+                            };
+                            //product.Ingredients.Add(ingredient);
+                            //db.Products.Update(product);
+                            ingredients.Add(ingredient);
+                            //db.SaveChanges();
 
-                        ingredientName = "";
-                        ingridientTextBox.Text = "";
-                        productName = "";
-                        productNameComboBox.Text = "";
-                        
-                        warningLabel.Visible = true;
-                        warningLabel.ForeColor = Color.Green;
-                        warningLabel.Text = "Ингредиент добавлен в блюдо";
+                            ingredientName = "";
+                            ingridientTextBox.Text = "";
+                            productName = "";
+                            productNameComboBox.Text = "";
+
+                            warningLabel.Visible = true;
+                            warningLabel.ForeColor = Color.Green;
+                            warningLabel.Text = "Ингредиент добавлен в блюдо";
+                        }
                     }
                 }
                 catch 

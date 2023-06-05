@@ -62,15 +62,22 @@ namespace BalancedNutrition
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            using (BalancedNutritionLibrary.AppContext db = new BalancedNutritionLibrary.AppContext())
+            try
             {
-                selectedProduct = db.Products.Where(d => d.Name == listBox1.SelectedItem.ToString()).ToList()[0];
-                ////selectedDish = db.Dishes.ToList()[listBox1.SelectedIndex];
-                ///
-                //List <DishNutrients> dishNutrients = db.DishNutrients.Where(dn => dn.Dish == selectedDish).ToList();
-                //listBox1.Items.Add(dishNutrients[0].DishNutrientWeight.ToString());
-                ProductInfo productInfo = new ProductInfo();
-                productInfo.ShowDialog(this);
+                using (BalancedNutritionLibrary.AppContext db = new BalancedNutritionLibrary.AppContext())
+                {
+                    selectedProduct = db.Products.Where(d => d.Name == listBox1.SelectedItem.ToString()).ToList()[0];
+                    ////selectedDish = db.Dishes.ToList()[listBox1.SelectedIndex];
+                    ///
+                    //List <DishNutrients> dishNutrients = db.DishNutrients.Where(dn => dn.Dish == selectedDish).ToList();
+                    //listBox1.Items.Add(dishNutrients[0].DishNutrientWeight.ToString());
+                    ProductInfo productInfo = new ProductInfo();
+                    productInfo.ShowDialog(this);
+                }
+            }
+            catch
+            {
+
             }
         }
     }
