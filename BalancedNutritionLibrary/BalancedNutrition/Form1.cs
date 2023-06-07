@@ -1,6 +1,7 @@
 using BalancedNutritionLibrary;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
+using Npgsql;
 using System.Windows.Forms;
 
 namespace BalancedNutrition
@@ -78,7 +79,7 @@ namespace BalancedNutrition
         {
             if (RoleLabel.Text != "" && menu.Id != 0)
             {
-                try
+                //try
                 {
                     using (BalancedNutritionLibrary.AppContext db = new BalancedNutritionLibrary.AppContext())
                     {
@@ -95,10 +96,16 @@ namespace BalancedNutrition
                         }
                         foreach (Meal meal in mealsMenu)
                         {
-                            foreach (Dish dish in db.Dishes.Include(d => d.Meals).Include(d => d.DishNutrients))
+                            //foreach (Dish dish in db.Dishes.Include(d => d.Meals).Include(d => d.DishNutrients))
                             {
                                 dishesMenu.AddRange(meal.Dishes);
                             }
+                        }
+
+                        foreach (Dish dish in dishesMenu)
+                        {
+                            dish.Meals = db.Dishes.Include(d => d.Meals).Where(d => d.Id == dish.Id).ToList().Last().Meals;
+                            dish.DishNutrients = db.Dishes.Include(d => d.DishNutrients).Where(d => d.Id == dish.Id).ToList().Last().DishNutrients;
                         }
 
                         foreach (BalancedNutritionLibrary.Day day in daysMenu)
@@ -162,26 +169,26 @@ namespace BalancedNutrition
                         }
 
                         productResultSet.Clear();
+                        bool isAdded = false;
                         int c2 = 0;
                         foreach (Dish dish in dishesMenu)
                         {
-                            foreach (Ingredient ingredient in dish.Ingredients)
-                            { 
-                                bool isAdded = false;
-                                foreach (ProductResultSet set in productResultSet)
+                            foreach (Ingredient ingredient in db.Ingridients.Include(i => i.Product).Where(i => i.Dish.Id == dish.Id).ToList())
+                            {
+                                for (int i = 0; i < productResultSet.Count; i++)
                                 {
-                                    if (set.Product.Id == ingredient.Product.Id)
+                                    if (productResultSet[i].Product.Id == ingredient.Product.Id)
                                     {
+                                        c2 = i;
                                         isAdded = true;
+                                        break;
                                     }
-                                    else
-                                    {
-                                        c2++;
-                                    }
+                                    else isAdded = false;
                                 }
                                 if (isAdded == false)
                                 {
-                                    productResultSet.Add(new ProductResultSet() { Product = ingredient.Product, Weight = ingredient.Product.Weight });
+                                    productResultSet.Add(new ProductResultSet() { Product = ingredient.Product,
+                                        Weight = ingredient.Product.Weight });
                                 }
                                 else
                                 {
@@ -189,6 +196,7 @@ namespace BalancedNutrition
                                 }
                             }
                         }
+                        
                 
                         
 
@@ -235,13 +243,24 @@ namespace BalancedNutrition
 
                         foreach (DishValuesInMeal dishValuesInMeal in dishValuesInMeals)
                         {
-                            dishWeightDataGridView.Rows.Add(dishValuesInMeal.Meal.Day.Date, dishValuesInMeal.Meal.Name, dishValuesInMeal.Weight);
+                            if (dishValuesInMeal.Meal.Name == "Завтрак")
+                                dishWeightDataGridView.Rows.Add(dishValuesInMeal.Meal.Day.Date, dishValuesInMeal.Meal.Name, dishValuesInMeal.Weight,
+                                    normDishValuesInMeals[0]);
+                            else if (dishValuesInMeal.Meal.Name == "Обед")
+                                dishWeightDataGridView.Rows.Add(dishValuesInMeal.Meal.Day.Date, dishValuesInMeal.Meal.Name, dishValuesInMeal.Weight,
+                                    normDishValuesInMeals[1]);
+                            else if (dishValuesInMeal.Meal.Name == "Полдник")
+                                dishWeightDataGridView.Rows.Add(dishValuesInMeal.Meal.Day.Date, dishValuesInMeal.Meal.Name, dishValuesInMeal.Weight,
+                                    normDishValuesInMeals[2]);
+                            else if (dishValuesInMeal.Meal.Name == "Ужин")
+                                dishWeightDataGridView.Rows.Add(dishValuesInMeal.Meal.Day.Date, dishValuesInMeal.Meal.Name, dishValuesInMeal.Weight,
+                                    normDishValuesInMeals[3]);
                         }
 
                         foreach (ProductResultSet resultSet in productResultSet)
                         {
-                            productsDataGridView.Rows.Add(resultSet.Product.Name, resultSet.Product.Weight,
-                                resultSet.Product.Weight * menu.Group.NumberOfServings);
+                            productsDataGridView.Rows.Add(resultSet.Product.Name, resultSet.Weight,
+                                resultSet.Weight * menu.Group.NumberOfServings);
                         }
 
 
@@ -253,12 +272,12 @@ namespace BalancedNutrition
                         WarningLabel.Visible = true;
                     }
                 }
-                catch 
+/*                catch 
                 {
                     WarningLabel.ForeColor = Color.Red;
                     WarningLabel.Text = "Произошла ошибка при обновлении данных в меню";
                     WarningLabel.Visible = true;
-                }
+                }*/
             }
             else
             {
