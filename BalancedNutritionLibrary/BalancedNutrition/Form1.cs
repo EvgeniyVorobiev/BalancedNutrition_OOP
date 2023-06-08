@@ -79,7 +79,7 @@ namespace BalancedNutrition
         {
             if (RoleLabel.Text != "" && menu.Id != 0)
             {
-                //try
+                try
                 {
                     using (BalancedNutritionLibrary.AppContext db = new BalancedNutritionLibrary.AppContext())
                     {
@@ -96,10 +96,7 @@ namespace BalancedNutrition
                         }
                         foreach (Meal meal in mealsMenu)
                         {
-                            //foreach (Dish dish in db.Dishes.Include(d => d.Meals).Include(d => d.DishNutrients))
-                            {
-                                dishesMenu.AddRange(meal.Dishes);
-                            }
+                                dishesMenu.AddRange(meal.Dishes);   
                         }
 
                         foreach (Dish dish in dishesMenu)
@@ -130,10 +127,10 @@ namespace BalancedNutrition
                         for (int i = 0; i < menuResultSet.Count; i++)
                         {
                             if (RoleLabel.Text == "Диетолог" || RoleLabel.Text == "Администратор")
-                                menuDataGridView.Rows.Add(menuResultSet[i].day.Date, menuResultSet[i].meal.Name, menuResultSet[i].dish.Name, "Удалить");
+                                menuDataGridView.Rows.Add(menuResultSet[i].day.Date.ToShortDateString(), menuResultSet[i].meal.Name, menuResultSet[i].dish.Name, "Удалить");
                             else
                             {
-                                menuDataGridView.Rows.Add(menuResultSet[i].day.Date, menuResultSet[i].meal.Name, menuResultSet[i].dish.Name);
+                                menuDataGridView.Rows.Add(menuResultSet[i].day.Date.ToShortDateString(), menuResultSet[i].meal.Name, menuResultSet[i].dish.Name);
                             }
                         }
 
@@ -236,7 +233,7 @@ namespace BalancedNutrition
                         {
                             for (int j = 0; j < dayNutrients[i].Nutrients.Count; j++)
                             {
-                                nutrientsDataGridView.Rows.Add(dayNutrients[i].DayDate, dayNutrients[i].Nutrients[j].NutrientName,
+                                nutrientsDataGridView.Rows.Add(dayNutrients[i].DayDate.ToShortDateString(), dayNutrients[i].Nutrients[j].NutrientName,
                                 dayNutrients[i].Nutrients[j].NutrientWeight, normNutrients[j]);
                             }
                         }
@@ -244,16 +241,16 @@ namespace BalancedNutrition
                         foreach (DishValuesInMeal dishValuesInMeal in dishValuesInMeals)
                         {
                             if (dishValuesInMeal.Meal.Name == "Завтрак")
-                                dishWeightDataGridView.Rows.Add(dishValuesInMeal.Meal.Day.Date, dishValuesInMeal.Meal.Name, dishValuesInMeal.Weight,
+                                dishWeightDataGridView.Rows.Add(dishValuesInMeal.Meal.Day.Date.ToShortDateString(), dishValuesInMeal.Meal.Name, dishValuesInMeal.Weight,
                                     normDishValuesInMeals[0]);
                             else if (dishValuesInMeal.Meal.Name == "Обед")
-                                dishWeightDataGridView.Rows.Add(dishValuesInMeal.Meal.Day.Date, dishValuesInMeal.Meal.Name, dishValuesInMeal.Weight,
+                                dishWeightDataGridView.Rows.Add(dishValuesInMeal.Meal.Day.Date.ToShortDateString(), dishValuesInMeal.Meal.Name, dishValuesInMeal.Weight,
                                     normDishValuesInMeals[1]);
                             else if (dishValuesInMeal.Meal.Name == "Полдник")
-                                dishWeightDataGridView.Rows.Add(dishValuesInMeal.Meal.Day.Date, dishValuesInMeal.Meal.Name, dishValuesInMeal.Weight,
+                                dishWeightDataGridView.Rows.Add(dishValuesInMeal.Meal.Day.Date.ToShortDateString(), dishValuesInMeal.Meal.Name, dishValuesInMeal.Weight,
                                     normDishValuesInMeals[2]);
                             else if (dishValuesInMeal.Meal.Name == "Ужин")
-                                dishWeightDataGridView.Rows.Add(dishValuesInMeal.Meal.Day.Date, dishValuesInMeal.Meal.Name, dishValuesInMeal.Weight,
+                                dishWeightDataGridView.Rows.Add(dishValuesInMeal.Meal.Day.Date.ToShortDateString(), dishValuesInMeal.Meal.Name, dishValuesInMeal.Weight,
                                     normDishValuesInMeals[3]);
                         }
 
@@ -272,12 +269,12 @@ namespace BalancedNutrition
                         WarningLabel.Visible = true;
                     }
                 }
-/*                catch 
+                catch
                 {
                     WarningLabel.ForeColor = Color.Red;
                     WarningLabel.Text = "Произошла ошибка при обновлении данных в меню";
                     WarningLabel.Visible = true;
-                }*/
+                }
             }
             else
             {
@@ -315,6 +312,28 @@ namespace BalancedNutrition
                 LoginLabel.Visible = true;
                 RoleLabel.Visible = true;
                 OutLabel.Visible = true;
+
+                if (RoleLabel.Text == "Администратор")
+                {
+                    создатьToolStripMenuItem.Visible = true;
+                    открытьToolStripMenuItem.Visible = true;
+                    button2.Visible = true;
+                    группуToolStripMenuItem.Visible = true;
+                }
+                else if (RoleLabel.Text == "Диетолог")
+                {
+                    создатьToolStripMenuItem.Visible = true;
+                    открытьToolStripMenuItem.Visible = true;
+                    button2.Visible = true;
+                    группуToolStripMenuItem.Visible = false;
+                }
+                else if (RoleLabel.Text == "Родитель")
+                {
+                    создатьToolStripMenuItem.Visible = false;
+                    открытьToolStripMenuItem.Visible = true;
+                    button2.Visible = false;
+                    группуToolStripMenuItem.Visible = false;
+                }
             }
         }
 
@@ -352,6 +371,224 @@ namespace BalancedNutrition
                 deleteDishFromMeal.MealAndDishLoad(menuResultSet[menuDataGridView.CurrentRow.Index].meal,
                     menuResultSet[menuDataGridView.CurrentRow.Index].dish);
                 deleteDishFromMeal.ShowDialog();
+
+                if (RoleLabel.Text != "" && menu.Id != 0)
+                {
+                    try
+                    {
+                        using (BalancedNutritionLibrary.AppContext db = new BalancedNutritionLibrary.AppContext())
+                        {
+                            daysMenu = menu.Days.ToList();
+                            mealsMenu.Clear();
+                            dishesMenu.Clear();
+                            menuResultSet.Clear();
+                            dishValuesInMeals.Clear();
+                            menuDataGridView.Rows.Clear();
+
+                            foreach (BalancedNutritionLibrary.Day day in daysMenu)
+                            {
+                                mealsMenu.AddRange(db.Meals.Where(m => m.Day == day).Include(m => m.Dishes).Include(m => m.Day));
+                            }
+                            foreach (Meal meal in mealsMenu)
+                            {
+                                dishesMenu.AddRange(meal.Dishes);
+                            }
+
+                            foreach (Dish dish in dishesMenu)
+                            {
+                                dish.Meals = db.Dishes.Include(d => d.Meals).Where(d => d.Id == dish.Id).ToList().Last().Meals;
+                                dish.DishNutrients = db.Dishes.Include(d => d.DishNutrients).Where(d => d.Id == dish.Id).ToList().Last().DishNutrients;
+                            }
+
+                            foreach (BalancedNutritionLibrary.Day day in daysMenu)
+                            {
+                                foreach (Meal meal in mealsMenu)
+                                {
+                                    foreach (Dish dish in meal.Dishes)
+                                    {
+                                        if (day.Id == meal.Day.Id)
+                                            menuResultSet.Add(new MenuResultSet()
+                                            {
+                                                day = day,
+                                                dish = dish,
+                                                meal = meal,
+                                                dishNutrients = dish.DishNutrients
+                                            }
+                                        );
+                                    }
+                                }
+                            }
+
+                            for (int i = 0; i < menuResultSet.Count; i++)
+                            {
+                                if (RoleLabel.Text == "Диетолог" || RoleLabel.Text == "Администратор")
+                                    menuDataGridView.Rows.Add(menuResultSet[i].day.Date.ToShortDateString(), menuResultSet[i].meal.Name, menuResultSet[i].dish.Name, "Удалить");
+                                else
+                                {
+                                    menuDataGridView.Rows.Add(menuResultSet[i].day.Date.ToShortDateString(), menuResultSet[i].meal.Name, menuResultSet[i].dish.Name);
+                                }
+                            }
+
+                            int c = 0;
+                            dishValuesInMeals.Clear();
+                            foreach (BalancedNutritionLibrary.Day day in daysMenu)
+                            {
+                                foreach (Meal meal in mealsMenu)
+                                {
+                                    if (day.Id == meal.Day.Id && meal.Dishes.Count > 0)
+                                    {
+                                        bool isAdd = false;
+                                        foreach (Dish dish in meal.Dishes)
+                                        {
+                                            if (day.Id == meal.Day.Id)
+                                                if (isAdd == false)
+                                                {
+                                                    dishValuesInMeals.Add(new DishValuesInMeal()
+                                                    {
+                                                        Meal = meal,
+                                                        Weight = dish.Weight
+                                                    });
+                                                    isAdd = true;
+                                                }
+                                                else
+                                                {
+                                                    dishValuesInMeals[c].Weight += dish.Weight;
+                                                }
+                                        }
+                                        c++;
+                                    }
+                                }
+                            }
+
+                            productResultSet.Clear();
+                            bool isAdded = false;
+                            int c2 = 0;
+                            foreach (Dish dish in dishesMenu)
+                            {
+                                foreach (Ingredient ingredient in db.Ingridients.Include(i => i.Product).Where(i => i.Dish.Id == dish.Id).ToList())
+                                {
+                                    for (int i = 0; i < productResultSet.Count; i++)
+                                    {
+                                        if (productResultSet[i].Product.Id == ingredient.Product.Id)
+                                        {
+                                            c2 = i;
+                                            isAdded = true;
+                                            break;
+                                        }
+                                        else isAdded = false;
+                                    }
+                                    if (isAdded == false)
+                                    {
+                                        productResultSet.Add(new ProductResultSet()
+                                        {
+                                            Product = ingredient.Product,
+                                            Weight = ingredient.Product.Weight
+                                        });
+                                    }
+                                    else
+                                    {
+                                        productResultSet[c2].Weight += ingredient.Product.Weight;
+                                    }
+                                }
+                            }
+
+
+
+
+
+
+                            dayNutrients.Clear();
+                            nutrientsDataGridView.Rows.Clear();
+                            dishWeightDataGridView.Rows.Clear();
+                            productsDataGridView.Rows.Clear();
+                            for (int i = 0; i < daysMenu.Count; i++)
+                            {
+                                dayNutrients.Add(new DayNutrients());
+                                dayNutrients[i].DayDate = daysMenu[i].Date;
+                                for (int j = 0; j < mealsMenu.Count; j++)
+                                {
+                                    if (mealsMenu[j].Day.Id == daysMenu[i].Id)
+                                    {
+                                        for (int k = 0; k < mealsMenu[j].Dishes.Count; k++)
+                                        {
+                                            for (int l = 0; l < 17; l++)
+                                            {
+                                                if (dayNutrients[i].Nutrients.Count < 17) { dayNutrients[i].Nutrients.Add(new Nutrient { }); }
+
+                                                dayNutrients[i].Nutrients[l].NutrientName = db.DishNutrients.Include(dn => dn.NutrientsDirectory)
+                                                .Include(dn => dn.Dish).Where(dn => dn.Dish.Id == mealsMenu[j].Dishes[k].Id)
+                                                .ToList()[l].NutrientsDirectory.Name;
+                                                dayNutrients[i].Nutrients[l].NutrientWeight += db.DishNutrients
+                                                    .Where(dn => dn.Dish.Id == mealsMenu[j].Dishes[k].Id).ToList()[l].DishNutrientWeight;
+                                            }
+
+                                        }
+                                    }
+                                }
+                            }
+
+                            for (int i = 0; i < dayNutrients.Count; i++)
+                            {
+                                for (int j = 0; j < dayNutrients[i].Nutrients.Count; j++)
+                                {
+                                    nutrientsDataGridView.Rows.Add(dayNutrients[i].DayDate.ToShortDateString(), dayNutrients[i].Nutrients[j].NutrientName,
+                                    dayNutrients[i].Nutrients[j].NutrientWeight, normNutrients[j]);
+                                }
+                            }
+
+                            foreach (DishValuesInMeal dishValuesInMeal in dishValuesInMeals)
+                            {
+                                if (dishValuesInMeal.Meal.Name == "Завтрак")
+                                    dishWeightDataGridView.Rows.Add(dishValuesInMeal.Meal.Day.Date.ToShortDateString(), dishValuesInMeal.Meal.Name, dishValuesInMeal.Weight,
+                                        normDishValuesInMeals[0]);
+                                else if (dishValuesInMeal.Meal.Name == "Обед")
+                                    dishWeightDataGridView.Rows.Add(dishValuesInMeal.Meal.Day.Date.ToShortDateString(), dishValuesInMeal.Meal.Name, dishValuesInMeal.Weight,
+                                        normDishValuesInMeals[1]);
+                                else if (dishValuesInMeal.Meal.Name == "Полдник")
+                                    dishWeightDataGridView.Rows.Add(dishValuesInMeal.Meal.Day.Date.ToShortDateString(), dishValuesInMeal.Meal.Name, dishValuesInMeal.Weight,
+                                        normDishValuesInMeals[2]);
+                                else if (dishValuesInMeal.Meal.Name == "Ужин")
+                                    dishWeightDataGridView.Rows.Add(dishValuesInMeal.Meal.Day.Date.ToShortDateString(), dishValuesInMeal.Meal.Name, dishValuesInMeal.Weight,
+                                        normDishValuesInMeals[3]);
+                            }
+
+                            foreach (ProductResultSet resultSet in productResultSet)
+                            {
+                                productsDataGridView.Rows.Add(resultSet.Product.Name, resultSet.Weight,
+                                    resultSet.Weight * menu.Group.NumberOfServings);
+                            }
+
+
+
+
+
+                            WarningLabel.ForeColor = Color.Green;
+                            WarningLabel.Text = "Данные в меню обновлены";
+                            WarningLabel.Visible = true;
+                        }
+                    }
+                    catch
+                    {
+                        WarningLabel.ForeColor = Color.Red;
+                        WarningLabel.Text = "Произошла ошибка при обновлении данных в меню";
+                        WarningLabel.Visible = true;
+                    }
+                }
+                else
+                {
+                    if (RoleLabel.Text != "")
+                    {
+                        WarningLabel.ForeColor = Color.Red;
+                        WarningLabel.Text = "Плановое меню не выбрано";
+                        WarningLabel.Visible = true;
+                    }
+                    else
+                    {
+                        WarningLabel.ForeColor = Color.Red;
+                        WarningLabel.Text = "Необходимо выполнить вход";
+                        WarningLabel.Visible = true;
+                    }
+                }
             }    
         }
 
@@ -486,7 +723,226 @@ namespace BalancedNutrition
                         menu.EndDate.Month + "." + menu.EndDate.Year;
                     groupNameLabel.Text = "Группа " + menu.Group.Name;
                 }
-            }
+
+                if (RoleLabel.Text != "" && menu.Id != 0)
+                {
+                    try
+                    {
+                        using (BalancedNutritionLibrary.AppContext db = new BalancedNutritionLibrary.AppContext())
+                        {
+                            daysMenu = menu.Days.ToList();
+                            mealsMenu.Clear();
+                            dishesMenu.Clear();
+                            menuResultSet.Clear();
+                            dishValuesInMeals.Clear();
+                            menuDataGridView.Rows.Clear();
+
+                            foreach (BalancedNutritionLibrary.Day day in daysMenu)
+                            {
+                                mealsMenu.AddRange(db.Meals.Where(m => m.Day == day).Include(m => m.Dishes).Include(m => m.Day));
+                            }
+                            foreach (Meal meal in mealsMenu)
+                            {
+                                dishesMenu.AddRange(meal.Dishes);
+                            }
+
+                            foreach (Dish dish in dishesMenu)
+                            {
+                                dish.Meals = db.Dishes.Include(d => d.Meals).Where(d => d.Id == dish.Id).ToList().Last().Meals;
+                                dish.DishNutrients = db.Dishes.Include(d => d.DishNutrients).Where(d => d.Id == dish.Id).ToList().Last().DishNutrients;
+                            }
+
+                            foreach (BalancedNutritionLibrary.Day day in daysMenu)
+                            {
+                                foreach (Meal meal in mealsMenu)
+                                {
+                                    foreach (Dish dish in meal.Dishes)
+                                    {
+                                        if (day.Id == meal.Day.Id)
+                                            menuResultSet.Add(new MenuResultSet()
+                                            {
+                                                day = day,
+                                                dish = dish,
+                                                meal = meal,
+                                                dishNutrients = dish.DishNutrients
+                                            }
+                                        );
+                                    }
+                                }
+                            }
+
+                            for (int i = 0; i < menuResultSet.Count; i++)
+                            {
+                                if (RoleLabel.Text == "Диетолог" || RoleLabel.Text == "Администратор")
+                                    menuDataGridView.Rows.Add(menuResultSet[i].day.Date.ToShortDateString(), menuResultSet[i].meal.Name, menuResultSet[i].dish.Name, "Удалить");
+                                else
+                                {
+                                    menuDataGridView.Rows.Add(menuResultSet[i].day.Date.ToShortDateString(), menuResultSet[i].meal.Name, menuResultSet[i].dish.Name);
+                                }
+                            }
+
+                            int c = 0;
+                            dishValuesInMeals.Clear();
+                            foreach (BalancedNutritionLibrary.Day day in daysMenu)
+                            {
+                                foreach (Meal meal in mealsMenu)
+                                {
+                                    if (day.Id == meal.Day.Id && meal.Dishes.Count > 0)
+                                    {
+                                        bool isAdd = false;
+                                        foreach (Dish dish in meal.Dishes)
+                                        {
+                                            if (day.Id == meal.Day.Id)
+                                                if (isAdd == false)
+                                                {
+                                                    dishValuesInMeals.Add(new DishValuesInMeal()
+                                                    {
+                                                        Meal = meal,
+                                                        Weight = dish.Weight
+                                                    });
+                                                    isAdd = true;
+                                                }
+                                                else
+                                                {
+                                                    dishValuesInMeals[c].Weight += dish.Weight;
+                                                }
+                                        }
+                                        c++;
+                                    }
+                                }
+                            }
+
+                            productResultSet.Clear();
+                            bool isAdded = false;
+                            int c2 = 0;
+                            foreach (Dish dish in dishesMenu)
+                            {
+                                foreach (Ingredient ingredient in db.Ingridients.Include(i => i.Product).Where(i => i.Dish.Id == dish.Id).ToList())
+                                {
+                                    for (int i = 0; i < productResultSet.Count; i++)
+                                    {
+                                        if (productResultSet[i].Product.Id == ingredient.Product.Id)
+                                        {
+                                            c2 = i;
+                                            isAdded = true;
+                                            break;
+                                        }
+                                        else isAdded = false;
+                                    }
+                                    if (isAdded == false)
+                                    {
+                                        productResultSet.Add(new ProductResultSet()
+                                        {
+                                            Product = ingredient.Product,
+                                            Weight = ingredient.Product.Weight
+                                        });
+                                    }
+                                    else
+                                    {
+                                        productResultSet[c2].Weight += ingredient.Product.Weight;
+                                    }
+                                }
+                            }
+
+
+
+
+
+
+                            dayNutrients.Clear();
+                            nutrientsDataGridView.Rows.Clear();
+                            dishWeightDataGridView.Rows.Clear();
+                            productsDataGridView.Rows.Clear();
+                            for (int i = 0; i < daysMenu.Count; i++)
+                            {
+                                dayNutrients.Add(new DayNutrients());
+                                dayNutrients[i].DayDate = daysMenu[i].Date;
+                                for (int j = 0; j < mealsMenu.Count; j++)
+                                {
+                                    if (mealsMenu[j].Day.Id == daysMenu[i].Id)
+                                    {
+                                        for (int k = 0; k < mealsMenu[j].Dishes.Count; k++)
+                                        {
+                                            for (int l = 0; l < 17; l++)
+                                            {
+                                                if (dayNutrients[i].Nutrients.Count < 17) { dayNutrients[i].Nutrients.Add(new Nutrient { }); }
+
+                                                dayNutrients[i].Nutrients[l].NutrientName = db.DishNutrients.Include(dn => dn.NutrientsDirectory)
+                                                .Include(dn => dn.Dish).Where(dn => dn.Dish.Id == mealsMenu[j].Dishes[k].Id)
+                                                .ToList()[l].NutrientsDirectory.Name;
+                                                dayNutrients[i].Nutrients[l].NutrientWeight += db.DishNutrients
+                                                    .Where(dn => dn.Dish.Id == mealsMenu[j].Dishes[k].Id).ToList()[l].DishNutrientWeight;
+                                            }
+
+                                        }
+                                    }
+                                }
+                            }
+
+                            for (int i = 0; i < dayNutrients.Count; i++)
+                            {
+                                for (int j = 0; j < dayNutrients[i].Nutrients.Count; j++)
+                                {
+                                    nutrientsDataGridView.Rows.Add(dayNutrients[i].DayDate.ToShortDateString(), dayNutrients[i].Nutrients[j].NutrientName,
+                                    dayNutrients[i].Nutrients[j].NutrientWeight, normNutrients[j]);
+                                }
+                            }
+
+                            foreach (DishValuesInMeal dishValuesInMeal in dishValuesInMeals)
+                            {
+                                if (dishValuesInMeal.Meal.Name == "Завтрак")
+                                    dishWeightDataGridView.Rows.Add(dishValuesInMeal.Meal.Day.Date.ToShortDateString(), dishValuesInMeal.Meal.Name, dishValuesInMeal.Weight,
+                                        normDishValuesInMeals[0]);
+                                else if (dishValuesInMeal.Meal.Name == "Обед")
+                                    dishWeightDataGridView.Rows.Add(dishValuesInMeal.Meal.Day.Date.ToShortDateString(), dishValuesInMeal.Meal.Name, dishValuesInMeal.Weight,
+                                        normDishValuesInMeals[1]);
+                                else if (dishValuesInMeal.Meal.Name == "Полдник")
+                                    dishWeightDataGridView.Rows.Add(dishValuesInMeal.Meal.Day.Date.ToShortDateString(), dishValuesInMeal.Meal.Name, dishValuesInMeal.Weight,
+                                        normDishValuesInMeals[2]);
+                                else if (dishValuesInMeal.Meal.Name == "Ужин")
+                                    dishWeightDataGridView.Rows.Add(dishValuesInMeal.Meal.Day.Date.ToShortDateString(), dishValuesInMeal.Meal.Name, dishValuesInMeal.Weight,
+                                        normDishValuesInMeals[3]);
+                            }
+
+                            foreach (ProductResultSet resultSet in productResultSet)
+                            {
+                                productsDataGridView.Rows.Add(resultSet.Product.Name, resultSet.Weight,
+                                    resultSet.Weight * menu.Group.NumberOfServings);
+                            }
+
+
+
+
+
+                            WarningLabel.ForeColor = Color.Green;
+                            WarningLabel.Text = "Данные в меню обновлены";
+                            WarningLabel.Visible = true;
+                        }
+                    }
+                    catch
+                    {
+                        WarningLabel.ForeColor = Color.Red;
+                        WarningLabel.Text = "Произошла ошибка при обновлении данных в меню";
+                        WarningLabel.Visible = true;
+                    }
+                }
+                else
+                {
+                    if (RoleLabel.Text != "")
+                    {
+                        WarningLabel.ForeColor = Color.Red;
+                        WarningLabel.Text = "Плановое меню не выбрано";
+                        WarningLabel.Visible = true;
+                    }
+                    else
+                    {
+                        WarningLabel.ForeColor = Color.Red;
+                        WarningLabel.Text = "Необходимо выполнить вход";
+                        WarningLabel.Visible = true;
+                    }
+                }
+            
+        }
             else
             {
                 WarningLabel.Text = "Для открытия меню, необходимо войти в аккаунт";
@@ -514,6 +970,224 @@ namespace BalancedNutrition
                 DishToMeal dishToMeal = new DishToMeal();
                 dishToMeal.PlannedMenuLoad(menu);
                 dishToMeal.ShowDialog();
+
+                if (RoleLabel.Text != "" && menu.Id != 0)
+                {
+                    try
+                    {
+                        using (BalancedNutritionLibrary.AppContext db = new BalancedNutritionLibrary.AppContext())
+                        {
+                            daysMenu = menu.Days.ToList();
+                            mealsMenu.Clear();
+                            dishesMenu.Clear();
+                            menuResultSet.Clear();
+                            dishValuesInMeals.Clear();
+                            menuDataGridView.Rows.Clear();
+
+                            foreach (BalancedNutritionLibrary.Day day in daysMenu)
+                            {
+                                mealsMenu.AddRange(db.Meals.Where(m => m.Day == day).Include(m => m.Dishes).Include(m => m.Day));
+                            }
+                            foreach (Meal meal in mealsMenu)
+                            {
+                                dishesMenu.AddRange(meal.Dishes);
+                            }
+
+                            foreach (Dish dish in dishesMenu)
+                            {
+                                dish.Meals = db.Dishes.Include(d => d.Meals).Where(d => d.Id == dish.Id).ToList().Last().Meals;
+                                dish.DishNutrients = db.Dishes.Include(d => d.DishNutrients).Where(d => d.Id == dish.Id).ToList().Last().DishNutrients;
+                            }
+
+                            foreach (BalancedNutritionLibrary.Day day in daysMenu)
+                            {
+                                foreach (Meal meal in mealsMenu)
+                                {
+                                    foreach (Dish dish in meal.Dishes)
+                                    {
+                                        if (day.Id == meal.Day.Id)
+                                            menuResultSet.Add(new MenuResultSet()
+                                            {
+                                                day = day,
+                                                dish = dish,
+                                                meal = meal,
+                                                dishNutrients = dish.DishNutrients
+                                            }
+                                        );
+                                    }
+                                }
+                            }
+
+                            for (int i = 0; i < menuResultSet.Count; i++)
+                            {
+                                if (RoleLabel.Text == "Диетолог" || RoleLabel.Text == "Администратор")
+                                    menuDataGridView.Rows.Add(menuResultSet[i].day.Date.ToShortDateString(), menuResultSet[i].meal.Name, menuResultSet[i].dish.Name, "Удалить");
+                                else
+                                {
+                                    menuDataGridView.Rows.Add(menuResultSet[i].day.Date.ToShortDateString(), menuResultSet[i].meal.Name, menuResultSet[i].dish.Name);
+                                }
+                            }
+
+                            int c = 0;
+                            dishValuesInMeals.Clear();
+                            foreach (BalancedNutritionLibrary.Day day in daysMenu)
+                            {
+                                foreach (Meal meal in mealsMenu)
+                                {
+                                    if (day.Id == meal.Day.Id && meal.Dishes.Count > 0)
+                                    {
+                                        bool isAdd = false;
+                                        foreach (Dish dish in meal.Dishes)
+                                        {
+                                            if (day.Id == meal.Day.Id)
+                                                if (isAdd == false)
+                                                {
+                                                    dishValuesInMeals.Add(new DishValuesInMeal()
+                                                    {
+                                                        Meal = meal,
+                                                        Weight = dish.Weight
+                                                    });
+                                                    isAdd = true;
+                                                }
+                                                else
+                                                {
+                                                    dishValuesInMeals[c].Weight += dish.Weight;
+                                                }
+                                        }
+                                        c++;
+                                    }
+                                }
+                            }
+
+                            productResultSet.Clear();
+                            bool isAdded = false;
+                            int c2 = 0;
+                            foreach (Dish dish in dishesMenu)
+                            {
+                                foreach (Ingredient ingredient in db.Ingridients.Include(i => i.Product).Where(i => i.Dish.Id == dish.Id).ToList())
+                                {
+                                    for (int i = 0; i < productResultSet.Count; i++)
+                                    {
+                                        if (productResultSet[i].Product.Id == ingredient.Product.Id)
+                                        {
+                                            c2 = i;
+                                            isAdded = true;
+                                            break;
+                                        }
+                                        else isAdded = false;
+                                    }
+                                    if (isAdded == false)
+                                    {
+                                        productResultSet.Add(new ProductResultSet()
+                                        {
+                                            Product = ingredient.Product,
+                                            Weight = ingredient.Product.Weight
+                                        });
+                                    }
+                                    else
+                                    {
+                                        productResultSet[c2].Weight += ingredient.Product.Weight;
+                                    }
+                                }
+                            }
+
+
+
+
+
+
+                            dayNutrients.Clear();
+                            nutrientsDataGridView.Rows.Clear();
+                            dishWeightDataGridView.Rows.Clear();
+                            productsDataGridView.Rows.Clear();
+                            for (int i = 0; i < daysMenu.Count; i++)
+                            {
+                                dayNutrients.Add(new DayNutrients());
+                                dayNutrients[i].DayDate = daysMenu[i].Date;
+                                for (int j = 0; j < mealsMenu.Count; j++)
+                                {
+                                    if (mealsMenu[j].Day.Id == daysMenu[i].Id)
+                                    {
+                                        for (int k = 0; k < mealsMenu[j].Dishes.Count; k++)
+                                        {
+                                            for (int l = 0; l < 17; l++)
+                                            {
+                                                if (dayNutrients[i].Nutrients.Count < 17) { dayNutrients[i].Nutrients.Add(new Nutrient { }); }
+
+                                                dayNutrients[i].Nutrients[l].NutrientName = db.DishNutrients.Include(dn => dn.NutrientsDirectory)
+                                                .Include(dn => dn.Dish).Where(dn => dn.Dish.Id == mealsMenu[j].Dishes[k].Id)
+                                                .ToList()[l].NutrientsDirectory.Name;
+                                                dayNutrients[i].Nutrients[l].NutrientWeight += db.DishNutrients
+                                                    .Where(dn => dn.Dish.Id == mealsMenu[j].Dishes[k].Id).ToList()[l].DishNutrientWeight;
+                                            }
+
+                                        }
+                                    }
+                                }
+                            }
+
+                            for (int i = 0; i < dayNutrients.Count; i++)
+                            {
+                                for (int j = 0; j < dayNutrients[i].Nutrients.Count; j++)
+                                {
+                                    nutrientsDataGridView.Rows.Add(dayNutrients[i].DayDate.ToShortDateString(), dayNutrients[i].Nutrients[j].NutrientName,
+                                    dayNutrients[i].Nutrients[j].NutrientWeight, normNutrients[j]);
+                                }
+                            }
+
+                            foreach (DishValuesInMeal dishValuesInMeal in dishValuesInMeals)
+                            {
+                                if (dishValuesInMeal.Meal.Name == "Завтрак")
+                                    dishWeightDataGridView.Rows.Add(dishValuesInMeal.Meal.Day.Date.ToShortDateString(), dishValuesInMeal.Meal.Name, dishValuesInMeal.Weight,
+                                        normDishValuesInMeals[0]);  
+                                else if (dishValuesInMeal.Meal.Name == "Обед")
+                                    dishWeightDataGridView.Rows.Add(dishValuesInMeal.Meal.Day.Date.ToShortDateString(), dishValuesInMeal.Meal.Name, dishValuesInMeal.Weight,
+                                        normDishValuesInMeals[1]);
+                                else if (dishValuesInMeal.Meal.Name == "Полдник")
+                                    dishWeightDataGridView.Rows.Add(dishValuesInMeal.Meal.Day.Date.ToShortDateString(), dishValuesInMeal.Meal.Name, dishValuesInMeal.Weight,
+                                        normDishValuesInMeals[2]);
+                                else if (dishValuesInMeal.Meal.Name == "Ужин")
+                                    dishWeightDataGridView.Rows.Add(dishValuesInMeal.Meal.Day.Date.ToShortDateString(), dishValuesInMeal.Meal.Name, dishValuesInMeal.Weight,
+                                        normDishValuesInMeals[3]);
+                            }
+
+                            foreach (ProductResultSet resultSet in productResultSet)
+                            {
+                                productsDataGridView.Rows.Add(resultSet.Product.Name, resultSet.Weight,
+                                    resultSet.Weight * menu.Group.NumberOfServings);
+                            }
+
+
+
+
+
+                            WarningLabel.ForeColor = Color.Green;
+                            WarningLabel.Text = "Данные в меню обновлены";
+                            WarningLabel.Visible = true;
+                        }
+                    }
+                    catch
+                    {
+                        WarningLabel.ForeColor = Color.Red;
+                        WarningLabel.Text = "Произошла ошибка при обновлении данных в меню";
+                        WarningLabel.Visible = true;
+                    }
+                }
+                else
+                {
+                    if (RoleLabel.Text != "")
+                    {
+                        WarningLabel.ForeColor = Color.Red;
+                        WarningLabel.Text = "Плановое меню не выбрано";
+                        WarningLabel.Visible = true;
+                    }
+                    else
+                    {
+                        WarningLabel.ForeColor = Color.Red;
+                        WarningLabel.Text = "Необходимо выполнить вход";
+                        WarningLabel.Visible = true;
+                    }
+                }
             }
         }
 
